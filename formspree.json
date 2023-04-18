@@ -1,0 +1,27 @@
+{
+  "forms": {
+    "message": {
+      "name": "Private message",
+      "actions": [
+        {
+          "type": "email",
+          "to": "$NEXT_PUBLIC_FORMSPREE_EMAIL"
+        }
+      ],
+      "fields": {
+        "name": {
+          "required": true,
+          "type": "text"
+        },
+        "email": {
+          "required": true,
+          "type": "email"
+        },
+        "message": {
+          "required": true,
+          "type": "text"
+        }
+      }
+    }
+  }
+}

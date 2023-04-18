@@ -1,0 +1,22 @@
+{
+  "github": {
+    "release": false
+  },
+  "git": {
+    "commitMessage": "chore(release): v${version}",
+    "commit": true,
+    "tag": true,
+    "requireCommits": false,
+    "requireCleanWorkingDir": false
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": "conventionalcommits",
+      "infile": "CHANGELOG.md",
+      "header": "# Changelog"
+    }
+  },
+  "hooks": {
+    "after:bump": "node ./scripts/versioning.js ${version} && git add ."
+  }
+}
