@@ -1,10 +1,13 @@
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithRef, forwardRef } from "react";
 import clsx from "clsx";
 
 type CheckboxProps = {
   className?: string;
-} & ComponentPropsWithoutRef<"input">;
+} & ComponentPropsWithRef<"input">;
 
-export default function Checkbox({ className, ...props }: CheckboxProps) {
-  return <input className={clsx("border-sm border-black text-primary", className)} type={"checkbox"} {...props} />;
-}
+const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({ className, ...props }, ref) => (
+  <input className={clsx("border-sm border-black text-primary", className)} type={"checkbox"} {...props} ref={ref} />
+));
+Checkbox.displayName = "Checkbox";
+
+export default Checkbox;

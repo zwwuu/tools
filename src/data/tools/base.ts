@@ -76,4 +76,11 @@ export const tools: Record<string, Tool> = {
     keywords: ["css colors", "named colors", "html colors", "color", "palette", "RGB", "HEX"],
     isPublic: true,
   },
+  "random-number": {
+    title: "Random Number Generator",
+    slug: "random-number",
+    description: "Generate a random number between two numbers.",
+    keywords: ["random number", "random", "number", "generator", "random number generator", "randomizer"],
+    isPublic: true,
+  },
 };

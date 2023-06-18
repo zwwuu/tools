@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, forwardRef, useCallback, useEffect, useRef } from "react";
+import { ComponentPropsWithRef, forwardRef, useCallback, useEffect, useRef } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
 const textarea = cva("bg-input p-2", {
@@ -15,7 +15,7 @@ const textarea = cva("bg-input p-2", {
 });
 type TextareaProps = {
   autoSize?: boolean;
-} & ComponentPropsWithoutRef<"textarea"> &
+} & ComponentPropsWithRef<"textarea"> &
   VariantProps<typeof textarea>;
 
 const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
