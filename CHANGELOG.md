@@ -1,7 +1,10 @@
----
-version: "1.0.0"
-date: "2023-06-18T18:28:14.647Z"
----
+# Changelog
+
+## 1.0.0 (2023-06-18)
+
+### ⚠ BREAKING CHANGES
+
+- initial release
 
 ### Features
 

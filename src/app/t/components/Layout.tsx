@@ -1,7 +1,6 @@
 "use client";
 
 import { ComponentPropsWithoutRef, ReactNode, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { IconMessage } from "@tabler/icons-react";
 
 import LikeButton from "~/app/t/components/LikeButton";
