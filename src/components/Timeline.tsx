@@ -7,7 +7,7 @@ import { Card, CardBody } from "~/components/Card";
 type TimelineProps = ComponentPropsWithRef<"ul">;
 const Timeline = forwardRef<HTMLUListElement, TimelineProps>(({ children, className, ...props }, ref) => {
   return (
-    <ul className={clsx("relative flex flex-col", className)} ref={ref} {...props}>
+    <ul className={clsx("relative flex flex-col space-y-2", className)} ref={ref} {...props}>
       {children}
     </ul>
   );
@@ -21,13 +21,15 @@ const timelineItem = cva("", {
 type TimelineItemProps = ComponentPropsWithRef<"li"> & VariantProps<typeof timelineItem>;
 const TimelineItem = forwardRef<HTMLLIElement, TimelineItemProps>(({ children, className, ...props }, ref) => {
   return (
-    <li className={clsx("group mb-4 flex md:even:flex-row-reverse", className)} ref={ref} {...props}>
+    <li className={clsx("group flex md:even:flex-row-reverse", className)} ref={ref} {...props}>
       <div className={"hidden flex-1 md:block md:group-odd:mr-4 md:group-even:ml-4"} />
       <div className={"flex-0 flex flex-col items-center justify-center"}>
         <div className={"mb-2 h-6 w-6 border bg-primary"} />
         <div className={"w-1 flex-grow bg-base-content"} />
       </div>
-      <div className={"flex-1 pb-2 md:group-odd:ml-4 md:group-even:mr-4"}>{children}</div>
+      <div className={"flex-1 pb-4 group-odd:ml-4 group-even:ml-4 md:group-even:ml-0 md:group-even:mr-4"}>
+        {children}
+      </div>
     </li>
   );
 });
