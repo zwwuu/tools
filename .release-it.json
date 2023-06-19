@@ -17,6 +17,6 @@
     }
   },
   "hooks": {
-    "after:bump": "node ./scripts/versioning.js ${version} && git add ."
+    "before:bump": "node ./scripts/versioning.js ${version} && git add ."
   }
 }
