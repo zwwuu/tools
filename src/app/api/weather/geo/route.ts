@@ -15,9 +15,7 @@ export async function GET(req: NextRequest) {
   }
 
   const { name } = data.data;
-  const response = await fetch(`${API_URL}/geo/1.0/direct?q=${name}&limit=1&appid=${API_KEY}`, {
-    next: { revalidate: 60 },
-  });
+  const response = await fetch(`${API_URL}/geo/1.0/direct?q=${name}&limit=1&appid=${API_KEY}`);
   if (!response.ok) {
     return NextResponse.json({ success: false, message: response.statusText }, { status: 400 });
   }

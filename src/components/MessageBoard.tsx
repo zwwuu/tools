@@ -16,7 +16,7 @@ export default function MessageBoard({ mapping, term, strict }: MessageBoardProp
         <Heading as={"h2"} className={"mb-2"}>
           Message Board
         </Heading>
-        <div className={"p-px"}>
+        <div>
           <Giscus
             emitMetadata={"0"}
             inputPosition={"top"}

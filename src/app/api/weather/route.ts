@@ -17,12 +17,8 @@ export async function GET(req: NextRequest) {
   const { lat, lon } = data.data;
   try {
     const [currentRes, forecastRes] = await Promise.all([
-      fetch(`${API_URL}/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`, {
-        next: { revalidate: 60 },
-      }),
-      fetch(`${API_URL}/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=8&appid=${API_KEY}`, {
-        next: { revalidate: 60 },
-      }),
+      fetch(`${API_URL}/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`),
+      fetch(`${API_URL}/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=8&appid=${API_KEY}`),
     ]);
 
     if (!currentRes.ok || !forecastRes.ok) {
