@@ -83,4 +83,21 @@ export const tools: Record<string, Tool> = {
     keywords: ["random number", "random", "number", "generator", "random number generator", "randomizer"],
     isPublic: true,
   },
+  "crontab-editor": {
+    title: "Crontab Editor",
+    slug: "crontab-editor",
+    description: "A quick and simple crontab editor.",
+    keywords: [
+      "crontab editor",
+      "editor",
+      "crontab",
+      "cron",
+      "cron job",
+      "cron table",
+      "crontab parser",
+      "parser",
+      "schedule",
+    ],
+    isPublic: true,
+  },
 };

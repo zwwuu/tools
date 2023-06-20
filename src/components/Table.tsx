@@ -15,7 +15,9 @@ TableHeader.displayName = "TableHeader";
 
 const TableBody = forwardRef<HTMLTableSectionElement, HTMLAttributes<HTMLTableSectionElement>>(
   ({ className, ...props }, ref) => {
-    return <tbody className={clsx("[&_tr:hover]:bg-base-focus [&_tr]:transition", className)} ref={ref} {...props} />;
+    return (
+      <tbody className={clsx("w-full [&_tr:hover]:bg-base-focus [&_tr]:transition", className)} ref={ref} {...props} />
+    );
   },
 );
 TableBody.displayName = "TableBody";

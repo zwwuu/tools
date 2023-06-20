@@ -19,9 +19,13 @@ export default function AppProvider({ children }: { children: ReactNode }) {
       }
       stores={[useConfigStore, useUserStore]}
     >
-      <ConfigProvider>
-        <UserProvider>{children}</UserProvider>
-      </ConfigProvider>
+      {process.env.NODE_ENV === "development" ? (
+        <ConfigProvider>{children}</ConfigProvider>
+      ) : (
+        <ConfigProvider>
+          <UserProvider>{children}</UserProvider>
+        </ConfigProvider>
+      )}
     </PersistentGate>
   );
 }
