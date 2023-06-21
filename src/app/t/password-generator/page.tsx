@@ -48,6 +48,7 @@ export default function PasswordGeneratorPage() {
     let length = parseInt(event.target.value, 10);
     if (!isNaN(length)) {
       setLength(length);
+      setUncommittedLength(length);
     }
   };
 
