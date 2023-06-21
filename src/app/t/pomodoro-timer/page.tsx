@@ -219,7 +219,7 @@ export default function PomodoroTimerPage() {
               <div className={"text-sm"}>
                 <fieldset>
                   <legend className={"font-bold"}>Time (minutes)</legend>
-                  <div className={"-mx-2 flex flex-wrap justify-end"}>
+                  <div className={"-mx-2 flex flex-wrap items-end"}>
                     {(Object.keys(INTERVAL_STYLES) as unknown as Array<keyof typeof INTERVAL_STYLES>).map(
                       (interval) => {
                         return (
