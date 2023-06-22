@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { IconPhoto } from "@tabler/icons-react";
-import clsx from "clsx";
 import ExifReader from "exifreader";
 
 import Main from "~/app/t/components/Main";
@@ -23,9 +22,16 @@ export default function ExifViewerPage() {
       }
 
       try {
-        const tags = await ExifReader.load(image);
-        setExif(tags);
+        const tags = await ExifReader.load(image, { includeUnknown: true });
+        const orderedTags = Object.keys(tags)
+          .sort()
+          .reduce((prev: any, curr: any) => {
+            prev[curr] = tags[curr];
+            return prev;
+          }, {});
+        setExif(orderedTags);
       } catch (error) {
+        setExif(null);
         setError("Failed to load EXIF data from image.");
       }
     })();
@@ -36,7 +42,6 @@ export default function ExifViewerPage() {
       <Card>
         <CardBody>
           <FileUpload
-            className={clsx("block w-full", error && "border-red-500")}
             dropzoneProps={{
               onDropAccepted: ([file]) => {
                 setImage(file);
@@ -51,8 +56,12 @@ export default function ExifViewerPage() {
             name={"image"}
           >
             <div className={"flex flex-col items-center space-y-2"}>
-              {image ? (
-                <figure className={"relative"}>
+              <p>
+                <IconPhoto size={"2em"} aria-hidden className={"mr-2 inline-block"} />
+                Drag and drop an image here, or click to select an image.
+              </p>
+              {image && (
+                <figure>
                   <img
                     alt={"Uploaded image"}
                     className={"mx-auto max-h-96 max-w-full"}
@@ -60,10 +69,7 @@ export default function ExifViewerPage() {
                   />
                   <figcaption className={"break-all opacity-80 text-xs"}>{image.name}</figcaption>
                 </figure>
-              ) : (
-                <IconPhoto size={"2em"} aria-hidden />
               )}
-              <p className={"text-lg"}>Drag and drop an image here, or click to select an image.</p>
             </div>
           </FileUpload>
           {error && (

@@ -11,11 +11,17 @@ type FileUploadProps = {
 };
 
 const FileUpload = ({ className, children, name, id, dropzoneProps }: FileUploadProps) => {
-  const { getRootProps, getInputProps } = useDropzone(dropzoneProps);
+  const { getRootProps, getInputProps, isDragReject, isDragActive } = useDropzone(dropzoneProps);
+
   return (
     <div
       {...getRootProps()}
-      className={clsx("cursor-pointer border border-dashed bg-base-200 p-4 transition hover:bg-base-100", className)}
+      className={clsx(
+        "cursor-pointer border border-dashed p-4 transition hover:bg-base-100",
+        isDragReject && "border-red-500",
+        isDragActive ? "border-primary-500 bg-base-100" : "bg-base-200",
+        className,
+      )}
     >
       <input {...getInputProps()} id={id} name={name} />
       <div>{children}</div>
