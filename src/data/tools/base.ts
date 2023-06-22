@@ -103,7 +103,8 @@ export const tools: Record<string, Tool> = {
   "exif-viewer": {
     title: "EXIF Viewer",
     slug: "exif-viewer",
-    description: "View EXIF data of a image.",
+    description:
+      "View EXIF metadata recorded in the photo. Date, time, camera settings, geolocation coordinates, and many more.",
     keywords: ["exif viewer", "exif", "viewer", "exif reader"],
     isPublic: true,
   },
