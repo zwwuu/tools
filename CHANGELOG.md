@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.3.0](https://github.com/zwwuu/tools/compare/1.2.0...1.3.0) (2023-06-22)
+
+### Features
+
+- add exif viewer ([cfb25b9](https://github.com/zwwuu/tools/commit/cfb25b9b91043a8a46af6e85576e2b7e750173bf))
+
+### Bug Fixes
+
+- **password-generator:** fix length not changing its value in input field ([14014f3](https://github.com/zwwuu/tools/commit/14014f3ff7c8ec824e20846623500ac300746155))
+- **pomodoro-timer:** align configs to the end ([f8f7954](https://github.com/zwwuu/tools/commit/f8f7954cf0dbccf8b67594c618d9868c4b6f35ec))
+
 ## [1.2.0](https://github.com/zwwuu/tools/compare/1.0.0...1.2.0) (2023-06-21)
 
 ### Features
