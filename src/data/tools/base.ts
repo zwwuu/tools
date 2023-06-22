@@ -100,4 +100,11 @@ export const tools: Record<string, Tool> = {
     ],
     isPublic: true,
   },
+  "exif-viewer": {
+    title: "EXIF Viewer",
+    slug: "exif-viewer",
+    description: "View EXIF data of a image.",
+    keywords: ["exif viewer", "exif", "viewer", "exif reader"],
+    isPublic: true,
+  },
 };
