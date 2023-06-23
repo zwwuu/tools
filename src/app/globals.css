@@ -26,7 +26,7 @@
   [multiple],
   textarea,
   select {
-    @apply border-neutral-900 text-base-content focus:border-neutral-900 focus:outline-dashed focus:outline-2 focus:outline-offset-2 focus:outline-current focus:ring-0;
+    @apply border-black text-base-content focus:border-black focus:outline-dashed focus:outline-2 focus:outline-offset-2 focus:outline-current focus:ring-0;
   }
 
   [type="checkbox"],

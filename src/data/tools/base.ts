@@ -108,4 +108,23 @@ export const tools: Record<string, Tool> = {
     keywords: ["exif viewer", "exif", "viewer", "exif reader"],
     isPublic: true,
   },
+  "base-convertor": {
+    title: "Base Convertor",
+    slug: "base-convertor",
+    description: "Convert between binary, octal, decimal, hexadecimal, and many more.",
+    keywords: [
+      "base convertor",
+      "base",
+      "convertor",
+      "binary",
+      "octal",
+      "decimal",
+      "hexadecimal",
+      "base 2",
+      "base 8",
+      "base 10",
+      "base 16",
+    ],
+    isPublic: true,
+  },
 };
