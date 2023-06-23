@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/zwwuu/tools/compare/1.3.0...1.4.0) (2023-06-23)
+
+### Features
+
+- add donation button ([57d02ab](https://github.com/zwwuu/tools/commit/57d02ab4a1ee9af0bf1aa26c80970dac5d2e0539))
+- **exif-viewer:** include all tags ([43225e0](https://github.com/zwwuu/tools/commit/43225e04bb4c397211556177bf72f4092501c934))
+
 ## [1.3.0](https://github.com/zwwuu/tools/compare/1.2.0...1.3.0) (2023-06-22)
 
 ### Features
