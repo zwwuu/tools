@@ -31,10 +31,7 @@ export default function TopButton() {
 
   return (
     <MotionButton
-      className={clsx(
-        "hover:-translate-y-0.5 focus:-translate-y-0.5",
-        isShow ? "visible animate-fadeInUp animate-faster" : "invisible",
-      )}
+      className={clsx(isShow ? "visible animate-fadeInUp animate-faster" : "invisible")}
       title={"Scroll to top"}
       variant={"icon"}
       whileTap={{ y: -16 }}

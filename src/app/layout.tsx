@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import Analytics from "~/components/Analytics";
+import DonationButton from "~/components/DonationButton";
 import FloatingMenu from "~/components/FloatingMenu";
 import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Footer />
           <FloatingMenu>
             <TopButton />
+            <DonationButton />
           </FloatingMenu>
           <Toaster />
         </AppProvider>

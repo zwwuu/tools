@@ -8,6 +8,8 @@ const anchor = cva("", {
     variant: {
       primary:
         "relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-current after:transition-size hover:after:h-1 focus:after:h-1",
+      button:
+        "inline-flex items-center shadow-md hover:shadow-none focus:shadow-none bg-base-100 hover:bg-primary focus:bg-primary transition justify-center p-2 text-lg border-sm",
     },
     isExternal: {
       true: "inline-flex items-center",
