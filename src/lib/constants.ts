@@ -1,1 +1,1 @@
-export const MAX_LIKES = 999;
+export const MAX_LIKES = 10;
