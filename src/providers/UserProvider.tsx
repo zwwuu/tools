@@ -11,6 +11,7 @@ type UserContextProps = {
   likedTools: { [k: string]: number };
   isLiked: (slug: string) => boolean;
   addLike: (slug: string) => void;
+  getLikes: (slug: string) => number;
 };
 
 export const UserContext = createContext<UserContextProps>({
@@ -18,6 +19,7 @@ export const UserContext = createContext<UserContextProps>({
   likedTools: {},
   isLiked: () => false,
   addLike: () => undefined,
+  getLikes: () => 0,
 });
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
@@ -65,7 +67,9 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
   const isLiked = useCallback((slug: string) => likedTools.hasOwnProperty(slug), [likedTools]);
 
-  return <UserContext.Provider value={{ id, isLiked, likedTools, addLike }}>{children}</UserContext.Provider>;
+  const getLikes = (slug: string) => likedTools[slug] ?? 0;
+
+  return <UserContext.Provider value={{ id, isLiked, likedTools, addLike, getLikes }}>{children}</UserContext.Provider>;
 };
 
 export const useUser = () => useContext(UserContext);

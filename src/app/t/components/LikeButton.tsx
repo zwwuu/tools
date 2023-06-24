@@ -25,10 +25,10 @@ const floatingTextAnimation = {
 const MotionIconThumbUp = motion(IconThumbUp);
 const MotionButton = motion(Button);
 export default function LikeButton({ slug }: { slug: string }) {
+  const { addLike, isLiked, getLikes } = useUser();
   const [totalLikes, setTotalLikes] = useState(0);
   const likes = useRef(0);
   const debouncedLikes = useDebounce(likes.current, 500);
-  const { addLike, isLiked } = useUser();
   const { play, stop } = useSound("/sounds/ui/tap_01.wav");
 
   useEffect(() => {
@@ -45,19 +45,25 @@ export default function LikeButton({ slug }: { slug: string }) {
   }, [slug]);
 
   useEffect(() => {
-    if (debouncedLikes === 0) return;
+    if (debouncedLikes <= 0) return;
 
     (async () => {
+      const likeToSend = Math.min(debouncedLikes, MAX_LIKES);
       await fetch("/api/like", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          likes: debouncedLikes > MAX_LIKES ? MAX_LIKES : debouncedLikes,
+          likes: likeToSend,
           slug: slug,
         }),
       }).catch((err) => console.error(err));
+      window.gtag("event", "like", {
+        event_category: "engagement",
+        event_label: slug,
+        value: likeToSend,
+      });
       likes.current = 0;
     })();
   }, [debouncedLikes, slug]);
@@ -76,7 +82,7 @@ export default function LikeButton({ slug }: { slug: string }) {
       whileHover={"grow"}
       whileTap={"jump"}
       onClick={async () => {
-        if (likes.current < MAX_LIKES) {
+        if (likes.current < MAX_LIKES && getLikes(slug) < MAX_LIKES) {
           await stop();
           likes.current += 1;
           setTotalLikes(totalLikes + 1);
@@ -96,7 +102,7 @@ export default function LikeButton({ slug }: { slug: string }) {
           className={"pointer-events-none absolute left-full top-0 block text-red-500 text-xs"}
           variants={floatingTextAnimation}
         >
-          {likes.current >= MAX_LIKES ? "MAX" : `+${likes.current}`}
+          {likes.current < MAX_LIKES && getLikes(slug) < MAX_LIKES ? `+${likes.current}` : "MAX"}
         </motion.span>
       </span>
     </MotionButton>

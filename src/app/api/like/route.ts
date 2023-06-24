@@ -25,25 +25,32 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: false, message: "Bad Request" }, { status: 400 });
   }
 
-  try {
-    const toolDocRef = dbAdmin.collection("tools").doc(slug);
-    await toolDocRef.set(
-      {
-        totalLikes: FieldValue.increment(likes),
-      },
-      { merge: true },
-    );
+  const ipAddress = getHashedIpAddress(req.headers.get("x-real-ip"));
 
-    const ipAddress = getHashedIpAddress(req.headers.get("x-real-ip"));
-    const likeDocRef = dbAdmin.collection(`tools/${slug}/likes`).doc(ipAddress);
-    await likeDocRef.set(
-      {
-        likes: FieldValue.increment(likes),
-        by: ipAddress,
-        updatedAt: FieldValue.serverTimestamp(),
-      },
-      { merge: true },
-    );
+  const likeDocRef = dbAdmin.collection(`tools/${slug}/likes`).doc(ipAddress);
+  const toolDocRef = dbAdmin.collection("tools").doc(slug);
+
+  try {
+    await dbAdmin.runTransaction(async (transaction) => {
+      const likeDoc = await transaction.get(likeDocRef);
+      const currentLikes = likeDoc.data()?.likes ?? 0;
+      const likesToBeAdded = MAX_LIKES - currentLikes >= likes ? likes : MAX_LIKES - currentLikes;
+      if (likesToBeAdded > 0) {
+        transaction.set(
+          likeDocRef,
+          {
+            likes: FieldValue.increment(likesToBeAdded),
+            by: ipAddress,
+            updatedAt: FieldValue.serverTimestamp(),
+          },
+          { merge: true },
+        );
+        transaction.set(toolDocRef, { totalLikes: FieldValue.increment(likesToBeAdded) }, { merge: true });
+        return;
+      }
+
+      throw new Error("Over the limit");
+    });
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {

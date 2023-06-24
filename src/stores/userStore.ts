@@ -9,7 +9,7 @@ export type UserState = {
   };
   setId: (id: string) => void;
   setLikedTools: (likedTools: { [key: string]: number }) => void;
-  addLike: (toolId: string) => void;
+  addLike: (slug: string) => void;
 };
 
 export const useUserStore = create<UserState>()(
@@ -25,15 +25,15 @@ export const useUserStore = create<UserState>()(
               type: "setLikedTools",
               likedTools,
             }),
-          addLike: (toolId) =>
+          addLike: (slug) =>
             set(
               (state) => {
-                state.likedTools[toolId] = (state.likedTools[toolId] || 0) + 1;
+                state.likedTools[slug] = (state.likedTools[slug] || 0) + 1;
               },
               false,
               {
                 type: "addLike",
-                toolId,
+                slug,
               },
             ),
         }),
