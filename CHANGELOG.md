@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.0](https://github.com/zwwuu/tools/compare/1.4.0...1.5.0) (2023-06-24)
+
+### Features
+
+- add base convertor ([00b469a](https://github.com/zwwuu/tools/commit/00b469a1f128e337798f68c62f1b878bd274fd71))
+
 ## [1.4.0](https://github.com/zwwuu/tools/compare/1.3.0...1.4.0) (2023-06-23)
 
 ### Features
