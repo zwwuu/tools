@@ -58,6 +58,11 @@ export default function LikeButton({ slug }: { slug: string }) {
           slug: slug,
         }),
       }).catch((err) => console.error(err));
+      window.gtag("event", "like", {
+        event_category: "engagement",
+        event_label: slug,
+        value: debouncedLikes,
+      });
       likes.current = 0;
     })();
   }, [debouncedLikes, slug]);
