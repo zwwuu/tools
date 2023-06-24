@@ -53,7 +53,7 @@ export default function ToolList({ tools }: { tools: Tool[] }) {
           <Heading as={"h2"} className={"mb-2"}>
             Browse
           </Heading>
-          <form>
+          <form role="search">
             <Input
               aria-label={"Search"}
               className={"block w-full text-base"}

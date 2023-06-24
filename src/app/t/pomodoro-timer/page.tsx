@@ -149,9 +149,23 @@ export default function PomodoroTimerPage() {
           isActive && "before:animate-twPulse before:shadow-2xl before:animate-infinite",
         )}
       >
-        <CardBody className={"space-y-8"}>
+        <CardBody className={"space-y-4"}>
           <div>
-            <div className={"opacity-90 text-xs"}>{`#${round}`}</div>
+            <div className={"flex items-center justify-between"}>
+              <div className={"opacity-90 text-xs"}>{`#${round}`}</div>
+              <Button
+                title={`click to ${isMuted ? "unmute" : "mute"}`}
+                variant={"icon"}
+                onClick={handleAlarmToggle}
+                className={"sm:hidden"}
+              >
+                {isMuted ? (
+                  <IconBellOff size={"1em"} aria-hidden />
+                ) : (
+                  <IconBell className={clsx({ "animate-tada animate-infinite": isPlaying })} size={"1em"} aria-hidden />
+                )}
+              </Button>
+            </div>
             <Heading as={"h2"} className={"mb-2"}>
               {INTERVAL_STYLES[currentInterval].label}
             </Heading>
@@ -162,7 +176,7 @@ export default function PomodoroTimerPage() {
               />
             </div>
           </div>
-          <p className={"font-mono font-bold text-5xl"}>{formattedTimeLeft}</p>
+          <p className={"font-mono text-[3rem] font-bold"}>{formattedTimeLeft}</p>
           <div className={"flex w-full items-center"}>
             {isActive ? (
               <>
@@ -184,7 +198,7 @@ export default function PomodoroTimerPage() {
                     </>
                   )}
                 </Button>
-                <Button className={"mr-4 uppercase"} onClick={handleReset}>
+                <Button className={"uppercase"} onClick={handleReset}>
                   Reset
                 </Button>
               </>
@@ -194,7 +208,7 @@ export default function PomodoroTimerPage() {
               </Button>
             )}
             <Button
-              className={"ml-auto"}
+              className={"ml-auto hidden sm:inline-flex"}
               size={"lg"}
               title={`click to ${isMuted ? "unmute" : "mute"}`}
               variant={"icon"}

@@ -60,7 +60,7 @@ export default function PxConvertorPage() {
                 {" pixels."}
               </label>
               <Popover>
-                <PopoverTrigger aria-label={"What is REM?"} className={"text-sm"} size={"sm"} variant={"icon"}>
+                <PopoverTrigger aria-label={"What is REM?"} size={"sm"} variant={"icon"}>
                   <IconQuestionMark size={"1em"} />
                 </PopoverTrigger>
                 <PopoverContent className={"max-w-xs p-2 text-sm"}>

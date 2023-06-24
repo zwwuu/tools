@@ -25,13 +25,18 @@ export default function UPage() {
             <InputGroup>
               <Input
                 className={"block w-full"}
+                id={"value"}
                 value={input}
                 onChange={(event) => {
                   setInput(event.target.value);
                 }}
               />
+              <label htmlFor={"base"} className={"sr-only"}>
+                Base
+              </label>
               <Select
                 data={BASES}
+                id={"base"}
                 value={selectedBase}
                 onChange={(event) => {
                   const parsedBase = parseInt(event.target.value, 10);
@@ -49,8 +54,10 @@ export default function UPage() {
           <output className={"block space-y-4"} form={"value-form"} htmlFor={"value"}>
             {BASES.filter((base) => base.value !== selectedBase).map((base) => (
               <div key={base.value}>
-                <label htmlFor={"value"}>{base.label}</label>
-                <Input className={"block w-full"} value={value.toString(base.value)} readOnly />
+                <label>
+                  {base.label}
+                  <Input className={"block w-full"} value={value.toString(base.value)} readOnly />
+                </label>
               </div>
             ))}
           </output>
