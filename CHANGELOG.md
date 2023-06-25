@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.6.0](https://github.com/zwwuu/tools/compare/1.5.0...1.6.0) (2023-06-25)
+
+### Features
+
+- track like analytics ([485f2d7](https://github.com/zwwuu/tools/commit/485f2d7cbc0110c9abb6c7c4feb11f1c25415a7a))
+
+### Bug Fixes
+
+- lower max likes to 10 ([b9364dc](https://github.com/zwwuu/tools/commit/b9364dca5222f568b2a2703592e60a5a4ba30657))
+
 ## [1.5.0](https://github.com/zwwuu/tools/compare/1.4.0...1.5.0) (2023-06-24)
 
 ### Features
