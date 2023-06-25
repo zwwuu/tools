@@ -127,4 +127,11 @@ export const tools: Record<string, Tool> = {
     ],
     isPublic: true,
   },
+  "qr-generator": {
+    title: "QR Code Generator",
+    slug: "qr-generator",
+    description: "Generate QR codes from text.",
+    keywords: ["qr generator", "qr", "generator", "qr code", "qr code generator"],
+    isPublic: true,
+  },
 };

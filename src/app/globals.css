@@ -23,6 +23,7 @@
   [type="tel"],
   [type="time"],
   [type="week"],
+  [type="color"],
   [multiple],
   textarea,
   select {
