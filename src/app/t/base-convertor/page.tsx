@@ -31,7 +31,7 @@ export default function BaseConvertorPage() {
                   setInput(event.target.value);
                 }}
               />
-              <label htmlFor={"base"} className={"sr-only"}>
+              <label className={"sr-only"} htmlFor={"base"}>
                 Base
               </label>
               <Select

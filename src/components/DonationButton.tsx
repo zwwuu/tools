@@ -5,11 +5,11 @@ import Anchor from "~/components/Anchor";
 const DonationButton = () => {
   return (
     <Anchor
-      variant={"button"}
-      title={"Buy me a coffee"}
       href={`${process.env.NEXT_PUBLIC_KOFI_URL}`}
-      target="_blank"
       rel={"noopener noreferrer"}
+      target={"_blank"}
+      title={"Buy me a coffee"}
+      variant={"button"}
     >
       <IconCoffee size={"1em"} aria-hidden />
     </Anchor>

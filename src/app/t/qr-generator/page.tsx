@@ -42,12 +42,12 @@ export default function QrGeneratorPage() {
             <div>
               <label htmlFor={"value"}>Value</label>
               <Textarea
-                id={"value"}
                 className={"block w-full"}
+                id={"value"}
+                value={value}
                 onChange={(event) => {
                   setValue(event.target.value);
                 }}
-                value={value}
               />
             </div>
             <div>
@@ -150,7 +150,7 @@ export default function QrGeneratorPage() {
                     >
                       <div className={"flex flex-col items-center space-y-2"}>
                         <p>
-                          <IconPhoto size={"2em"} aria-hidden className={"mr-2 inline-block"} />
+                          <IconPhoto className={"mr-2 inline-block"} size={"2em"} aria-hidden />
                           Drag and drop an image here, or click to select an image.
                         </p>
                         {image && (
@@ -215,9 +215,9 @@ export default function QrGeneratorPage() {
                           <label htmlFor={"x"}>{`X=${imageX}`}</label>
                           <Slider
                             id={"x"}
-                            step={1}
-                            min={0}
                             max={size - imageW}
+                            min={0}
+                            step={1}
                             value={[imageX]}
                             onValueChange={([value]) => {
                               setImageX(value);
@@ -228,9 +228,9 @@ export default function QrGeneratorPage() {
                           <label htmlFor={"y"}>{`Y=${imageY}`}</label>
                           <Slider
                             id={"y"}
-                            step={1}
-                            min={0}
                             max={size - imageH}
+                            min={0}
+                            step={1}
                             value={[imageY]}
                             onValueChange={([value]) => {
                               setImageY(value);
@@ -276,7 +276,7 @@ export default function QrGeneratorPage() {
                 link.remove();
               }}
             >
-              <IconDownload size={"1em"} className={"mr-2"} aria-hidden /> Download
+              <IconDownload className={"mr-2"} size={"1em"} aria-hidden /> Download
             </Button>
           </div>
 

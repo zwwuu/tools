@@ -154,10 +154,10 @@ export default function PomodoroTimerPage() {
             <div className={"flex items-center justify-between"}>
               <div className={"opacity-90 text-xs"}>{`#${round}`}</div>
               <Button
+                className={"sm:hidden"}
                 title={`click to ${isMuted ? "unmute" : "mute"}`}
                 variant={"icon"}
                 onClick={handleAlarmToggle}
-                className={"sm:hidden"}
               >
                 {isMuted ? (
                   <IconBellOff size={"1em"} aria-hidden />

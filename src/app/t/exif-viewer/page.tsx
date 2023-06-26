@@ -57,7 +57,7 @@ export default function ExifViewerPage() {
           >
             <div className={"flex flex-col items-center space-y-2"}>
               <p>
-                <IconPhoto size={"2em"} aria-hidden className={"mr-2 inline-block"} />
+                <IconPhoto className={"mr-2 inline-block"} size={"2em"} aria-hidden />
                 Drag and drop an image here, or click to select an image.
               </p>
               {image && (
