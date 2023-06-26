@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.7.0](https://github.com/zwwuu/tools/compare/1.6.0...1.7.0) (2023-06-26)
+
+### Features
+
+- add qr code generator ([8afa384](https://github.com/zwwuu/tools/commit/8afa3845eafd61f326ab32f8424332f6272078cc))
+
 ## [1.6.0](https://github.com/zwwuu/tools/compare/1.5.0...1.6.0) (2023-06-25)
 
 ### Features
