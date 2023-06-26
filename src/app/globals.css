@@ -32,7 +32,7 @@
 
   [type="checkbox"],
   [type="radio"] {
-    @apply focus:outline-dashed focus:outline-2 focus:outline-offset-2 focus:outline-current focus:ring-0;
+    @apply focus:outline-dashed focus:outline-2 focus:outline-offset-2 focus:outline-base-content focus:ring-0 focus:ring-offset-0;
   }
 
   :root {
