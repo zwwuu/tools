@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.8.0](https://github.com/zwwuu/tools/compare/1.7.0...1.8.0) (2023-06-27)
+
+### Features
+
+- add duration calculator ([28c153f](https://github.com/zwwuu/tools/commit/28c153f751ba4cb8b260da6319988f1498aaab29))
+- **button:** add waring variant ([8226f03](https://github.com/zwwuu/tools/commit/8226f03da057acaca04a101a97e7dd8678d784a2))
+
+### Bug Fixes
+
+- **ua-parser:** only parse on submit ([58a0718](https://github.com/zwwuu/tools/commit/58a0718ca974d5be24de9a391589b5df2a9f8c00))
+
 ## [1.7.0](https://github.com/zwwuu/tools/compare/1.6.0...1.7.0) (2023-06-26)
 
 ### Features
