@@ -19,6 +19,7 @@ const button = cva("inline-flex items-center", {
     },
     variant: {
       primary: "bg-base-100 font-medium px-4 py-3 hover:bg-primary focus:bg-primary transition justify-center",
+      warning: "bg-red-500 font-medium px-4 py-3 transition justify-center",
       icon: "bg-base-100 hover:bg-primary focus:bg-primary transition justify-center",
     },
   },
