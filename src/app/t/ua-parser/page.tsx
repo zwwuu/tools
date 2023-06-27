@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { IconCheck, IconCopy } from "@tabler/icons-react";
 import UAParser from "ua-parser-js";
 
@@ -14,29 +14,14 @@ import useClipboard from "~/hooks/useClipboard";
 export default function UAParserPage() {
   const [ua, setUA] = useState("");
   const [result, setResult] = useState<UAParser.IResult | null>(null);
-  const parser = useRef<UAParser.UAParserInstance | null>(null);
+  const parser = new UAParser();
   const outputAreaRef = useRef<HTMLTextAreaElement>(null);
   const { copied, copy } = useClipboard();
 
-  useEffect(() => {
-    setUA(window.navigator.userAgent);
-    parser.current = new UAParser();
-    parser.current.setUA(window.navigator.userAgent);
-  }, []);
-
-  useEffect(() => {
-    if (parser.current) {
-      parser.current.setUA(ua);
-      setResult(parser.current.getResult());
-    }
-  }, [ua]);
-
   const parse = (event: FormEvent) => {
     event.preventDefault();
-    if (parser.current) {
-      parser.current.setUA(ua);
-      setResult(parser.current.getResult());
-    }
+    parser.setUA(ua);
+    setResult(parser.getResult());
   };
 
   const reset = () => {
@@ -47,22 +32,23 @@ export default function UAParserPage() {
     <Main>
       <Card>
         <CardBody>
-          <form className={"relative"} onSubmit={parse}>
-            <label htmlFor={"ua"}>User Agent</label>
-            <Textarea
-              className={"block w-full font-mono"}
-              value={ua}
-              onChange={(event) => {
-                setUA(event.target.value);
-              }}
-            />
-            <div className={"flex flex-wrap justify-center"}>
-              <Button className={"m-2"} type={"button"} onClick={reset}>
-                Reset
+          <form className={"space-y-4"} onSubmit={parse}>
+            <div>
+              <label htmlFor={"ua"}>User Agent</label>
+              <Textarea
+                className={"block w-full font-mono"}
+                id={"ua"}
+                value={ua}
+                onChange={(event) => {
+                  setUA(event.target.value);
+                }}
+              />
+            </div>
+            <div className={"flex flex-wrap gap-2"}>
+              <Button type={"button"} variant={"warning"} onClick={reset}>
+                Current UA
               </Button>
-              <Button className={"m-2"} type={"submit"}>
-                Parse
-              </Button>
+              <Button type={"submit"}>Parse</Button>
             </div>
           </form>
         </CardBody>
