@@ -134,4 +134,11 @@ export const tools: Record<string, Tool> = {
     keywords: ["qr generator", "qr", "generator", "qr code", "qr code generator"],
     isPublic: true,
   },
+  "duration-calculator": {
+    title: "Duration Calculator",
+    slug: "duration-calculator",
+    description: "Calculate the duration between two dates.",
+    keywords: ["duration calculator", "duration", "calculator", "date", "time", "interval"],
+    isPublic: true,
+  },
 };
