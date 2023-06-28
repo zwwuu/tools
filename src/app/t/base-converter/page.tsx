@@ -2,14 +2,14 @@
 
 import { useMemo, useState } from "react";
 
-import { BASES } from "~/app/t/base-convertor/data";
+import { BASES } from "~/app/t/base-converter/data";
 import Main from "~/app/t/components/Main";
 import { Card, CardBody } from "~/components/Card";
 import Input from "~/components/Form/Input";
 import { InputGroup } from "~/components/Form/InputGroup";
 import Select from "~/components/Form/Select";
 
-export default function BaseConvertorPage() {
+export default function BaseConverterPage() {
   const [input, setInput] = useState("");
   const [selectedBase, setSelectedBase] = useState<number>(10);
   const value = useMemo(() => {
