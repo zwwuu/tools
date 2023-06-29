@@ -4,7 +4,7 @@ import Layout from "~/app/t/components/Layout";
 import { tools } from "~/data/tools/base";
 import seo from "~/lib/seo";
 
-const tool = tools["base-convertor"];
+const tool = tools["base64-converter"];
 export const metadata = {
   title: tool.title,
   description: tool.description,

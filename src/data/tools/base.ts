@@ -141,4 +141,11 @@ export const tools: Record<string, Tool> = {
     keywords: ["duration calculator", "duration", "calculator", "date", "time", "interval"],
     isPublic: true,
   },
+  "base64-converter": {
+    title: "Base64 Converter",
+    slug: "base64-converter",
+    description: "Encode or decode text or file to and from Base64.",
+    keywords: ["base64 converter", "text", "file", "base64", "converter", "encode", "decode"],
+    isPublic: true,
+  },
 };
