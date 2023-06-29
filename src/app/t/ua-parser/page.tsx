@@ -44,11 +44,15 @@ export default function UAParserPage() {
                 }}
               />
             </div>
-            <div className={"flex flex-wrap gap-2"}>
-              <Button type={"button"} variant={"warning"} onClick={reset}>
-                Current UA
-              </Button>
-              <Button type={"submit"}>Parse</Button>
+            <div>
+              <div className={"-m-4 flex flex-wrap"}>
+                <Button className={"m-4"} type={"submit"}>
+                  Parse
+                </Button>
+                <Button className={"m-4"} type={"button"} variant={"warning"} onClick={reset}>
+                  Current UA
+                </Button>
+              </div>
             </div>
           </form>
         </CardBody>
