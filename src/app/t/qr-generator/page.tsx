@@ -63,30 +63,32 @@ export default function QrGeneratorPage() {
                 }}
               />
             </div>
-            <div className={"flex flex-wrap gap-4"}>
-              <div>
-                <label htmlFor={"bg"}>Background Color</label>
-                <ColorPicker
-                  className={"block"}
-                  id={"bg"}
-                  type={"color"}
-                  value={bgColor}
-                  onChange={(event) => {
-                    setBgColor(event.target.value);
-                  }}
-                />
-              </div>
-              <div>
-                <label htmlFor={"fg"}>Foreground Color</label>
-                <ColorPicker
-                  className={"block"}
-                  id={"fg"}
-                  type={"color"}
-                  value={fgColor}
-                  onChange={(event) => {
-                    setFgColor(event.target.value);
-                  }}
-                />
+            <div>
+              <div className={"-m-4 flex flex-wrap"}>
+                <div className={"m-4"}>
+                  <label htmlFor={"bg"}>Background Color</label>
+                  <ColorPicker
+                    className={"block"}
+                    id={"bg"}
+                    type={"color"}
+                    value={bgColor}
+                    onChange={(event) => {
+                      setBgColor(event.target.value);
+                    }}
+                  />
+                </div>
+                <div className={"m-4"}>
+                  <label htmlFor={"fg"}>Foreground Color</label>
+                  <ColorPicker
+                    className={"block"}
+                    id={"fg"}
+                    type={"color"}
+                    value={fgColor}
+                    onChange={(event) => {
+                      setFgColor(event.target.value);
+                    }}
+                  />
+                </div>
               </div>
             </div>
             <div>
