@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.9.0](https://github.com/zwwuu/tools/compare/1.8.0...1.9.0) (2023-06-30)
+
+### Features
+
+- add base64 converter ([e1a5f8d](https://github.com/zwwuu/tools/commit/e1a5f8dae8fc09b5ba56a2d42fe3cadfd1f4b69a))
+
+### Bug Fixes
+
+- **button:** fix warning variant contrast ([014be0e](https://github.com/zwwuu/tools/commit/014be0e45e59e1581b48fcdd2dbbdc66721717cf))
+- **qr-generator:** fix spacing ([8a13456](https://github.com/zwwuu/tools/commit/8a134568df20f64bcb36dd58e49ccbb20c0115de))
+- **ua-parser:** swap button position ([8493d2d](https://github.com/zwwuu/tools/commit/8493d2df9eb887a15856da83d5aa711717e9d5cd))
+
 ## [1.8.0](https://github.com/zwwuu/tools/compare/1.7.0...1.8.0) (2023-06-27)
 
 ### Features
