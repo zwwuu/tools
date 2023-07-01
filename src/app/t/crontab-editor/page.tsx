@@ -57,7 +57,7 @@ export default function CrontabEditorPage() {
             </TabsList>
             {CRON_FIELDS.map((field) => (
               <TabsContent key={field.name} value={field.name}>
-                <Table>
+                <Table className={"table-fixed"}>
                   <TableBody>
                     {field.allowed.map((allow) => (
                       <tr className={"w-full"} key={allow.name}>

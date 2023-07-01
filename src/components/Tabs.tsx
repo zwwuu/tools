@@ -6,7 +6,11 @@ const Tabs = TabsPrimitive.Tabs;
 
 const TabsList = forwardRef<ElementRef<typeof TabsPrimitive.List>, ComponentPropsWithoutRef<typeof TabsPrimitive.List>>(
   ({ className, ...props }, ref) => (
-    <TabsPrimitive.List className={clsx("flex items-center overflow-x-auto pb-1", className)} ref={ref} {...props} />
+    <TabsPrimitive.List
+      className={clsx("flex items-center overflow-x-auto border-b", className)}
+      ref={ref}
+      {...props}
+    />
   ),
 );
 TabsList.displayName = TabsPrimitive.List.displayName;
@@ -17,7 +21,7 @@ const TabsTrigger = forwardRef<
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Trigger
     className={clsx(
-      "inline-flex items-center justify-center whitespace-nowrap border-b border-base-100 px-2 py-1 transition data-[state=active]:border-black",
+      "inline-flex items-center justify-center whitespace-nowrap border-x border-t border-transparent px-2 py-1 transition data-[state=active]:border-black",
       className,
     )}
     ref={ref}

@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { IconPhoto } from "@tabler/icons-react";
+import { IconFileUpload } from "@tabler/icons-react";
+import clsx from "clsx";
 import ExifReader from "exifreader";
 
 import Main from "~/app/t/components/Main";
@@ -56,10 +57,6 @@ export default function ExifViewerPage() {
             name={"image"}
           >
             <div className={"flex flex-col items-center space-y-2"}>
-              <p>
-                <IconPhoto className={"mr-2 inline-block"} size={"2em"} aria-hidden />
-                Drag and drop an image here, or click to select an image.
-              </p>
               {image && (
                 <figure>
                   <img
@@ -70,6 +67,10 @@ export default function ExifViewerPage() {
                   <figcaption className={"break-all opacity-80 text-xs"}>{image.name}</figcaption>
                 </figure>
               )}
+              <p className={clsx(image && "opacity-60 text-xs")}>
+                <IconFileUpload className={"mr-2 inline-block"} size={"2em"} aria-hidden />
+                Drag and drop a file here, or click to select an file.
+              </p>
             </div>
           </FileUpload>
           {error && (

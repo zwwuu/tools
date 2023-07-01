@@ -1,19 +1,19 @@
-import { forwardRef, HTMLAttributes, TdHTMLAttributes, ThHTMLAttributes } from "react";
+import { ComponentPropsWithoutRef, forwardRef } from "react";
 import clsx from "clsx";
 
-const Table = forwardRef<HTMLTableElement, HTMLAttributes<HTMLTableElement>>(({ className, ...props }, ref) => {
+const Table = forwardRef<HTMLTableElement, ComponentPropsWithoutRef<"table">>(({ className, ...props }, ref) => {
   return <table className={clsx("w-full border", className)} ref={ref} {...props} />;
 });
 Table.displayName = "Table";
 
-const TableHeader = forwardRef<HTMLTableSectionElement, HTMLAttributes<HTMLTableSectionElement>>(
+const TableHeader = forwardRef<HTMLTableSectionElement, ComponentPropsWithoutRef<"thead">>(
   ({ className, ...props }, ref) => {
     return <thead className={clsx("border-b", className)} ref={ref} {...props} />;
   },
 );
 TableHeader.displayName = "TableHeader";
 
-const TableBody = forwardRef<HTMLTableSectionElement, HTMLAttributes<HTMLTableSectionElement>>(
+const TableBody = forwardRef<HTMLTableSectionElement, ComponentPropsWithoutRef<"tbody">>(
   ({ className, ...props }, ref) => {
     return (
       <tbody className={clsx("w-full [&_tr:hover]:bg-base-focus [&_tr]:transition", className)} ref={ref} {...props} />
@@ -22,24 +22,22 @@ const TableBody = forwardRef<HTMLTableSectionElement, HTMLAttributes<HTMLTableSe
 );
 TableBody.displayName = "TableBody";
 
-const TableFooter = forwardRef<HTMLTableSectionElement, HTMLAttributes<HTMLTableSectionElement>>(
+const TableFooter = forwardRef<HTMLTableSectionElement, ComponentPropsWithoutRef<"tfoot">>(
   ({ className, ...props }, ref) => <tfoot className={clsx("border-t", className)} ref={ref} {...props} />,
 );
 TableFooter.displayName = "TableFooter";
 
-const TableHead = forwardRef<HTMLTableCellElement, ThHTMLAttributes<HTMLTableCellElement>>(
-  ({ className, ...props }, ref) => (
-    <th className={clsx("p-2 align-middle font-medium", className)} ref={ref} {...props} />
-  ),
-);
+const TableHead = forwardRef<HTMLTableCellElement, ComponentPropsWithoutRef<"th">>(({ className, ...props }, ref) => (
+  <th className={clsx("p-2 align-middle font-medium", className)} ref={ref} {...props} />
+));
 TableHead.displayName = "TableHead";
 
-const TableCell = forwardRef<HTMLTableCellElement, TdHTMLAttributes<HTMLTableCellElement>>(
-  ({ className, ...props }, ref) => <td className={clsx("p-2 align-middle", className)} ref={ref} {...props} />,
-);
+const TableCell = forwardRef<HTMLTableCellElement, ComponentPropsWithoutRef<"td">>(({ className, ...props }, ref) => (
+  <td className={clsx("p-2 align-middle", className)} ref={ref} {...props} />
+));
 TableCell.displayName = "TableCell";
 
-const TableCaption = forwardRef<HTMLTableCaptionElement, HTMLAttributes<HTMLTableCaptionElement>>(
+const TableCaption = forwardRef<HTMLTableCaptionElement, ComponentPropsWithoutRef<"caption">>(
   ({ className, ...props }, ref) => {
     return <caption className={clsx("opacity-80 text-xs", className)} ref={ref} {...props} />;
   },
