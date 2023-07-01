@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { IconCheck, IconCopy, IconFile, IconFileUpload } from "@tabler/icons-react";
+import { useState } from "react";
+import { IconFile, IconFileUpload } from "@tabler/icons-react";
 import clsx from "clsx";
 
 import { MODES, TYPES } from "~/app/t/base64-converter/data";
@@ -9,10 +9,10 @@ import Main from "~/app/t/components/Main";
 import Button from "~/components/Button";
 import { Card, CardBody } from "~/components/Card";
 import FileUpload from "~/components/FileUpload";
+import Checkbox from "~/components/Form/Checkbox";
 import Select from "~/components/Form/Select";
 import Textarea from "~/components/Form/Textarea";
 import { RadioGroup, RadioGroupItem } from "~/components/RadioGroup";
-import useClipboard from "~/hooks/useClipboard";
 
 export default function Base64ConverterPage() {
   const [input, setInput] = useState("");
@@ -22,8 +22,6 @@ export default function Base64ConverterPage() {
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [download, setDownload] = useState<string | null>(null);
-  const textAreaRef = useRef<HTMLTextAreaElement>(null);
-  const { copied, copy } = useClipboard();
 
   return (
     <Main>
@@ -98,12 +96,12 @@ export default function Base64ConverterPage() {
                   <div>
                     <label htmlFor={"input"}>Text</label>
                     <Textarea
+                      autoSize={false}
                       className={"block w-full break-all font-mono"}
                       id={"input"}
+                      rows={4}
                       value={input}
                       required
-                      rows={4}
-                      autoSize={false}
                       onChange={(event) => {
                         setInput(event.target.value);
                       }}
@@ -152,12 +150,12 @@ export default function Base64ConverterPage() {
               <div>
                 <label htmlFor={"input"}>Base64</label>
                 <Textarea
+                  autoSize={false}
                   className={"block w-full"}
                   id={"input"}
+                  rows={4}
                   value={input}
                   required
-                  rows={4}
-                  autoSize={false}
                   onChange={(event) => {
                     setInput(event.target.value);
                   }}
@@ -199,34 +197,16 @@ export default function Base64ConverterPage() {
             <output className={"block"}>
               <label htmlFor={"result"}>{mode === "encode" ? "Base64" : "Text"}</label>
               <div className={"space-y-4"}>
-                <div className={"relative"}>
-                  <Textarea
-                    className={"peer block w-full break-all font-mono"}
-                    id={"result"}
-                    ref={textAreaRef}
-                    value={result}
-                    readOnly
-                    autoSize={false}
-                    rows={4}
-                  />
-                  <Button
-                    className={
-                      "absolute right-2 top-2 opacity-10 hover:opacity-100 focus:opacity-100 peer-hover:opacity-100 peer-focus:opacity-100"
-                    }
-                    elevation={null}
-                    size={"sm"}
-                    title={copied ? "Copied" : "Copy"}
-                    variant={"icon"}
-                    onClick={() => {
-                      copy(result);
-                      if (textAreaRef.current) {
-                        textAreaRef.current.select();
-                      }
-                    }}
-                  >
-                    {copied ? <IconCheck size={"1em"} aria-hidden /> : <IconCopy size={"1em"} aria-hidden />}
-                  </Button>
-                </div>
+                <Textarea
+                  autoSize={false}
+                  className={"block w-full break-all font-mono"}
+                  id={"result"}
+                  rows={4}
+                  value={result}
+                  readOnly
+                  withCopy
+                />
+
                 {download && mode === "decode" && (
                   <div>
                     <p>

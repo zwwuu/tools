@@ -112,11 +112,11 @@ export default function ChineseColorsPage() {
                       </ColorCopyButton>
                       <ColorCopyButton color={color.hex} value={`rgb(${color.rgb.join(",")})`}>
                         <span className={"lg:hidden"}>rgb</span>
-                        <span className={"hidden lg:inline-block"}>{`rgb(${color.rgb.join(",")})`}</span>
+                        <span className={"mr-1 hidden lg:inline-block"}>{`rgb(${color.rgb.join(",")})`}</span>
                       </ColorCopyButton>
                       <ColorCopyButton color={color.hex} value={`cmyk(${color.cmyk.join(",")})`}>
                         <span className={"lg:hidden"}>cmyk</span>
-                        <span className={"hidden lg:inline-block"}>{`cmyk(${color.cmyk.join(",")})`}</span>
+                        <span className={"mr-1 hidden lg:inline-block"}>{`cmyk(${color.cmyk.join(",")})`}</span>
                       </ColorCopyButton>
                     </CardBody>
                   </Card>

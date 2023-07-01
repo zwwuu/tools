@@ -1,7 +1,6 @@
 "use client";
 
-import { FormEvent, useRef, useState } from "react";
-import { IconCheck, IconCopy } from "@tabler/icons-react";
+import { FormEvent, useState } from "react";
 import UAParser from "ua-parser-js";
 
 import Main from "~/app/t/components/Main";
@@ -9,14 +8,11 @@ import Button from "~/components/Button";
 import { Card, CardBody } from "~/components/Card";
 import Textarea from "~/components/Form/Textarea";
 import { Table, TableBody, TableCell } from "~/components/Table";
-import useClipboard from "~/hooks/useClipboard";
 
 export default function UAParserPage() {
   const [ua, setUA] = useState("");
   const [result, setResult] = useState<UAParser.IResult | null>(null);
   const parser = new UAParser();
-  const outputAreaRef = useRef<HTMLTextAreaElement>(null);
-  const { copied, copy } = useClipboard();
 
   const parse = (event: FormEvent) => {
     event.preventDefault();
@@ -60,31 +56,14 @@ export default function UAParserPage() {
       {result && result.ua.length > 0 && (
         <Card>
           <CardBody>
-            <output className={"relative block"} form={"ua-form"} htmlFor={"ua"}>
+            <output className={"block"} form={"ua-form"} htmlFor={"ua"}>
               <Textarea
                 aria-label={"User Agent"}
                 className={"peer mb-4 block w-full resize-none font-mono"}
-                ref={outputAreaRef}
                 value={result.ua}
                 readOnly
+                withCopy
               />
-              <Button
-                className={
-                  "absolute right-2 top-2 opacity-10 hover:opacity-100 focus:opacity-100 peer-hover:opacity-100 peer-focus:opacity-100"
-                }
-                elevation={null}
-                size={"sm"}
-                title={copied ? "Copied" : "Copy"}
-                variant={"icon"}
-                onClick={() => {
-                  copy(result.ua);
-                  if (outputAreaRef.current) {
-                    outputAreaRef.current.select();
-                  }
-                }}
-              >
-                {copied ? <IconCheck size={"1em"} aria-hidden /> : <IconCopy size={"1em"} aria-hidden />}
-              </Button>
               <Table>
                 <TableBody>
                   {Object.entries({

@@ -1,7 +1,7 @@
 "use client";
 
 import { ChangeEvent, useCallback, useEffect, useRef, useState } from "react";
-import { IconCheck, IconCopy, IconQuestionMark } from "@tabler/icons-react";
+import { IconQuestionMark } from "@tabler/icons-react";
 import clsx from "clsx";
 
 import Main from "~/app/t/components/Main";
@@ -20,15 +20,12 @@ import { Card, CardBody } from "~/components/Card";
 import Checkbox from "~/components/Form/Checkbox";
 import Input from "~/components/Form/Input";
 import Textarea from "~/components/Form/Textarea";
-import Loader from "~/components/Loader";
 import { Popover, PopoverContent, PopoverTrigger } from "~/components/Popover";
 import { Slider } from "~/components/Slider";
 import Code from "~/components/Typography/Code";
-import useClipboard from "~/hooks/useClipboard";
 
 export default function PasswordGeneratorPage() {
   const worker = useRef<Worker | null>(null);
-  const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const { options, length, toggleOption, setLength } = usePasswordGeneratorStore((state) => ({
     options: state.options,
     length: state.length,
@@ -40,7 +37,6 @@ export default function PasswordGeneratorPage() {
     crackTimes: "",
     score: 0,
   });
-  const { copied, copy } = useClipboard();
   const [uncommittedLength, setUncommittedLength] = useState(length);
   const [isGenerating, setIsGenerating] = useState(false);
 
@@ -81,41 +77,16 @@ export default function PasswordGeneratorPage() {
       <Card>
         <CardBody className={"flex flex-col space-y-8 md:flex-row md:space-x-8 md:space-y-0"}>
           <div className={"flex-1 space-y-4"}>
-            <div className={"relative"}>
-              {isGenerating && (
-                <div className={"absolute left-2 top-2 z-2"}>
-                  <Loader size={"sm"} variant={"spinner"} />
-                </div>
-              )}
-              <Textarea
-                aria-label={"Generated password"}
-                className={clsx(
-                  "peer block w-full resize-none overflow-hidden break-all font-mono text-lg",
-                  isGenerating && "opacity-50",
-                )}
-                id={"password"}
-                ref={textAreaRef}
-                value={password.value}
-                readOnly
-              />
-              <Button
-                className={
-                  "absolute right-2 top-2 opacity-10 hover:opacity-100 focus:opacity-100 peer-hover:opacity-100 peer-focus:opacity-100"
-                }
-                elevation={null}
-                size={"sm"}
-                title={copied ? "Copied" : "Copy"}
-                variant={"icon"}
-                onClick={() => {
-                  copy(password.value);
-                  if (textAreaRef.current) {
-                    textAreaRef.current.select();
-                  }
-                }}
-              >
-                {copied ? <IconCheck size={"1em"} aria-hidden /> : <IconCopy size={"1em"} aria-hidden />}
-              </Button>
-            </div>
+            <Textarea
+              aria-label={"Generated password"}
+              className={"block w-full resize-none break-all font-mono text-lg"}
+              id={"password"}
+              loading={isGenerating}
+              value={password.value}
+              readOnly
+              withCopy
+            />
+
             <div>
               <div className={clsx("mb-2 h-1 transition-size", SCORE_STYLES[password.score].bar)} />
               <div>

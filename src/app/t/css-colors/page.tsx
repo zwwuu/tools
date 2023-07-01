@@ -87,7 +87,7 @@ export default function CSSColorsPage() {
                       </ColorCopyButton>
                       <ColorCopyButton color={color.hex} value={`rgb(${color.rgb.join(",")})`}>
                         <span className={"lg:hidden"}>rgb</span>
-                        <span className={"hidden lg:inline-block"}>{`rgb(${color.rgb.join(",")})`}</span>
+                        <span className={"mr-1 hidden lg:inline-block"}>{`rgb(${color.rgb.join(",")})`}</span>
                       </ColorCopyButton>
                     </CardBody>
                   </Card>
