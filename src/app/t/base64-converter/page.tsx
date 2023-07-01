@@ -22,6 +22,7 @@ export default function Base64ConverterPage() {
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [download, setDownload] = useState<string | null>(null);
+  const [breakWidth, setBreakWidth] = useState<boolean>(false);
 
   return (
     <Main>
@@ -29,27 +30,35 @@ export default function Base64ConverterPage() {
         <CardBody>
           <form
             className={"space-y-4"}
-            onSubmit={(event) => {
+            onSubmit={async (event) => {
               event.preventDefault();
               if (mode === "encode") {
-                if (type === "text") {
-                  setResult(Buffer.from(input, "utf-8").toString("base64"));
-                  return;
-                }
+                try {
+                  let text: string | ArrayBuffer | null = "";
+                  if (type === "text") {
+                    text = input;
+                  } else {
+                    text = await new Promise((resolve, reject) => {
+                      const reader = new FileReader();
+                      reader.readAsDataURL(file!);
+                      reader.onload = () => resolve(reader.result);
+                      reader.onerror = () => reject(new Error("Failed to read file."));
+                    });
+                  }
 
-                new Promise((resolve, reject) => {
-                  const reader = new FileReader();
-                  reader.readAsDataURL(file!);
-                  reader.onload = () => resolve(reader.result);
-                  reader.onerror = (error) => reject(error);
-                })
-                  .then((result) => {
-                    const res = result as string;
-                    setResult(Buffer.from(res, "utf-8").toString("base64"));
-                  })
-                  .catch((error) => {
-                    setError(error.message);
+                  setResult(() => {
+                    const base64 = Buffer.from(text as string, "utf-8").toString("base64");
+                    if (breakWidth) {
+                      return base64.replace(/(.{76})/g, "$1\n");
+                    }
+                    return base64;
                   });
+                } catch (e) {
+                  if (e instanceof Error) {
+                    return setError(e.message);
+                  }
+                  setError("Failed to encode.");
+                }
               } else {
                 const base64 = Buffer.from(input, "base64").toString();
                 setResult(base64);
@@ -65,6 +74,7 @@ export default function Base64ConverterPage() {
                 defaultValue={"encode"}
                 onValueChange={(value) => {
                   setResult("");
+                  setInput("");
                   setError(null);
                   setMode(value);
                 }}
@@ -143,6 +153,18 @@ export default function Base64ConverterPage() {
                     )}
                   </div>
                 )}
+                <div>
+                  <label>
+                    <Checkbox
+                      checked={breakWidth}
+                      className={"mr-2"}
+                      onChange={() => {
+                        setBreakWidth(!breakWidth);
+                      }}
+                    />
+                    Break width at 76 characters
+                  </label>
+                </div>
               </>
             )}
 
