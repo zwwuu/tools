@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.10.0](https://github.com/zwwuu/tools/compare/1.8.0...1.10.0) (2023-07-01)
+
+### Features
+
+- add base64 converter ([e1a5f8d](https://github.com/zwwuu/tools/commit/e1a5f8dae8fc09b5ba56a2d42fe3cadfd1f4b69a))
+- **base64-converter:** add option to break base64 string at 76 characters ([e80ce58](https://github.com/zwwuu/tools/commit/e80ce58b9c8394a3bdb5deb37616f9af97e83021))
+
+### Bug Fixes
+
+- **base64-converter:** use correct file extension for download ([c9f82c3](https://github.com/zwwuu/tools/commit/c9f82c3cde0830eacd6c1319c5570554f52eb952))
+- **button:** fix warning variant contrast ([014be0e](https://github.com/zwwuu/tools/commit/014be0e45e59e1581b48fcdd2dbbdc66721717cf))
+- **qr-generator:** fix spacing ([8a13456](https://github.com/zwwuu/tools/commit/8a134568df20f64bcb36dd58e49ccbb20c0115de))
+- **ua-parser:** swap button position ([8493d2d](https://github.com/zwwuu/tools/commit/8493d2df9eb887a15856da83d5aa711717e9d5cd))
+
 ## [1.9.0](https://github.com/zwwuu/tools/compare/1.8.0...1.9.0) (2023-06-30)
 
 ### Features
