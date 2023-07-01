@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { IconFile, IconFileUpload } from "@tabler/icons-react";
 import clsx from "clsx";
+import mime from "mime-types";
 
 import { MODES, TYPES } from "~/app/t/base64-converter/data";
 import Main from "~/app/t/components/Main";
@@ -237,13 +238,14 @@ export default function Base64ConverterPage() {
                     <Button
                       onClick={() => {
                         const link = document.createElement("a");
-                        link.download = `base64.${download.split("/")[1]}`;
+                        const ext = mime.extension(download);
+                        link.download = ext ? `base64.${ext}` : "base64";
                         link.href = result;
                         link.click();
                         link.remove();
                       }}
                     >
-                      Download {download}
+                      Download {mime.extension(download) || "file"}
                     </Button>
                   </div>
                 )}
