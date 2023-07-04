@@ -148,4 +148,11 @@ export const tools: Record<string, Tool> = {
     keywords: ["base64 converter", "text", "file", "base64", "converter", "encode", "decode"],
     isPublic: true,
   },
+  stopwatch: {
+    title: "Stopwatch",
+    slug: "stopwatch",
+    description: "A simple stopwatch.",
+    keywords: ["stopwatch", "timer", "clock", "stop watch"],
+    isPublic: true,
+  },
 };
