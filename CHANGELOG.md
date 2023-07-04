@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.11.0](https://github.com/zwwuu/tools/compare/1.10.0...1.11.0) (2023-07-04)
+
+### Features
+
+- add stopwatch ([42eeb22](https://github.com/zwwuu/tools/commit/42eeb2221ae0a93a1c189867d26ea86e96c01a76))
+
 ## [1.10.0](https://github.com/zwwuu/tools/compare/1.8.0...1.10.0) (2023-07-01)
 
 ### Features
