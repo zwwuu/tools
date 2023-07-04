@@ -2,8 +2,6 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { IconCheck, IconCopy } from "@tabler/icons-react";
-import clsx from "clsx";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -14,7 +12,6 @@ import Checkbox from "~/components/Form/Checkbox";
 import Input from "~/components/Form/Input";
 import Textarea from "~/components/Form/Textarea";
 import Loader from "~/components/Loader";
-import useClipboard from "~/hooks/useClipboard";
 
 const generateSchema = z
   .object({
@@ -44,9 +41,7 @@ type FormInput = z.infer<typeof generateSchema>;
 
 export default function RandomNumberPage() {
   const [result, setResult] = useState<number[]>([]);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [isGenerating, setIsGenerating] = useState(false);
-  const { copied, copy } = useClipboard();
   const worker = useRef<Worker | null>(null);
   const {
     register,
@@ -58,6 +53,7 @@ export default function RandomNumberPage() {
     defaultValues: {
       duplicate: true,
       separator: " ",
+      quantity: 1,
     },
   });
 
@@ -98,7 +94,7 @@ export default function RandomNumberPage() {
                 className={"block w-full"}
                 id={"min"}
                 type={"number"}
-                {...register("min", { valueAsNumber: true, required: true })}
+                {...register("min", { valueAsNumber: true })}
               />
               {errors.min && (
                 <span className={"text-red-500 text-sm"} role={"alert"}>
@@ -115,7 +111,7 @@ export default function RandomNumberPage() {
                 id={"max"}
                 type={"number"}
                 required
-                {...register("max", { valueAsNumber: true, required: true })}
+                {...register("max", { valueAsNumber: true })}
               />
               {errors.max && (
                 <span className={"text-red-500 text-sm"} role={"alert"}>
@@ -133,7 +129,7 @@ export default function RandomNumberPage() {
                 min={1}
                 type={"number"}
                 required
-                {...register("quantity", { valueAsNumber: true, required: true, min: 1 })}
+                {...register("quantity", { valueAsNumber: true })}
               />
               {errors.quantity && (
                 <span className={"text-red-500 text-sm"} role={"alert"}>
@@ -162,34 +158,15 @@ export default function RandomNumberPage() {
 
       {result.length > 0 && (
         <Card>
-          <CardBody className={"space-y-4"}>
-            <output className={"relative block"}>
+          <CardBody>
+            <output className={"block"}>
               <Textarea
-                className={clsx(
-                  "peer block w-full resize-none overflow-hidden break-all text-lg",
-                  isGenerating && "opacity-50",
-                )}
-                ref={textareaRef}
+                className={"block w-full resize-none break-all text-lg"}
+                loading={isGenerating}
+                withCopy
                 value={result.join(getValues("separator"))}
                 readOnly
               />
-              <Button
-                className={
-                  "absolute right-2 top-2 opacity-10 hover:opacity-100 focus:opacity-100 peer-hover:opacity-100 peer-focus:opacity-100"
-                }
-                elevation={null}
-                size={"sm"}
-                title={copied ? "Copied" : "Copy"}
-                variant={"icon"}
-                onClick={() => {
-                  copy(result.join(getValues("separator")));
-                  if (textareaRef.current) {
-                    textareaRef.current.select();
-                  }
-                }}
-              >
-                {copied ? <IconCheck size={"1em"} aria-hidden /> : <IconCopy size={"1em"} aria-hidden />}
-              </Button>
             </output>
           </CardBody>
         </Card>
