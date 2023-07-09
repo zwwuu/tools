@@ -163,9 +163,9 @@ export default function RandomNumberPage() {
               <Textarea
                 className={"block w-full resize-none break-all text-lg"}
                 loading={isGenerating}
-                withCopy
                 value={result.join(getValues("separator"))}
                 readOnly
+                withCopy
               />
             </output>
           </CardBody>

@@ -11,7 +11,8 @@
     "lint:fix": "next lint --fix",
     "prepare": "husky install",
     "start": "next start",
-    "release": "release-it"
+    "release": "release-it",
+    "precommit": "npm run lint:fix && lint-staged"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,cjs,mjs,md,mdx,css}": [
