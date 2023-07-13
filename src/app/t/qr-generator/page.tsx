@@ -162,7 +162,7 @@ export default function QrGeneratorPage() {
                               className={"mx-auto max-h-96 max-w-full"}
                               src={URL.createObjectURL(image)}
                             />
-                            <figcaption className={"break-all opacity-80 text-xs"}>{image.name}</figcaption>
+                            <figcaption className={"break-all text-xs opacity-80"}>{image.name}</figcaption>
                           </figure>
                         )}
                       </div>

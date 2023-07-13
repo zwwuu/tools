@@ -64,7 +64,7 @@ export default function ChineseColorsPage() {
         <CardBody className={"relative space-y-4"}>
           <div className={"sticky top-16 z-50 flex flex-col items-end"}>
             <RadioGroup
-              className={"flex divide-x-sm border-sm shadow-sm text-sm"}
+              className={"flex divide-x-sm border-sm text-sm shadow-sm"}
               defaultValue={"tc"}
               onValueChange={(value: "tc" | "sc") => {
                 setCharacter(value);

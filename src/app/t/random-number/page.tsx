@@ -97,7 +97,7 @@ export default function RandomNumberPage() {
                 {...register("min", { valueAsNumber: true })}
               />
               {errors.min && (
-                <span className={"text-red-500 text-sm"} role={"alert"}>
+                <span className={"text-sm text-red-500"} role={"alert"}>
                   {errors.min.message}
                 </span>
               )}
@@ -114,7 +114,7 @@ export default function RandomNumberPage() {
                 {...register("max", { valueAsNumber: true })}
               />
               {errors.max && (
-                <span className={"text-red-500 text-sm"} role={"alert"}>
+                <span className={"text-sm text-red-500"} role={"alert"}>
                   {errors.max.message}
                 </span>
               )}
@@ -132,7 +132,7 @@ export default function RandomNumberPage() {
                 {...register("quantity", { valueAsNumber: true })}
               />
               {errors.quantity && (
-                <span className={"text-red-500 text-sm"} role={"alert"}>
+                <span className={"text-sm text-red-500"} role={"alert"}>
                   {errors.quantity.message}
                 </span>
               )}

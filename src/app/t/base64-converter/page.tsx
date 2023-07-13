@@ -141,7 +141,7 @@ export default function Base64ConverterPage() {
                             <p className={"break-all text-xs"}>{file.type}</p>
                           </div>
                         )}
-                        <p className={clsx(file && "opacity-60 text-xs")}>
+                        <p className={clsx(file && "text-xs opacity-60")}>
                           <IconFileUpload className={"mr-2 inline-block"} size={"2em"} aria-hidden />
                           Drag and drop a file here, or click to select an file.
                         </p>

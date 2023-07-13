@@ -78,7 +78,7 @@ export default function FeedbackForm() {
                 required
               />
               <ValidationError
-                className={"text-red-500 text-sm"}
+                className={"text-sm text-red-500"}
                 errors={state.errors}
                 field={"name"}
                 prefix={"Name"}
@@ -95,7 +95,7 @@ export default function FeedbackForm() {
                 required
               />
               <ValidationError
-                className={"text-red-500 text-sm"}
+                className={"text-sm text-red-500"}
                 errors={state.errors}
                 field={"email"}
                 prefix={"Email"}
@@ -105,13 +105,13 @@ export default function FeedbackForm() {
               <label htmlFor={"message"}>Message</label>
               <Textarea className={"block w-full"} id={"message"} minLength={2} name={"message"} required />
               <ValidationError
-                className={"text-red-500 text-sm"}
+                className={"text-sm text-red-500"}
                 errors={state.errors}
                 field={"message"}
                 prefix={"Message"}
               />
             </div>
-            <ValidationError className={"text-red-500 text-sm"} errors={state.errors} />
+            <ValidationError className={"text-sm text-red-500"} errors={state.errors} />
             <p className={"text-xs"}>
               This site is protected by reCAPTCHA and the Google{" "}
               <Anchor href={"https://policies.google.com/privacy"} prefetch={false} isExternal>

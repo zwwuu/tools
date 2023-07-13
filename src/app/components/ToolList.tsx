@@ -102,7 +102,7 @@ export default function ToolList({ tools }: { tools: Tool[] }) {
                       <p className={"line-clamp-3"}>{tool.description}</p>
                       <div
                         className={
-                          "flex items-center justify-end transition text-xs group-hover:text-red-500 group-focus:text-red-500"
+                          "flex items-center justify-end text-xs transition group-hover:text-red-500 group-focus:text-red-500"
                         }
                       >
                         <IconThumbUp className={clsx("mr-1", isLiked(tool.slug) && "text-red-500")} />

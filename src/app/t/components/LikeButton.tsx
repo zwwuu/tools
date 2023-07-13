@@ -99,7 +99,7 @@ export default function LikeButton({ slug }: { slug: string }) {
       <span className={"relative transition group-hover:text-red-500 group-focus:text-red-500"}>
         {Intl.NumberFormat("en", { notation: "compact" }).format(totalLikes)}
         <motion.span
-          className={"pointer-events-none absolute left-full top-0 block text-red-500 text-xs"}
+          className={"pointer-events-none absolute left-full top-0 block text-xs text-red-500"}
           variants={floatingTextAnimation}
         >
           {likes.current < MAX_LIKES && getLikes(slug) < MAX_LIKES ? `+${likes.current}` : "MAX"}

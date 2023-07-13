@@ -39,7 +39,7 @@ TableCell.displayName = "TableCell";
 
 const TableCaption = forwardRef<HTMLTableCaptionElement, ComponentPropsWithoutRef<"caption">>(
   ({ className, ...props }, ref) => {
-    return <caption className={clsx("opacity-80 text-xs", className)} ref={ref} {...props} />;
+    return <caption className={clsx("text-xs opacity-80", className)} ref={ref} {...props} />;
   },
 );
 TableCaption.displayName = "TableCaption";

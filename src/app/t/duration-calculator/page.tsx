@@ -106,12 +106,12 @@ export default function DurationCalculatorPage() {
                 </Button>
               </InputGroup>
               {errors.startDate && (
-                <div className={"text-red-500 text-sm"} role={"alert"}>
+                <div className={"text-sm text-red-500"} role={"alert"}>
                   {errors.startDate.message}
                 </div>
               )}
               {errors.startTime && (
-                <div className={"text-red-500 text-sm"} role={"alert"}>
+                <div className={"text-sm text-red-500"} role={"alert"}>
                   {errors.startTime.message}
                 </div>
               )}
@@ -153,12 +153,12 @@ export default function DurationCalculatorPage() {
                 </Button>
               </InputGroup>
               {errors.endDate && (
-                <div className={"text-red-500 text-sm"} role={"alert"}>
+                <div className={"text-sm text-red-500"} role={"alert"}>
                   {errors.endDate.message}
                 </div>
               )}
               {errors.endTime && (
-                <div className={"text-red-500 text-sm"} role={"alert"}>
+                <div className={"text-sm text-red-500"} role={"alert"}>
                   {errors.endTime.message}
                 </div>
               )}

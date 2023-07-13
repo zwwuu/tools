@@ -205,7 +205,7 @@ export default function Weather() {
           <CardBody className={"space-y-4"}>
             <div className={"flex flex-col items-end"}>
               <RadioGroup
-                className={"flex divide-x-sm border-sm shadow-sm text-sm"}
+                className={"flex divide-x-sm border-sm text-sm shadow-sm"}
                 defaultValue={unit}
                 onValueChange={(value: Unit) => {
                   setUnit(value);

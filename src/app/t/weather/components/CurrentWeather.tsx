@@ -14,7 +14,7 @@ export default function CurrentWeather({ weather }: { weather: CurrentWeatherRes
   return (
     <div className={"flex flex-col items-center space-y-4"}>
       <div>
-        <p className={"opacity-80 text-xs"}>
+        <p className={"text-xs opacity-80"}>
           {"Updated at "}
           <time dateTime={new Date(weather.dt * 1000).toISOString()}>
             {new Date(weather.dt * 1000).toLocaleString()}
@@ -31,7 +31,7 @@ export default function CurrentWeather({ weather }: { weather: CurrentWeatherRes
           <WeatherIcon alt={weather.weather[0].description} icon={weather.weather[0].icon} size={64} />
         </div>
         <div>
-          <div className={"font-bold text-2xl"}>{`${convertFn[unit](weather.main.temp)} ${unitLabels[unit]}`}</div>
+          <div className={"text-2xl font-bold"}>{`${convertFn[unit](weather.main.temp)} ${unitLabels[unit]}`}</div>
           <div>{`Feels like ${convertFn[unit](weather.main.feels_like)} ${unitLabels[unit]}`}</div>
         </div>
       </div>

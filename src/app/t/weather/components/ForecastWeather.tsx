@@ -44,7 +44,7 @@ export default function ForecastWeather({ forecasts }: { forecasts: Forecast[] }
                 <div className={"relative"}>
                   <span
                     className={
-                      "pointer-events-none absolute right-0 top-0 block select-none font-mono font-bold uppercase opacity-10 text-8xl"
+                      "pointer-events-none absolute right-0 top-0 block select-none font-mono text-8xl font-bold uppercase opacity-10"
                     }
                   >
                     {new Intl.DateTimeFormat(undefined, { weekday: "short" }).format(weather.dt * 1000)}
@@ -56,7 +56,7 @@ export default function ForecastWeather({ forecasts }: { forecasts: Forecast[] }
                         <WeatherIcon alt={weather.weather[0].description} icon={weather.weather[0].icon} size={64} />
                       </div>
                       <div>
-                        <div className={"font-bold text-2xl"}>{`${convertFn[unit](weather.temp.day)} ${
+                        <div className={"text-2xl font-bold"}>{`${convertFn[unit](weather.temp.day)} ${
                           unitLabels[unit]
                         }`}</div>
                         <div>{`Feels like ${convertFn[unit](weather.feels_like.day)} ${unitLabels[unit]}`}</div>

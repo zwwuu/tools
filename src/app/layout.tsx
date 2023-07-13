@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body
         className={
-          "relative min-h-screen bg-dots bg-[length:1rem_1rem] font-sans text-base-content transition text-base"
+          "relative min-h-screen bg-dots bg-[length:1rem_1rem] font-sans text-base text-base-content transition"
         }
       >
         <AppProvider>

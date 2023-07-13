@@ -152,7 +152,7 @@ export default function PomodoroTimerPage() {
         <CardBody className={"space-y-4"}>
           <div>
             <div className={"flex items-center justify-between"}>
-              <div className={"opacity-90 text-xs"}>{`#${round}`}</div>
+              <div className={"text-xs opacity-90"}>{`#${round}`}</div>
               <Button
                 className={"sm:hidden"}
                 title={`click to ${isMuted ? "unmute" : "mute"}`}

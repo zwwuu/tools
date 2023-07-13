@@ -64,10 +64,10 @@ export default function ExifViewerPage() {
                     className={"mx-auto max-h-96 max-w-full"}
                     src={URL.createObjectURL(image)}
                   />
-                  <figcaption className={"break-all opacity-80 text-xs"}>{image.name}</figcaption>
+                  <figcaption className={"break-all text-xs opacity-80"}>{image.name}</figcaption>
                 </figure>
               )}
-              <p className={clsx(image && "opacity-60 text-xs")}>
+              <p className={clsx(image && "text-xs opacity-60")}>
                 <IconFileUpload className={"mr-2 inline-block"} size={"2em"} aria-hidden />
                 Drag and drop a file here, or click to select an file.
               </p>
