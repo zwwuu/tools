@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 import Heading from "~/components/Typography/Heading";
 
-export default function Hero({ children }: { children: ReactNode }) {
+export function Hero({ children }: { children: ReactNode }) {
   return (
     <section className={"border-b bg-black px-6 py-8 text-white"} id={"hero"}>
       <div className={"mx-auto max-w-screen-lg"}>

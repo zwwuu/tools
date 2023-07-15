@@ -9,10 +9,14 @@ const anchor = cva("", {
       primary:
         "relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-current after:transition-size hover:after:h-1 focus:after:h-1",
       button:
-        "inline-flex items-center shadow-md hover:shadow-none focus:shadow-none bg-base-100 hover:bg-primary focus:bg-primary transition justify-center p-2 text-lg border-sm",
+        "inline-flex items-center shadow-md hover:shadow-none focus:shadow-none bg-base-100 hover:bg-primary focus:bg-primary transition justify-center text-lg border-sm",
     },
     isExternal: {
       true: "inline-flex items-center",
+    },
+    size: {
+      icon: "",
+      default: "",
     },
   },
   compoundVariants: [
@@ -26,6 +30,16 @@ const anchor = cva("", {
       isExternal: false,
       className: "inline-block",
     },
+    {
+      variant: "button",
+      size: "icon",
+      className: "p-2",
+    },
+    {
+      variant: "button",
+      size: "default",
+      className: "px-4 py-2",
+    },
   ],
   defaultVariants: { variant: "primary", isExternal: false },
 });
@@ -35,14 +49,14 @@ export type AnchorProps = {
 } & ComponentPropsWithRef<typeof Link> &
   VariantProps<typeof anchor>;
 export const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
-  ({ children, className, variant, isExternal = false, href, ...props }, ref) => {
+  ({ children, className, variant, size = "default", isExternal = false, href, ...props }, ref) => {
     return (
       <Link
         href={href}
         rel={isExternal ? "noopener noreferrer" : undefined}
         target={isExternal ? "_blank" : undefined}
         {...props}
-        className={anchor({ variant, isExternal, className })}
+        className={anchor({ variant, isExternal, size, className })}
         ref={ref}
       >
         {children}

@@ -66,7 +66,7 @@ const ToastTitle = forwardRef<
   ElementRef<typeof ToastPrimitives.Title>,
   ComponentPropsWithoutRef<typeof ToastPrimitives.Title>
 >(({ className, ...props }, ref) => (
-  <ToastPrimitives.Title className={clsx("font-bold text-sm", className)} ref={ref} {...props} />
+  <ToastPrimitives.Title className={clsx("text-sm font-bold", className)} ref={ref} {...props} />
 ));
 ToastTitle.displayName = ToastPrimitives.Title.displayName;
 

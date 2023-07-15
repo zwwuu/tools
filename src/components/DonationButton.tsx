@@ -7,6 +7,7 @@ const DonationButton = () => {
     <Anchor
       href={`${process.env.NEXT_PUBLIC_KOFI_URL}`}
       rel={"noopener noreferrer"}
+      size={"icon"}
       target={"_blank"}
       title={"Buy me a coffee"}
       variant={"button"}
