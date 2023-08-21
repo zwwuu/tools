@@ -17,6 +17,7 @@ sw.js
 workbox-*.js
 workbox-*.js.map
 sitemap*.xml
+robots.txt
 
 # misc
 .DS_Store
