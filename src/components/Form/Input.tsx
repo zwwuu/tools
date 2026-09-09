@@ -1,6 +1,12 @@
-import { ComponentPropsWithRef, forwardRef, ReactNode, useLayoutEffect, useRef } from "react";
-import { cva, VariantProps } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 import clsx from "clsx";
+import {
+  type ComponentPropsWithRef,
+  forwardRef,
+  type ReactNode,
+  useLayoutEffect,
+  useRef,
+} from "react";
 
 const input = cva("bg-input", {
   variants: {
@@ -40,7 +46,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     const inputRef = useRef<HTMLInputElement | null>(null);
     const leftElementRef = useRef<HTMLDivElement>(null);
     const rightElementRef = useRef<HTMLDivElement>(null);
-    const _addonClassname = "pointer-events-none absolute inset-y-0 flex items-center justify-center px-2";
+    const _addonClassname =
+      "pointer-events-none absolute inset-y-0 flex items-center justify-center px-2";
 
     useLayoutEffect(() => {
       if (inputRef.current) {
@@ -60,7 +67,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       return (
         <div className={"relative isolate"}>
           {leftElement && (
-            <div className={clsx(_addonClassname, "left-0")} ref={leftElementRef}>
+            <div
+              className={clsx(_addonClassname, "left-0")}
+              ref={leftElementRef}
+            >
               {leftElement}
             </div>
           )}
@@ -82,7 +92,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             {...props}
           />
           {rightElement && (
-            <div className={clsx(_addonClassname, "right-0")} ref={rightElementRef}>
+            <div
+              className={clsx(_addonClassname, "right-0")}
+              ref={rightElementRef}
+            >
               {rightElement}
             </div>
           )}
@@ -90,7 +103,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       );
     }
 
-    return <input className={input({ border, className })} {...props} ref={ref} />;
+    return (
+      <input className={input({ border, className })} {...props} ref={ref} />
+    );
   },
 );
 Input.displayName = "Input";

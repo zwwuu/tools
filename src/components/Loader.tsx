@@ -1,16 +1,19 @@
-import { cva, VariantProps } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 
-const loader = cva("animate-twSpin rounded-full border-lg border-r-transparent animate-infinite", {
-  variants: {
-    size: {
-      sm: "h-8 w-8",
-      lg: "h-32 w-32",
+const loader = cva(
+  "animate-twSpin rounded-full border-lg border-r-transparent animate-infinite",
+  {
+    variants: {
+      size: {
+        sm: "h-8 w-8",
+        lg: "h-32 w-32",
+      },
+    },
+    defaultVariants: {
+      size: "sm",
     },
   },
-  defaultVariants: {
-    size: "sm",
-  },
-});
+);
 type LoaderProps = {
   className?: string;
   variant: "spinner" | "dots";
@@ -22,9 +25,15 @@ export default function Loader({ variant, size, className }: LoaderProps) {
 
   return (
     <span aria-hidden>
-      <span className={"animate-fadeIn animate-delay-100"}>.</span>
-      <span className={"animate-fadeIn animate-delay-200"}>.</span>
-      <span className={"animate-fadeIn animate-infinite animate-ease-linear animate-delay-300"}>.</span>
+      <span className={"animate-delay-100 animate-fadeIn"}>.</span>
+      <span className={"animate-delay-200 animate-fadeIn"}>.</span>
+      <span
+        className={
+          "animate-delay-300 animate-ease-linear animate-fadeIn animate-infinite"
+        }
+      >
+        .
+      </span>
     </span>
   );
 }

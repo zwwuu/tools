@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import clsx from "clsx";
+import { useEffect, useState } from "react";
 import tinycolor from "tinycolor2";
 
 import { chineseColors } from "~/app/(base)/t/chinese-colors/data";
@@ -15,17 +15,23 @@ import Heading from "~/components/Typography/Heading";
 export default function ChineseColorsPage() {
   const [query, setQuery] = useState("");
   const [filteredColors, setFilteredColors] = useState(chineseColors);
-  const [selectedColor, setSelectedColor] = useState<(typeof chineseColors)[number] | null>(null);
+  const [selectedColor, setSelectedColor] = useState<
+    (typeof chineseColors)[number] | null
+  >(null);
   const [character, setCharacter] = useState<"tc" | "sc">("tc");
 
   useEffect(() => {
     if (window.location.hash.slice(1)) {
       const found = chineseColors.find(
-        (color) => `${color.pinyin}-${color.hex.replace("#", "")}` === window.location.hash.slice(1),
+        (color) =>
+          `${color.pinyin}-${color.hex.replace("#", "")}` ===
+          window.location.hash.slice(1),
       );
       if (found) {
         setSelectedColor(found);
-        const elem = document.querySelector(`[data-id="${found.pinyin}-${found.hex.replace("#", "")}"]`);
+        const elem = document.querySelector(
+          `[data-id="${found.pinyin}-${found.hex.replace("#", "")}"]`,
+        );
         if (elem) {
           elem.scrollIntoView({ block: "center" });
         }
@@ -50,7 +56,9 @@ export default function ChineseColorsPage() {
                   return (
                     color.sc.includes(event.target.value) ||
                     color.tc.includes(event.target.value) ||
-                    color.pinyin.toLowerCase().includes(event.target.value.toLowerCase())
+                    color.pinyin
+                      .toLowerCase()
+                      .includes(event.target.value.toLowerCase())
                   );
                 });
                 setFilteredColors(filtered);
@@ -92,16 +100,29 @@ export default function ChineseColorsPage() {
                     key={color.sc}
                     style={{
                       backgroundColor: color.hex,
-                      boxShadow: selectedColor === color && `0 0 50px -12px ${selectedColor.hex}`,
+                      boxShadow:
+                        selectedColor === color &&
+                        `0 0 50px -12px ${selectedColor.hex}`,
                       zIndex: selectedColor === color && 1,
                     }}
                     onClick={() => {
                       setSelectedColor(color);
-                      history.replaceState("", document.title, `#${color.pinyin}-${color.hex.replace("#", "")}`);
+                      history.replaceState(
+                        "",
+                        document.title,
+                        `#${color.pinyin}-${color.hex.replace("#", "")}`,
+                      );
                     }}
                   >
                     <CardBody>
-                      <div className={clsx("break-words", tinycolor(color.hex).isDark() ? "text-white" : "text-black")}>
+                      <div
+                        className={clsx(
+                          "break-words",
+                          tinycolor(color.hex).isDark()
+                            ? "text-white"
+                            : "text-black",
+                        )}
+                      >
                         <p className={"text-xs"}>{color.pinyin}</p>
                         <Heading as={"h3"} className={"mb-2"}>
                           {character === "sc" ? color.sc : color.tc}
@@ -110,13 +131,23 @@ export default function ChineseColorsPage() {
                       <ColorCopyButton color={color.hex} value={color.hex}>
                         <span>{color.hex}</span>
                       </ColorCopyButton>
-                      <ColorCopyButton color={color.hex} value={`rgb(${color.rgb.join(",")})`}>
+                      <ColorCopyButton
+                        color={color.hex}
+                        value={`rgb(${color.rgb.join(",")})`}
+                      >
                         <span className={"lg:hidden"}>rgb</span>
-                        <span className={"mr-1 hidden lg:inline-block"}>{`rgb(${color.rgb.join(",")})`}</span>
+                        <span
+                          className={"mr-1 hidden lg:inline-block"}
+                        >{`rgb(${color.rgb.join(",")})`}</span>
                       </ColorCopyButton>
-                      <ColorCopyButton color={color.hex} value={`cmyk(${color.cmyk.join(",")})`}>
+                      <ColorCopyButton
+                        color={color.hex}
+                        value={`cmyk(${color.cmyk.join(",")})`}
+                      >
                         <span className={"lg:hidden"}>cmyk</span>
-                        <span className={"mr-1 hidden lg:inline-block"}>{`cmyk(${color.cmyk.join(",")})`}</span>
+                        <span
+                          className={"mr-1 hidden lg:inline-block"}
+                        >{`cmyk(${color.cmyk.join(",")})`}</span>
                       </ColorCopyButton>
                     </CardBody>
                   </Card>

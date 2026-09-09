@@ -1,13 +1,17 @@
 "use client";
 
-import Giscus, { GiscusProps, Repo } from "@giscus/react";
+import Giscus, { type GiscusProps, type Repo } from "@giscus/react";
 
 import { Card, CardBody } from "~/components/Card";
 import Heading from "~/components/Typography/Heading";
 import { useConfig } from "~/providers/ConfigProvider";
 
 type MessageBoardProps = Pick<GiscusProps, "mapping" | "term" | "strict">;
-export default function MessageBoard({ mapping, term, strict }: MessageBoardProps) {
+export default function MessageBoard({
+  mapping,
+  term,
+  strict,
+}: MessageBoardProps) {
   const { theme } = useConfig();
 
   return (

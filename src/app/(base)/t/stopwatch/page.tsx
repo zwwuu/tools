@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
 import { IconPlayerPause, IconPlayerPlay } from "@tabler/icons-react";
 import clsx from "clsx";
+import { useEffect, useMemo, useState } from "react";
 
 import Main from "~/app/(base)/t/components/Main";
 import Button from "~/components/Button";
@@ -31,7 +31,9 @@ export default function StopwatchPage() {
 
   useEffect(() => {
     if (isActive) {
-      setTitle(`${formattedTime.minutes}:${formattedTime.seconds}.${formattedTime.milliseconds}`);
+      setTitle(
+        `${formattedTime.minutes}:${formattedTime.seconds}.${formattedTime.milliseconds}`,
+      );
     } else {
       setTitle(null);
     }
@@ -81,14 +83,17 @@ export default function StopwatchPage() {
         className={clsx(
           "relative before:absolute before:inset-0 before:-z-1",
           isActive && "before:shadow-primary",
-          isActive && "before:animate-twPulse before:shadow-2xl before:animate-infinite",
+          isActive &&
+            "before:animate-infinite before:animate-twPulse before:shadow-2xl",
         )}
       >
         <CardBody className={"flex flex-col items-center justify-center"}>
-          <p className={"mb-4 font-mono font-bold"}>
+          <p className={"mb-4 font-bold font-mono"}>
             <span className={"text-[3rem]"}>{`${formattedTime.minutes}:`}</span>
             <span className={"text-[3rem]"}>{`${formattedTime.seconds}`}</span>
-            <span className={"text-xs"}>{`.${formattedTime.milliseconds}`}</span>
+            <span
+              className={"text-xs"}
+            >{`.${formattedTime.milliseconds}`}</span>
           </p>
           <div className={"-m-4 flex flex-wrap items-center justify-center"}>
             <Button
@@ -104,7 +109,11 @@ export default function StopwatchPage() {
             >
               {isRunning ? (
                 <>
-                  <IconPlayerPause className={"mr-1"} size={"1em"} aria-hidden />
+                  <IconPlayerPause
+                    className={"mr-1"}
+                    size={"1em"}
+                    aria-hidden
+                  />
                   Stop
                 </>
               ) : (

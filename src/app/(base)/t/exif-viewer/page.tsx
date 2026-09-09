@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { IconFileUpload } from "@tabler/icons-react";
 import clsx from "clsx";
 import ExifReader from "exifreader";
+import { useEffect, useState } from "react";
 
 import Main from "~/app/(base)/t/components/Main";
 import { Card, CardBody } from "~/components/Card";
@@ -64,11 +64,17 @@ export default function ExifViewerPage() {
                     className={"mx-auto max-h-96 max-w-full"}
                     src={URL.createObjectURL(image)}
                   />
-                  <figcaption className={"break-all text-xs opacity-80"}>{image.name}</figcaption>
+                  <figcaption className={"break-all text-xs opacity-80"}>
+                    {image.name}
+                  </figcaption>
                 </figure>
               )}
               <p className={clsx(image && "text-xs opacity-60")}>
-                <IconFileUpload className={"mr-2 inline-block"} size={"2em"} aria-hidden />
+                <IconFileUpload
+                  className={"mr-2 inline-block"}
+                  size={"2em"}
+                  aria-hidden
+                />
                 Drag and drop a file here, or click to select an file.
               </p>
             </div>

@@ -1,5 +1,9 @@
-import { ButtonHTMLAttributes, ComponentPropsWithRef, forwardRef } from "react";
-import { cva, VariantProps } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
+import {
+  type ButtonHTMLAttributes,
+  type ComponentPropsWithRef,
+  forwardRef,
+} from "react";
 
 const button = cva("inline-flex items-center", {
   variants: {
@@ -18,8 +22,10 @@ const button = cva("inline-flex items-center", {
       lg: "border-lg",
     },
     variant: {
-      primary: "bg-base-100 font-medium px-4 py-3 hover:bg-primary focus:bg-primary transition justify-center",
-      warning: "bg-red-300 dark:bg-red-800 font-medium px-4 py-3 transition justify-center",
+      primary:
+        "bg-base-100 font-medium px-4 py-3 hover:bg-primary focus:bg-primary transition justify-center",
+      warning:
+        "bg-red-300 dark:bg-red-800 font-medium px-4 py-3 transition justify-center",
       icon: "bg-base-100 hover:bg-primary focus:bg-primary transition justify-center",
     },
   },
@@ -51,8 +57,25 @@ export type ButtonProps = {
   VariantProps<typeof button>;
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, border, elevation, size, type = "button", isLoading = false, ...props }, ref) => (
-    <button className={button({ variant, size, elevation, border, className })} ref={ref} type={type} {...props} />
+  (
+    {
+      className,
+      variant,
+      border,
+      elevation,
+      size,
+      type = "button",
+      isLoading = false,
+      ...props
+    },
+    ref,
+  ) => (
+    <button
+      className={button({ variant, size, elevation, border, className })}
+      ref={ref}
+      type={type}
+      {...props}
+    />
   ),
 );
 Button.displayName = "Button";

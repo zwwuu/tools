@@ -1,8 +1,8 @@
-import { ReactNode } from "react";
-import Image from "next/image";
-import { useSearchParams } from "next/navigation";
 import { IconPointer } from "@tabler/icons-react";
 import clsx from "clsx";
+import Image from "next/image";
+import { useSearchParams } from "next/navigation";
+import type { ReactNode } from "react";
 
 import { ENGINES } from "~/app/r/lmstfy/data";
 import Anchor from "~/components/Anchor";

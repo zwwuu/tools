@@ -37,7 +37,10 @@ export const CRON_FIELDS = [
       { name: "Range", value: "-" },
       { name: "Multiple", value: "," },
       { name: "Specific", value: "1-12" },
-      { name: "Month", value: "JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC" },
+      {
+        name: "Month",
+        value: "JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC",
+      },
     ],
   },
   {

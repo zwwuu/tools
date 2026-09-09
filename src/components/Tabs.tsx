@@ -1,18 +1,23 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import clsx from "clsx";
+import {
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  forwardRef,
+} from "react";
 
 const Tabs = TabsPrimitive.Tabs;
 
-const TabsList = forwardRef<ElementRef<typeof TabsPrimitive.List>, ComponentPropsWithoutRef<typeof TabsPrimitive.List>>(
-  ({ className, ...props }, ref) => (
-    <TabsPrimitive.List
-      className={clsx("flex items-center overflow-x-auto border-b", className)}
-      ref={ref}
-      {...props}
-    />
-  ),
-);
+const TabsList = forwardRef<
+  ElementRef<typeof TabsPrimitive.List>,
+  ComponentPropsWithoutRef<typeof TabsPrimitive.List>
+>(({ className, ...props }, ref) => (
+  <TabsPrimitive.List
+    className={clsx("flex items-center overflow-x-auto border-b", className)}
+    ref={ref}
+    {...props}
+  />
+));
 TabsList.displayName = TabsPrimitive.List.displayName;
 
 const TabsTrigger = forwardRef<
@@ -21,7 +26,7 @@ const TabsTrigger = forwardRef<
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Trigger
     className={clsx(
-      "inline-flex items-center justify-center whitespace-nowrap border-x border-t border-transparent px-2 py-1 transition data-[state=active]:border-black",
+      "inline-flex items-center justify-center whitespace-nowrap border-transparent border-x border-t px-2 py-1 transition data-[state=active]:border-black",
       className,
     )}
     ref={ref}
@@ -33,7 +38,13 @@ TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
 const TabsContent = forwardRef<
   ElementRef<typeof TabsPrimitive.Content>,
   ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
->(({ className, ...props }, ref) => <TabsPrimitive.Content className={clsx("mt-2", className)} ref={ref} {...props} />);
+>(({ className, ...props }, ref) => (
+  <TabsPrimitive.Content
+    className={clsx("mt-2", className)}
+    ref={ref}
+    {...props}
+  />
+));
 TabsContent.displayName = TabsPrimitive.Content.displayName;
 
-export { Tabs, TabsList, TabsTrigger, TabsContent };
+export { Tabs, TabsContent, TabsList, TabsTrigger };

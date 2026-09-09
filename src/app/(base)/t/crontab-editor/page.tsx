@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import cronParser from "cron-parser";
 import cronstrue from "cronstrue";
+import { useEffect, useState } from "react";
 
 import Main from "~/app/(base)/t/components/Main";
 import { CRON_FIELDS } from "~/app/(base)/t/crontab-editor/data";
@@ -62,7 +62,9 @@ export default function CrontabEditorPage() {
                     {field.allowed.map((allow) => (
                       <tr className={"w-full"} key={allow.name}>
                         <TableCell>{allow.name}</TableCell>
-                        <TableCell className={"break-words"}>{allow.value}</TableCell>
+                        <TableCell className={"break-words"}>
+                          {allow.value}
+                        </TableCell>
                       </tr>
                     ))}
                   </TableBody>

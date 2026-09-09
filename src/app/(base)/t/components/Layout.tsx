@@ -1,13 +1,17 @@
 "use client";
 
-import { ComponentPropsWithoutRef, ReactNode, useEffect } from "react";
 import { IconMessage } from "@tabler/icons-react";
+import {
+  type ComponentPropsWithoutRef,
+  type ReactNode,
+  useEffect,
+} from "react";
 
 import LikeButton from "~/app/(base)/t/components/LikeButton";
 import ShareButton from "~/app/(base)/t/components/ShareButton";
 import { Hero, HeroTitle } from "~/components/Hero";
 import MessageBoard from "~/components/MessageBoard";
-import { Tool } from "~/types/Tool";
+import type { Tool } from "~/types/Tool";
 
 type LayoutProps = {
   children: ReactNode;
@@ -22,10 +26,14 @@ export default function Layout({ children, tool, ...props }: LayoutProps) {
   return (
     <>
       <Hero>
-        <HeroTitle className={"before:opacity-60 before:content-['/t/']"}>{tool.title}</HeroTitle>
+        <HeroTitle className={"before:opacity-60 before:content-['/t/']"}>
+          {tool.title}
+        </HeroTitle>
         <p className={"mb-4"}>{tool.description}</p>
         <div className={"flex items-center space-x-8"}>
-          <ShareButton text={`${process.env.NEXT_PUBLIC_APP_URL}/t/${tool.slug}`} />
+          <ShareButton
+            text={`${process.env.NEXT_PUBLIC_APP_URL}/t/${tool.slug}`}
+          />
           <a
             className={"transition hover:text-green-500 focus:text-green-500"}
             href={"#message-board"}

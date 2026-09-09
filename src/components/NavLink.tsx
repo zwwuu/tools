@@ -1,11 +1,12 @@
-import { ComponentPropsWithRef, forwardRef } from "react";
-import Link from "next/link";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import clsx from "clsx";
+import type Link from "next/link";
+import { type ComponentPropsWithRef, forwardRef } from "react";
 
 import Anchor from "~/components/Anchor";
 
-type NavLinkProps = ComponentPropsWithRef<typeof Link> & ComponentPropsWithRef<typeof NavigationMenu.Link>;
+type NavLinkProps = ComponentPropsWithRef<typeof Link> &
+  ComponentPropsWithRef<typeof NavigationMenu.Link>;
 export const NavLink = forwardRef<HTMLAnchorElement, NavLinkProps>(
   ({ children, className, href, ...props }, forwardedRef) => (
     <NavigationMenu.Link

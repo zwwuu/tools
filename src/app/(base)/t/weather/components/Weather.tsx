@@ -1,17 +1,26 @@
 "use client";
 
-import { useState } from "react";
-import { Noto_Color_Emoji } from "next/font/google";
 import { IconCurrentLocation } from "@tabler/icons-react";
+import { Noto_Color_Emoji } from "next/font/google";
+import { useState } from "react";
 import ReactCountryFlag from "react-country-flag";
 import { useQuery } from "react-query";
 
 import CurrentWeather from "~/app/(base)/t/weather/components/CurrentWeather";
 import ForecastWeather from "~/app/(base)/t/weather/components/ForecastWeather";
-import { POPULAR_LOCATIONS, Unit, unitLabels, UNITS, useWeatherStore } from "~/app/(base)/t/weather/data";
-import { ErrorResponse } from "~/app/api/types";
-import { Coord } from "~/app/api/weather/types/openweathermap/Coord";
-import { GeoResponse, WeatherResponse } from "~/app/api/weather/types/weather-response";
+import {
+  POPULAR_LOCATIONS,
+  UNITS,
+  type Unit,
+  unitLabels,
+  useWeatherStore,
+} from "~/app/(base)/t/weather/data";
+import type { ErrorResponse } from "~/app/api/types";
+import type { Coord } from "~/app/api/weather/types/openweathermap/Coord";
+import type {
+  GeoResponse,
+  WeatherResponse,
+} from "~/app/api/weather/types/weather-response";
 import Button from "~/components/Button";
 import { Card, CardBody } from "~/components/Card";
 import Input from "~/components/Form/Input";
@@ -42,9 +51,12 @@ export default function Weather() {
         description: "Fetching weather data from server...",
       });
       try {
-        const res = await fetch(`/api/weather?lat=${coords.lat}&lon=${coords.lon}`, {
-          method: "GET",
-        });
+        const res = await fetch(
+          `/api/weather?lat=${coords.lat}&lon=${coords.lon}`,
+          {
+            method: "GET",
+          },
+        );
         const resData: WeatherResponse | ErrorResponse = await res.json();
         if (resData.success) {
           return resData.data;
@@ -53,7 +65,9 @@ export default function Weather() {
         }
       } catch (error) {
         if (error instanceof SyntaxError) {
-          return Promise.reject(new Error("Failed to parse response from server."));
+          return Promise.reject(
+            new Error("Failed to parse response from server."),
+          );
         }
         return Promise.reject("Failed to fetch weather data from server.");
       } finally {
@@ -64,7 +78,10 @@ export default function Weather() {
       toast({
         title: "Error",
         variant: "error",
-        description: error instanceof Error ? error.message : "Failed to fetch weather data from server.",
+        description:
+          error instanceof Error
+            ? error.message
+            : "Failed to fetch weather data from server.",
       });
     },
     enabled: coords !== undefined,
@@ -92,7 +109,9 @@ export default function Weather() {
         }
       } catch (error) {
         if (error instanceof SyntaxError) {
-          return Promise.reject(new Error("Failed to parse response from server."));
+          return Promise.reject(
+            new Error("Failed to parse response from server."),
+          );
         }
         return Promise.reject("Failed to fetch geocoding data from server.");
       } finally {
@@ -106,12 +125,16 @@ export default function Weather() {
       toast({
         title: "Error",
         variant: "error",
-        description: error instanceof Error ? error.message : "Failed to fetch geocoding data from server.",
+        description:
+          error instanceof Error
+            ? error.message
+            : "Failed to fetch geocoding data from server.",
       });
     },
     enabled: city.length > 0,
   });
-  const randomCity = POPULAR_LOCATIONS[Math.floor(Math.random() * POPULAR_LOCATIONS.length)];
+  const randomCity =
+    POPULAR_LOCATIONS[Math.floor(Math.random() * POPULAR_LOCATIONS.length)];
 
   const handleSearch = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -119,8 +142,8 @@ export default function Weather() {
     if (query.length === 0) return;
 
     const [cityOrLat, countryOrLon] = query.split(",");
-    let lat = parseFloat(cityOrLat);
-    let lon = parseFloat(countryOrLon);
+    const lat = parseFloat(cityOrLat);
+    const lon = parseFloat(countryOrLon);
 
     if (isNaN(lat) && isNaN(lon)) {
       setCity(query);
@@ -147,7 +170,9 @@ export default function Weather() {
                 variant={"icon"}
                 onClick={() => {
                   navigator.geolocation.getCurrentPosition(async (position) => {
-                    setSearchQuery(`${position.coords.latitude}, ${position.coords.longitude}`);
+                    setSearchQuery(
+                      `${position.coords.latitude}, ${position.coords.longitude}`,
+                    );
                   });
                 }}
               >
@@ -173,7 +198,9 @@ export default function Weather() {
           <RadioGroup
             className={"-m-2 flex flex-wrap justify-center text-center text-sm"}
             onValueChange={(value) => {
-              const location = POPULAR_LOCATIONS.find((location) => location.city === value);
+              const location = POPULAR_LOCATIONS.find(
+                (location) => location.city === value,
+              );
               if (location) {
                 setSearchQuery(`${location.lat}, ${location.lon}`);
                 setCoords({ lat: location.lat, lon: location.lon });
@@ -182,7 +209,9 @@ export default function Weather() {
           >
             {POPULAR_LOCATIONS.map((location) => (
               <RadioGroupItem
-                className={'m-2 h-full text-sm data-[state="checked"]:shadow-none'}
+                className={
+                  'm-2 h-full text-sm data-[state="checked"]:shadow-none'
+                }
                 key={location.city}
                 value={location.city}
                 asChild
@@ -213,7 +242,11 @@ export default function Weather() {
               >
                 {UNITS.map((unit) => {
                   return (
-                    <RadioGroupItem className={"px-4 py-2"} key={unit} value={unit}>
+                    <RadioGroupItem
+                      className={"px-4 py-2"}
+                      key={unit}
+                      value={unit}
+                    >
                       {unitLabels[unit]}
                     </RadioGroupItem>
                   );

@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import clsx from "clsx";
+import { useEffect, useState } from "react";
 import tinycolor from "tinycolor2";
 
 import ColorCopyButton from "~/app/(base)/t/components/ColorCopyButton";
@@ -14,16 +14,22 @@ import Heading from "~/components/Typography/Heading";
 export default function JapaneseColorsPage() {
   const [query, setQuery] = useState("");
   const [filteredColors, setFilteredColors] = useState(japaneseColors);
-  const [selectedColor, setSelectedColor] = useState<(typeof japaneseColors)[number] | null>(null);
+  const [selectedColor, setSelectedColor] = useState<
+    (typeof japaneseColors)[number] | null
+  >(null);
 
   useEffect(() => {
     if (window.location.hash.slice(1)) {
       const found = japaneseColors.find(
-        (color) => `${color.romanji}-${color.hex.replace("#", "")}` === window.location.hash.slice(1),
+        (color) =>
+          `${color.romanji}-${color.hex.replace("#", "")}` ===
+          window.location.hash.slice(1),
       );
       if (found) {
         setSelectedColor(found);
-        const elem = document.querySelector(`[data-id="${found.romanji}-${found.hex.replace("#", "")}"]`);
+        const elem = document.querySelector(
+          `[data-id="${found.romanji}-${found.hex.replace("#", "")}"]`,
+        );
         if (elem) {
           elem.scrollIntoView({ block: "center" });
         }
@@ -47,7 +53,9 @@ export default function JapaneseColorsPage() {
                 const filtered = japaneseColors.filter(
                   (color) =>
                     color.name.includes(event.target.value.toLowerCase()) ||
-                    color.romanji.toLowerCase().includes(event.target.value.toLowerCase()),
+                    color.romanji
+                      .toLowerCase()
+                      .includes(event.target.value.toLowerCase()),
                 );
                 setFilteredColors(filtered);
               }}
@@ -72,16 +80,29 @@ export default function JapaneseColorsPage() {
                     key={color.romanji}
                     style={{
                       backgroundColor: color.hex,
-                      boxShadow: selectedColor === color && `0 0 50px -12px ${selectedColor.hex}`,
+                      boxShadow:
+                        selectedColor === color &&
+                        `0 0 50px -12px ${selectedColor.hex}`,
                       zIndex: selectedColor === color && 1,
                     }}
                     onClick={() => {
                       setSelectedColor(color);
-                      history.replaceState("", document.title, `#${color.romanji}-${color.hex.replace("#", "")}`);
+                      history.replaceState(
+                        "",
+                        document.title,
+                        `#${color.romanji}-${color.hex.replace("#", "")}`,
+                      );
                     }}
                   >
                     <CardBody>
-                      <div className={clsx("break-words", tinycolor(color.hex).isDark() ? "text-white" : "text-black")}>
+                      <div
+                        className={clsx(
+                          "break-words",
+                          tinycolor(color.hex).isDark()
+                            ? "text-white"
+                            : "text-black",
+                        )}
+                      >
                         <p className={"text-xs"}>{color.romanji}</p>
                         <Heading as={"h3"} className={"mb-2"}>
                           {color.name}
@@ -90,13 +111,23 @@ export default function JapaneseColorsPage() {
                       <ColorCopyButton color={color.hex} value={color.hex}>
                         <span>{color.hex}</span>
                       </ColorCopyButton>
-                      <ColorCopyButton color={color.hex} value={`rgb(${color.rgb.join(",")})`}>
+                      <ColorCopyButton
+                        color={color.hex}
+                        value={`rgb(${color.rgb.join(",")})`}
+                      >
                         <span className={"lg:hidden"}>rgb</span>
-                        <span className={"mr-1 hidden lg:inline-block"}>{`rgb(${color.rgb.join(",")})`}</span>
+                        <span
+                          className={"mr-1 hidden lg:inline-block"}
+                        >{`rgb(${color.rgb.join(",")})`}</span>
                       </ColorCopyButton>
-                      <ColorCopyButton color={color.hex} value={`cmyk(${color.cmyk.join(",")})`}>
+                      <ColorCopyButton
+                        color={color.hex}
+                        value={`cmyk(${color.cmyk.join(",")})`}
+                      >
                         <span className={"lg:hidden"}>cmyk</span>
-                        <span className={"mr-1 hidden lg:inline-block"}>{`cmyk(${color.cmyk.join(",")})`}</span>
+                        <span
+                          className={"mr-1 hidden lg:inline-block"}
+                        >{`cmyk(${color.cmyk.join(",")})`}</span>
                       </ColorCopyButton>
                     </CardBody>
                   </Card>

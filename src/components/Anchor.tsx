@@ -1,7 +1,7 @@
-import { ComponentPropsWithRef, forwardRef } from "react";
-import Link from "next/link";
 import { IconExternalLink } from "@tabler/icons-react";
-import { cva, VariantProps } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
+import Link from "next/link";
+import { type ComponentPropsWithRef, forwardRef } from "react";
 
 const anchor = cva("", {
   variants: {
@@ -49,7 +49,18 @@ export type AnchorProps = {
 } & ComponentPropsWithRef<typeof Link> &
   VariantProps<typeof anchor>;
 export const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
-  ({ children, className, variant, size = "default", isExternal = false, href, ...props }, ref) => {
+  (
+    {
+      children,
+      className,
+      variant,
+      size = "default",
+      isExternal = false,
+      href,
+      ...props
+    },
+    ref,
+  ) => {
     return (
       <Link
         href={href}

@@ -1,5 +1,5 @@
-import { Coord } from "~/app/api/weather/types/openweathermap/Coord";
-import { Weather } from "~/app/api/weather/types/openweathermap/Weather";
+import type { Coord } from "~/app/api/weather/types/openweathermap/Coord";
+import type { Weather } from "~/app/api/weather/types/openweathermap/Weather";
 
 export type CurrentWeatherResponse = {
   coord: Coord;

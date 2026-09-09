@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -57,7 +57,10 @@ export default function LmstfyPage() {
               const searchParams = new URLSearchParams();
               const url = new URL("r/lmstfy", process.env.NEXT_PUBLIC_APP_URL);
 
-              const base64 = Buffer.from(JSON.stringify(params), "utf-8").toString("base64");
+              const base64 = Buffer.from(
+                JSON.stringify(params),
+                "utf-8",
+              ).toString("base64");
               searchParams.append("q", base64);
 
               url.search = searchParams.toString();
@@ -75,7 +78,7 @@ export default function LmstfyPage() {
                 {...register("query")}
               />
               {errors.query && (
-                <span className={"text-sm text-red-500"} role={"alert"}>
+                <span className={"text-red-500 text-sm"} role={"alert"}>
                   {errors.query.message}
                 </span>
               )}
@@ -92,7 +95,7 @@ export default function LmstfyPage() {
                 {...register("engine")}
               />
               {errors.engine && (
-                <span className={"text-sm text-red-500"} role={"alert"}>
+                <span className={"text-red-500 text-sm"} role={"alert"}>
                   {errors.engine.message}
                 </span>
               )}
@@ -108,7 +111,7 @@ export default function LmstfyPage() {
                 Auto Redirect
               </label>
               {errors.redirect && (
-                <span className={"text-sm text-red-500"} role={"alert"}>
+                <span className={"text-red-500 text-sm"} role={"alert"}>
                   {errors.redirect.message}
                 </span>
               )}
@@ -122,7 +125,7 @@ export default function LmstfyPage() {
                 {...register("message")}
               />
               {errors.message && (
-                <span className={"text-sm text-red-500"} role={"alert"}>
+                <span className={"text-red-500 text-sm"} role={"alert"}>
                   {errors.message.message}
                 </span>
               )}
@@ -139,7 +142,12 @@ export default function LmstfyPage() {
               Result
             </Heading>
             <output className={"block space-y-4"}>
-              <Textarea className={"block w-full resize-none break-all"} value={result} readOnly withCopy />
+              <Textarea
+                className={"block w-full resize-none break-all"}
+                value={result}
+                readOnly
+                withCopy
+              />
               <Anchor href={result} variant={"button"}>
                 Visit
               </Anchor>

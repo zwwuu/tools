@@ -1,19 +1,23 @@
-import { ComponentPropsWithoutRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import type { ComponentPropsWithoutRef } from "react";
 
-const badgeVariants = cva("inline-flex font-normal items-center border p-1 text-xs", {
-  variants: {
-    variant: {
-      default: "bg-primary-100",
-      destructive: "bg-red-600 text-red-50",
+const badgeVariants = cva(
+  "inline-flex font-normal items-center border p-1 text-xs",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary-100",
+        destructive: "bg-red-600 text-red-50",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
     },
   },
-  defaultVariants: {
-    variant: "default",
-  },
-});
+);
 
-type BadgeProps = ComponentPropsWithoutRef<"span"> & VariantProps<typeof badgeVariants>;
+type BadgeProps = ComponentPropsWithoutRef<"span"> &
+  VariantProps<typeof badgeVariants>;
 
 function Badge({ className, variant, ...props }: BadgeProps) {
   return <span className={badgeVariants({ variant, className })} {...props} />;

@@ -51,12 +51,20 @@ export default function BaseConverterPage() {
       </Card>
       <Card>
         <CardBody>
-          <output className={"block space-y-4"} form={"value-form"} htmlFor={"value"}>
+          <output
+            className={"block space-y-4"}
+            form={"value-form"}
+            htmlFor={"value"}
+          >
             {BASES.filter((base) => base.value !== selectedBase).map((base) => (
               <div key={base.value}>
                 <label>
                   {base.label}
-                  <Input className={"block w-full"} value={value.toString(base.value)} readOnly />
+                  <Input
+                    className={"block w-full"}
+                    value={value.toString(base.value)}
+                    readOnly
+                  />
                 </label>
               </div>
             ))}

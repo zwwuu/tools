@@ -18,7 +18,8 @@ export const useConfigStore = create<ConfigState>()(
         (set) => ({
           theme: undefined,
           sound: false,
-          setTheme: (theme: Theme) => set({ theme }, false, { type: "setTheme", theme }),
+          setTheme: (theme: Theme) =>
+            set({ theme }, false, { type: "setTheme", theme }),
           toggleSound: () =>
             set(
               (state) => {

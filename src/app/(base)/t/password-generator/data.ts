@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
-import { ZXCVBNScore } from "zxcvbn";
+import type { ZXCVBNScore } from "zxcvbn";
 
 export const CHARACTERS = {
   lowercase: "abcdefghijklmnopqrstuvwxyz",

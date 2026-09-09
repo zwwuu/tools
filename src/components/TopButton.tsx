@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import { IconArrowUp } from "@tabler/icons-react";
 import clsx from "clsx";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import Button from "~/components/Button";
 import useSound from "~/hooks/useSound";
@@ -31,7 +31,9 @@ export default function TopButton() {
 
   return (
     <MotionButton
-      className={clsx(isShow ? "visible animate-fadeInUp animate-faster" : "invisible")}
+      className={clsx(
+        isShow ? "visible animate-fadeInUp animate-faster" : "invisible",
+      )}
       title={"Scroll to top"}
       variant={"icon"}
       whileTap={{ y: -16 }}

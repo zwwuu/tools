@@ -10,6 +10,7 @@ const firebaseAdminConfig = {
   databaseURL: `https://${process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID}.firebaseio.com`,
 };
 
-export const firebaseAdmin = getApps().length === 0 ? initializeApp(firebaseAdminConfig) : getApps()[0];
+export const firebaseAdmin =
+  getApps().length === 0 ? initializeApp(firebaseAdminConfig) : getApps()[0];
 
 export const dbAdmin = getFirestore(firebaseAdmin);

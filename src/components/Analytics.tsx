@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import Script from "next/script";
 import { useReportWebVitals } from "next/web-vitals";
+import { useEffect } from "react";
 
 export default function Analytics() {
   const pathname = usePathname();
@@ -20,8 +20,11 @@ export default function Analytics() {
 
   useReportWebVitals((metric) => {
     window.gtag("event", metric.name, {
-      event_category: metric.label === "web-vital" ? "Web Vitals" : "custom metric",
-      value: Math.round(metric.name === "CLS" ? metric.value * 1000 : metric.value), // values must be integers
+      event_category:
+        metric.label === "web-vital" ? "Web Vitals" : "custom metric",
+      value: Math.round(
+        metric.name === "CLS" ? metric.value * 1000 : metric.value,
+      ), // values must be integers
       event_label: metric.id, // id unique to current page load
       non_interaction: true, // avoids affecting bounce rate.
     });

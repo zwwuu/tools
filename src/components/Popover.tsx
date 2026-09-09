@@ -1,8 +1,8 @@
-import { ComponentProps, forwardRef, ReactNode } from "react";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import clsx from "clsx";
+import { type ComponentProps, forwardRef, type ReactNode } from "react";
 
-import Button, { ButtonProps } from "~/components/Button";
+import Button, { type ButtonProps } from "~/components/Button";
 import { Card, CardBody } from "~/components/Card";
 
 export const Popover = PopoverPrimitive.Root;
@@ -12,13 +12,19 @@ type PopoverTriggerProps = {
 } & ComponentProps<typeof PopoverPrimitive.Trigger> &
   ButtonProps;
 
-export const PopoverTrigger = forwardRef<HTMLButtonElement, PopoverTriggerProps>(
-  ({ children, className, ...props }, forwardedRef) => (
-    <PopoverPrimitive.Trigger className={className} {...props} ref={forwardedRef} asChild>
-      <Button>{children}</Button>
-    </PopoverPrimitive.Trigger>
-  ),
-);
+export const PopoverTrigger = forwardRef<
+  HTMLButtonElement,
+  PopoverTriggerProps
+>(({ children, className, ...props }, forwardedRef) => (
+  <PopoverPrimitive.Trigger
+    className={className}
+    {...props}
+    ref={forwardedRef}
+    asChild
+  >
+    <Button>{children}</Button>
+  </PopoverPrimitive.Trigger>
+));
 PopoverTrigger.displayName = "PopoverTrigger";
 
 type PopoverContentProps = {
@@ -29,7 +35,13 @@ type PopoverContentProps = {
 export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
   ({ children, className, ...props }, forwardedRef) => (
     <PopoverPrimitive.Portal>
-      <PopoverPrimitive.Content collisionPadding={8} side={"bottom"} sideOffset={8} {...props} ref={forwardedRef}>
+      <PopoverPrimitive.Content
+        collisionPadding={8}
+        side={"bottom"}
+        sideOffset={8}
+        {...props}
+        ref={forwardedRef}
+      >
         <Card
           className={clsx(
             "overflow-x-auto data-[state=open]:animate-fadeIn data-[state=open]:animate-faster",

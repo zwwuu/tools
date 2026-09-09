@@ -1,9 +1,9 @@
 "use client";
 
-import { createContext, ReactNode, useContext, useEffect } from "react";
+import { createContext, type ReactNode, useContext, useEffect } from "react";
 
 import useSound from "~/hooks/useSound";
-import { Theme, useConfigStore } from "~/stores/configStore";
+import { type Theme, useConfigStore } from "~/stores/configStore";
 
 interface ConfigContextProps {
   theme?: Theme;
@@ -30,7 +30,10 @@ export const ConfigProvider = ({ children }: { children?: ReactNode }) => {
 
   useEffect(() => {
     if (!theme) {
-      const prefTheme = window && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      const prefTheme =
+        window && window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
       setTheme(prefTheme);
     }
   }, [setTheme, theme]);
@@ -59,7 +62,11 @@ export const ConfigProvider = ({ children }: { children?: ReactNode }) => {
   };
 
   return (
-    <StoreContext.Provider value={{ theme, sound, onThemeToggle, onSoundToggle }}>{children}</StoreContext.Provider>
+    <StoreContext.Provider
+      value={{ theme, sound, onThemeToggle, onSoundToggle }}
+    >
+      {children}
+    </StoreContext.Provider>
   );
 };
 

@@ -1,10 +1,15 @@
 "use client";
 
-import { ComponentPropsWithoutRef, ElementRef, forwardRef, ReactElement } from "react";
 import * as ToastPrimitives from "@radix-ui/react-toast";
 import { IconX } from "@tabler/icons-react";
 import { cva, type VariantProps } from "class-variance-authority";
 import clsx from "clsx";
+import {
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  forwardRef,
+  type ReactElement,
+} from "react";
 
 import Button from "~/components/Button";
 
@@ -16,7 +21,7 @@ const ToastViewport = forwardRef<
 >(({ className, ...props }, ref) => (
   <ToastPrimitives.Viewport
     className={clsx(
-      "fixed bottom-0 right-1/2 z-100 flex max-h-screen w-full max-w-sm translate-x-1/2 flex-col-reverse p-4",
+      "fixed right-1/2 bottom-0 z-100 flex max-h-screen w-full max-w-sm translate-x-1/2 flex-col-reverse p-4",
       className,
     )}
     ref={ref}
@@ -42,9 +47,16 @@ const toastVariants = cva(
 
 const Toast = forwardRef<
   ElementRef<typeof ToastPrimitives.Root>,
-  ComponentPropsWithoutRef<typeof ToastPrimitives.Root> & VariantProps<typeof toastVariants>
+  ComponentPropsWithoutRef<typeof ToastPrimitives.Root> &
+    VariantProps<typeof toastVariants>
 >(({ className, variant, ...props }, ref) => {
-  return <ToastPrimitives.Root className={toastVariants({ variant, className })} ref={ref} {...props} />;
+  return (
+    <ToastPrimitives.Root
+      className={toastVariants({ variant, className })}
+      ref={ref}
+      {...props}
+    />
+  );
 });
 Toast.displayName = ToastPrimitives.Root.displayName;
 
@@ -55,7 +67,12 @@ const ToastClose = forwardRef<
   ComponentPropsWithoutRef<typeof ToastPrimitives.Close>
 >(({ className, ...props }, ref) => (
   <ToastPrimitives.Close ref={ref} {...props} asChild>
-    <Button className={clsx("float-right", className)} size={"sm"} title={"close"} variant={"icon"}>
+    <Button
+      className={clsx("float-right", className)}
+      size={"sm"}
+      title={"close"}
+      variant={"icon"}
+    >
       <IconX size={"1em"} aria-hidden />
     </Button>
   </ToastPrimitives.Close>
@@ -66,7 +83,11 @@ const ToastTitle = forwardRef<
   ElementRef<typeof ToastPrimitives.Title>,
   ComponentPropsWithoutRef<typeof ToastPrimitives.Title>
 >(({ className, ...props }, ref) => (
-  <ToastPrimitives.Title className={clsx("text-sm font-bold", className)} ref={ref} {...props} />
+  <ToastPrimitives.Title
+    className={clsx("font-bold text-sm", className)}
+    ref={ref}
+    {...props}
+  />
 ));
 ToastTitle.displayName = ToastPrimitives.Title.displayName;
 
@@ -74,7 +95,11 @@ const ToastDescription = forwardRef<
   ElementRef<typeof ToastPrimitives.Description>,
   ComponentPropsWithoutRef<typeof ToastPrimitives.Description>
 >(({ className, ...props }, ref) => (
-  <ToastPrimitives.Description className={clsx("text-sm", className)} ref={ref} {...props} />
+  <ToastPrimitives.Description
+    className={clsx("text-sm", className)}
+    ref={ref}
+    {...props}
+  />
 ));
 ToastDescription.displayName = ToastPrimitives.Description.displayName;
 
@@ -83,13 +108,13 @@ type ToastProps = ComponentPropsWithoutRef<typeof Toast>;
 type ToastActionElement = ReactElement<typeof ToastAction>;
 
 export {
-  type ToastProps,
-  type ToastActionElement,
-  ToastProvider,
-  ToastViewport,
   Toast,
-  ToastTitle,
-  ToastDescription,
-  ToastClose,
   ToastAction,
+  type ToastActionElement,
+  ToastClose,
+  ToastDescription,
+  type ToastProps,
+  ToastProvider,
+  ToastTitle,
+  ToastViewport,
 };

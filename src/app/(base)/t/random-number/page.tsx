@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -36,7 +36,10 @@ const generateSchema = z
       };
     },
   )
-  .refine((schema) => schema.min <= schema.max, { message: "Min must be less than or equal to max", path: ["min"] });
+  .refine((schema) => schema.min <= schema.max, {
+    message: "Min must be less than or equal to max",
+    path: ["min"],
+  });
 type FormInput = z.infer<typeof generateSchema>;
 
 export default function RandomNumberPage() {
@@ -57,10 +60,13 @@ export default function RandomNumberPage() {
     },
   });
 
-  const generateRandomNumber = useCallback((min: number, max: number, quantity: number, duplicate: boolean) => {
-    setIsGenerating(true);
-    worker.current?.postMessage({ min, max, quantity, duplicate });
-  }, []);
+  const generateRandomNumber = useCallback(
+    (min: number, max: number, quantity: number, duplicate: boolean) => {
+      setIsGenerating(true);
+      worker.current?.postMessage({ min, max, quantity, duplicate });
+    },
+    [],
+  );
 
   useEffect(() => {
     const handleWorkerMessage = (message: MessageEvent<number[]>) => {
@@ -84,7 +90,12 @@ export default function RandomNumberPage() {
           <form
             className={"space-y-4"}
             onSubmit={handleSubmit((data) => {
-              generateRandomNumber(data.min, data.max, data.quantity, data.duplicate);
+              generateRandomNumber(
+                data.min,
+                data.max,
+                data.quantity,
+                data.duplicate,
+              );
             })}
           >
             <div>
@@ -97,7 +108,7 @@ export default function RandomNumberPage() {
                 {...register("min", { valueAsNumber: true })}
               />
               {errors.min && (
-                <span className={"text-sm text-red-500"} role={"alert"}>
+                <span className={"text-red-500 text-sm"} role={"alert"}>
                   {errors.min.message}
                 </span>
               )}
@@ -114,7 +125,7 @@ export default function RandomNumberPage() {
                 {...register("max", { valueAsNumber: true })}
               />
               {errors.max && (
-                <span className={"text-sm text-red-500"} role={"alert"}>
+                <span className={"text-red-500 text-sm"} role={"alert"}>
                   {errors.max.message}
                 </span>
               )}
@@ -132,7 +143,7 @@ export default function RandomNumberPage() {
                 {...register("quantity", { valueAsNumber: true })}
               />
               {errors.quantity && (
-                <span className={"text-sm text-red-500"} role={"alert"}>
+                <span className={"text-red-500 text-sm"} role={"alert"}>
                   {errors.quantity.message}
                 </span>
               )}
@@ -140,14 +151,23 @@ export default function RandomNumberPage() {
 
             <div>
               <label className={"flex items-center"}>
-                <Checkbox className={"mr-2"} id={"duplicate"} {...register("duplicate")} />
+                <Checkbox
+                  className={"mr-2"}
+                  id={"duplicate"}
+                  {...register("duplicate")}
+                />
                 Allow duplicates
               </label>
             </div>
 
             <div>
               <label htmlFor={"separator"}>Separator</label>
-              <Input className={"block w-full"} type={"text"} {...register("separator")} id={"separator"} />
+              <Input
+                className={"block w-full"}
+                type={"text"}
+                {...register("separator")}
+                id={"separator"}
+              />
             </div>
             <Button disabled={isGenerating} type={"submit"}>
               Generate {isGenerating && <Loader variant={"dots"} />}

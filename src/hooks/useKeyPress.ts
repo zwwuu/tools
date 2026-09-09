@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react";
 
 type useKeyPressProps = {
-  onKeyDown?: { fn: (event: KeyboardEvent) => void; options?: boolean | AddEventListenerOptions };
-  onKeyUp?: { fn: (event: KeyboardEvent) => void; options?: boolean | AddEventListenerOptions };
+  onKeyDown?: {
+    fn: (event: KeyboardEvent) => void;
+    options?: boolean | AddEventListenerOptions;
+  };
+  onKeyUp?: {
+    fn: (event: KeyboardEvent) => void;
+    options?: boolean | AddEventListenerOptions;
+  };
 };
 
-export default function useKeyPress(targetKeys: string[], { onKeyDown, onKeyUp }: useKeyPressProps) {
+export default function useKeyPress(
+  targetKeys: string[],
+  { onKeyDown, onKeyUp }: useKeyPressProps,
+) {
   const [keyPressed, setKeyPressed] = useState<Record<string, boolean>>(
     targetKeys.reduce((acc: Record<string, boolean>, key) => {
       acc[key] = false;
@@ -16,14 +25,20 @@ export default function useKeyPress(targetKeys: string[], { onKeyDown, onKeyUp }
   useEffect(() => {
     const downHandler = (event: KeyboardEvent) => {
       if (targetKeys.includes(event.key)) {
-        setKeyPressed((prevKeyState) => ({ ...prevKeyState, [event.key]: true }));
+        setKeyPressed((prevKeyState) => ({
+          ...prevKeyState,
+          [event.key]: true,
+        }));
         onKeyDown?.fn(event);
       }
     };
 
     const upHandler = (event: KeyboardEvent) => {
       if (targetKeys.includes(event.key)) {
-        setKeyPressed((prevKeyState) => ({ ...prevKeyState, [event.key]: false }));
+        setKeyPressed((prevKeyState) => ({
+          ...prevKeyState,
+          [event.key]: false,
+        }));
         onKeyUp?.fn(event);
       }
     };

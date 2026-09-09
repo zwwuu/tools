@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 const seo: Metadata = {
   title: {
@@ -7,9 +7,20 @@ const seo: Metadata = {
   },
   description: process.env.NEXT_PUBLIC_APP_DESCRIPTION,
   applicationName: process.env.NEXT_PUBLIC_APP_TITLE,
-  authors: [{ name: process.env.NEXT_PUBLIC_APP_AUTHOR, url: process.env.NEXT_PUBLIC_APP_AUTHOR_URL }],
+  authors: [
+    {
+      name: process.env.NEXT_PUBLIC_APP_AUTHOR,
+      url: process.env.NEXT_PUBLIC_APP_AUTHOR_URL,
+    },
+  ],
   themeColor: "#ED8A63",
-  robots: { index: true, follow: true, "max-snippet": -1, "max-video-preview": -1, "max-image-preview": "large" },
+  robots: {
+    index: true,
+    follow: true,
+    "max-snippet": -1,
+    "max-video-preview": -1,
+    "max-image-preview": "large",
+  },
   alternates: { canonical: "/" },
   manifest: "/manifest.json",
   metadataBase: new URL(`${process.env.NEXT_PUBLIC_APP_URL}`),

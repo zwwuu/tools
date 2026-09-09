@@ -1,12 +1,27 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
-import { IconBell, IconBellOff, IconPlayerPause, IconPlayerPlay } from "@tabler/icons-react";
+import {
+  IconBell,
+  IconBellOff,
+  IconPlayerPause,
+  IconPlayerPlay,
+} from "@tabler/icons-react";
 import clsx from "clsx";
+import { useEffect, useMemo } from "react";
 
 import Main from "~/app/(base)/t/components/Main";
-import { INTERVAL_STYLES, MIN_MINUTES, usePomodoroTimerStore } from "~/app/(base)/t/pomodoro-timer/data";
-import { Accordion, AccordionContent, AccordionHeader, AccordionItem, AccordionTrigger } from "~/components/Accordion";
+import {
+  INTERVAL_STYLES,
+  MIN_MINUTES,
+  usePomodoroTimerStore,
+} from "~/app/(base)/t/pomodoro-timer/data";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionHeader,
+  AccordionItem,
+  AccordionTrigger,
+} from "~/components/Accordion";
 import Button from "~/components/Button";
 import { Card, CardBody } from "~/components/Card";
 import Input from "~/components/Form/Input";
@@ -53,7 +68,9 @@ export default function PomodoroTimerPage() {
     toggleAlarm: state.toggleAlarm,
   }));
   const [_, setTitle] = useTitle();
-  const { play, isPlaying, setVolume } = useSound("/sounds/pomodoro-timer/alarm.mp3");
+  const { play, isPlaying, setVolume } = useSound(
+    "/sounds/pomodoro-timer/alarm.mp3",
+  );
 
   useInterval(() => {
     if (timeLeft <= 0) {
@@ -61,7 +78,9 @@ export default function PomodoroTimerPage() {
         setTimeLeft(durations.longBreak);
         setCurrentInterval("longBreak");
       } else {
-        setTimeLeft(currentInterval === "work" ? durations.shortBreak : durations.work);
+        setTimeLeft(
+          currentInterval === "work" ? durations.shortBreak : durations.work,
+        );
         setCurrentInterval(currentInterval === "work" ? "shortBreak" : "work");
       }
       next();
@@ -84,9 +103,13 @@ export default function PomodoroTimerPage() {
   useEffect(() => {
     if (isActive) {
       if (isRunning) {
-        setTitle(`${INTERVAL_STYLES[currentInterval].label} - ${formattedTimeLeft}`);
+        setTitle(
+          `${INTERVAL_STYLES[currentInterval].label} - ${formattedTimeLeft}`,
+        );
       } else {
-        setTitle(`Paused - ${INTERVAL_STYLES[currentInterval].label} - ${formattedTimeLeft}`);
+        setTitle(
+          `Paused - ${INTERVAL_STYLES[currentInterval].label} - ${formattedTimeLeft}`,
+        );
       }
     } else {
       setTitle(null);
@@ -146,7 +169,8 @@ export default function PomodoroTimerPage() {
         className={clsx(
           "relative before:absolute before:inset-0 before:-z-1",
           isActive && INTERVAL_STYLES[currentInterval].shadow,
-          isActive && "before:animate-twPulse before:shadow-2xl before:animate-infinite",
+          isActive &&
+            "before:animate-infinite before:animate-twPulse before:shadow-2xl",
         )}
       >
         <CardBody className={"space-y-4"}>
@@ -162,28 +186,47 @@ export default function PomodoroTimerPage() {
                 {isMuted ? (
                   <IconBellOff size={"1em"} aria-hidden />
                 ) : (
-                  <IconBell className={clsx({ "animate-tada animate-infinite": isPlaying })} size={"1em"} aria-hidden />
+                  <IconBell
+                    className={clsx({
+                      "animate-infinite animate-tada": isPlaying,
+                    })}
+                    size={"1em"}
+                    aria-hidden
+                  />
                 )}
               </Button>
             </div>
             <Heading as={"h2"} className={"mb-2"}>
               {INTERVAL_STYLES[currentInterval].label}
             </Heading>
-            <div className={clsx("relative h-1 w-full", INTERVAL_STYLES[currentInterval].track)}>
+            <div
+              className={clsx(
+                "relative h-1 w-full",
+                INTERVAL_STYLES[currentInterval].track,
+              )}
+            >
               <div
-                className={clsx("absolute inset-y-0 left-0 transition", INTERVAL_STYLES[currentInterval].bar)}
+                className={clsx(
+                  "absolute inset-y-0 left-0 transition",
+                  INTERVAL_STYLES[currentInterval].bar,
+                )}
                 style={{ width: `${progress}%` }}
               />
             </div>
           </div>
-          <p className={"font-mono text-[3rem] font-bold"}>{formattedTimeLeft}</p>
+          <p className={"font-bold font-mono text-[3rem]"}>
+            {formattedTimeLeft}
+          </p>
           <div className={"flex w-full items-center"}>
             {isActive ? (
               <>
                 <Button
-                  className={clsx("mr-4 uppercase hover:animate-paused focus:animate-paused", {
-                    "animate-twPulse animate-infinite": !isRunning,
-                  })}
+                  className={clsx(
+                    "mr-4 uppercase hover:animate-paused focus:animate-paused",
+                    {
+                      "animate-infinite animate-twPulse": !isRunning,
+                    },
+                  )}
                   onClick={handleToggle}
                 >
                   {isRunning ? (
@@ -217,7 +260,13 @@ export default function PomodoroTimerPage() {
               {isMuted ? (
                 <IconBellOff size={"1em"} aria-hidden />
               ) : (
-                <IconBell className={clsx({ "animate-tada animate-infinite": isPlaying })} size={"1em"} aria-hidden />
+                <IconBell
+                  className={clsx({
+                    "animate-infinite animate-tada": isPlaying,
+                  })}
+                  size={"1em"}
+                  aria-hidden
+                />
               )}
             </Button>
           </div>
@@ -225,7 +274,9 @@ export default function PomodoroTimerPage() {
         <Accordion type={"single"} collapsible>
           <AccordionItem value={"config"}>
             <AccordionHeader>
-              <AccordionTrigger className={"flex w-full items-center justify-center p-2"}>
+              <AccordionTrigger
+                className={"flex w-full items-center justify-center p-2"}
+              >
                 <span className={"mr-1 uppercase"}>Config</span>
               </AccordionTrigger>
             </AccordionHeader>
@@ -234,33 +285,43 @@ export default function PomodoroTimerPage() {
                 <fieldset>
                   <legend className={"font-bold"}>Time (minutes)</legend>
                   <div className={"-mx-2 flex flex-wrap items-end"}>
-                    {(Object.keys(INTERVAL_STYLES) as unknown as Array<keyof typeof INTERVAL_STYLES>).map(
-                      (interval) => {
-                        return (
-                          <div className={"m-2 flex flex-1 flex-col items-start"} key={interval}>
-                            <label htmlFor={interval}>{INTERVAL_STYLES[interval].label}</label>
-                            <Input
-                              className={"block w-full"}
-                              id={interval}
-                              min={MIN_MINUTES}
-                              step={1}
-                              type={"number"}
-                              value={durations[interval] / 60}
-                              onChange={(event) => {
-                                const value = parseInt(event.target.value, 10);
-                                if (!isNaN(value)) {
-                                  const seconds = Math.max(value * 60, MIN_MINUTES * 60);
-                                  if (currentInterval === interval) {
-                                    setTimeLeft(Math.min(seconds, timeLeft));
-                                  }
-                                  setDuration(interval, seconds);
+                    {(
+                      Object.keys(INTERVAL_STYLES) as unknown as Array<
+                        keyof typeof INTERVAL_STYLES
+                      >
+                    ).map((interval) => {
+                      return (
+                        <div
+                          className={"m-2 flex flex-1 flex-col items-start"}
+                          key={interval}
+                        >
+                          <label htmlFor={interval}>
+                            {INTERVAL_STYLES[interval].label}
+                          </label>
+                          <Input
+                            className={"block w-full"}
+                            id={interval}
+                            min={MIN_MINUTES}
+                            step={1}
+                            type={"number"}
+                            value={durations[interval] / 60}
+                            onChange={(event) => {
+                              const value = parseInt(event.target.value, 10);
+                              if (!isNaN(value)) {
+                                const seconds = Math.max(
+                                  value * 60,
+                                  MIN_MINUTES * 60,
+                                );
+                                if (currentInterval === interval) {
+                                  setTimeLeft(Math.min(seconds, timeLeft));
                                 }
-                              }}
-                            />
-                          </div>
-                        );
-                      },
-                    )}
+                                setDuration(interval, seconds);
+                              }
+                            }}
+                          />
+                        </div>
+                      );
+                    })}
                   </div>
                 </fieldset>
               </div>

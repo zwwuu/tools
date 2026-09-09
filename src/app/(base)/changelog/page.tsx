@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -116,14 +116,20 @@ export default function ChangelogPage() {
                       },
                       ul({ ordered, node, children, ...props }) {
                         return (
-                          <ul className={"list-inside list-disc pl-4"} {...props}>
+                          <ul
+                            className={"list-inside list-disc pl-4"}
+                            {...props}
+                          >
                             {children}
                           </ul>
                         );
                       },
                       ol({ ordered, node, children, ...props }) {
                         return (
-                          <ol className={"list-inside list-decimal pl-4"} {...props}>
+                          <ol
+                            className={"list-inside list-decimal pl-4"}
+                            {...props}
+                          >
                             {children}
                           </ol>
                         );

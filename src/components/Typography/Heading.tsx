@@ -1,5 +1,5 @@
-import { ComponentPropsWithRef, forwardRef } from "react";
-import { cva, VariantProps } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
+import { type ComponentPropsWithRef, forwardRef } from "react";
 
 const heading = cva("font-bold", {
   variants: {
@@ -22,8 +22,13 @@ type HeadingProps = {
 } & ComponentPropsWithRef<Headings> &
   VariantProps<typeof heading>;
 
-export default forwardRef<HTMLDivElement, HeadingProps>(function Heading({ as, className, ...props }, ref) {
+export default forwardRef<HTMLDivElement, HeadingProps>(function Heading(
+  { as, className, ...props },
+  ref,
+) {
   const Component = as;
 
-  return <Component className={heading({ as, className })} ref={ref} {...props} />;
+  return (
+    <Component className={heading({ as, className })} ref={ref} {...props} />
+  );
 });

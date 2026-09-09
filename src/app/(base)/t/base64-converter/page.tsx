@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import { IconFile, IconFileUpload } from "@tabler/icons-react";
 import clsx from "clsx";
 import mime from "mime-types";
+import { useState } from "react";
 
 import { MODES, TYPES } from "~/app/(base)/t/base64-converter/data";
 import Main from "~/app/(base)/t/components/Main";
@@ -18,8 +18,12 @@ import { RadioGroup, RadioGroupItem } from "~/components/RadioGroup";
 export default function Base64ConverterPage() {
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
-  const [mode, setMode] = useState<(typeof MODES)[number]["value"]>(MODES[0].value);
-  const [type, setType] = useState<(typeof TYPES)[number]["value"]>(TYPES[0].value);
+  const [mode, setMode] = useState<(typeof MODES)[number]["value"]>(
+    MODES[0].value,
+  );
+  const [type, setType] = useState<(typeof TYPES)[number]["value"]>(
+    TYPES[0].value,
+  );
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [download, setDownload] = useState<string | null>(null);
@@ -43,12 +47,16 @@ export default function Base64ConverterPage() {
                       const reader = new FileReader();
                       reader.readAsDataURL(file!);
                       reader.onload = () => resolve(reader.result);
-                      reader.onerror = () => reject(new Error("Failed to read file."));
+                      reader.onerror = () =>
+                        reject(new Error("Failed to read file."));
                     });
                   }
 
                   setResult(() => {
-                    const base64 = Buffer.from(text as string, "utf-8").toString("base64");
+                    const base64 = Buffer.from(
+                      text as string,
+                      "utf-8",
+                    ).toString("base64");
                     if (breakWidth) {
                       return base64.replace(/(.{76})/g, "$1\n");
                     }
@@ -64,7 +72,9 @@ export default function Base64ConverterPage() {
                 const base64 = Buffer.from(input, "base64").toString();
                 setResult(base64);
                 setDownload(() => {
-                  return base64.startsWith("data:") ? base64.split(";base64,")[0].split(":")[1] : null;
+                  return base64.startsWith("data:")
+                    ? base64.split(";base64,")[0].split(":")[1]
+                    : null;
                 });
               }
             }}
@@ -142,7 +152,11 @@ export default function Base64ConverterPage() {
                           </div>
                         )}
                         <p className={clsx(file && "text-xs opacity-60")}>
-                          <IconFileUpload className={"mr-2 inline-block"} size={"2em"} aria-hidden />
+                          <IconFileUpload
+                            className={"mr-2 inline-block"}
+                            size={"2em"}
+                            aria-hidden
+                          />
                           Drag and drop a file here, or click to select an file.
                         </p>
                       </div>
@@ -218,7 +232,9 @@ export default function Base64ConverterPage() {
         <Card>
           <CardBody>
             <output className={"block"}>
-              <label htmlFor={"result"}>{mode === "encode" ? "Base64" : "Text"}</label>
+              <label htmlFor={"result"}>
+                {mode === "encode" ? "Base64" : "Text"}
+              </label>
               <div className={"space-y-4"}>
                 <Textarea
                   autoSize={false}
@@ -233,7 +249,8 @@ export default function Base64ConverterPage() {
                 {download && mode === "decode" && (
                   <div>
                     <p>
-                      Detected data type: <span className={"font-bold"}>{download}</span>
+                      Detected data type:{" "}
+                      <span className={"font-bold"}>{download}</span>
                     </p>
                     <Button
                       onClick={() => {

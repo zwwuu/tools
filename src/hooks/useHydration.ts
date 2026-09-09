@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { UseBoundStore } from "zustand";
+import type { UseBoundStore } from "zustand";
 
 export default function useHydration(stores: UseBoundStore<any>[]) {
   const [hydrated, setHydrated] = useState(false);

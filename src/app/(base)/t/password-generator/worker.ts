@@ -1,26 +1,42 @@
 import zxcvbn from "zxcvbn";
 
-import { CHARACTERS, Options } from "~/app/(base)/t/password-generator/data";
+import {
+  CHARACTERS,
+  type Options,
+} from "~/app/(base)/t/password-generator/data";
 
-self.onmessage = (message: MessageEvent<{ options: { [key in Options]: boolean }; length: number }>) => {
+self.onmessage = (
+  message: MessageEvent<{
+    options: { [key in Options]: boolean };
+    length: number;
+  }>,
+) => {
   const { options, length } = message.data;
   let password = "";
   let charPool = "";
 
   if (options.includeLowercase) {
-    password += CHARACTERS.lowercase[Math.floor(Math.random() * CHARACTERS.lowercase.length)];
+    password +=
+      CHARACTERS.lowercase[
+        Math.floor(Math.random() * CHARACTERS.lowercase.length)
+      ];
     charPool += CHARACTERS.lowercase;
   }
   if (options.includeUppercase) {
-    password += CHARACTERS.uppercase[Math.floor(Math.random() * CHARACTERS.uppercase.length)];
+    password +=
+      CHARACTERS.uppercase[
+        Math.floor(Math.random() * CHARACTERS.uppercase.length)
+      ];
     charPool += CHARACTERS.uppercase;
   }
   if (options.includeNumber) {
-    password += CHARACTERS.number[Math.floor(Math.random() * CHARACTERS.number.length)];
+    password +=
+      CHARACTERS.number[Math.floor(Math.random() * CHARACTERS.number.length)];
     charPool += CHARACTERS.number;
   }
   if (options.includeSymbol) {
-    password += CHARACTERS.symbol[Math.floor(Math.random() * CHARACTERS.symbol.length)];
+    password +=
+      CHARACTERS.symbol[Math.floor(Math.random() * CHARACTERS.symbol.length)];
     charPool += CHARACTERS.symbol;
   }
 
@@ -39,8 +55,7 @@ self.onmessage = (message: MessageEvent<{ options: { [key in Options]: boolean }
   postMessage({
     value: password,
     score: strength.score,
-    crackTimes: strength.crack_times_display.offline_slow_hashing_1e4_per_second.toString(),
+    crackTimes:
+      strength.crack_times_display.offline_slow_hashing_1e4_per_second.toString(),
   });
 };
-
-export {};

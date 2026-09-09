@@ -2,11 +2,19 @@ import { IconArrowDown } from "@tabler/icons-react";
 
 import Detail from "~/app/(base)/t/weather/components/Detail";
 import WeatherIcon from "~/app/(base)/t/weather/components/WeatherIcon";
-import { convertFn, unitLabels, useWeatherStore } from "~/app/(base)/t/weather/data";
-import { CurrentWeatherResponse } from "~/app/api/weather/types/openweathermap/CurrentWeatherResponse";
+import {
+  convertFn,
+  unitLabels,
+  useWeatherStore,
+} from "~/app/(base)/t/weather/data";
+import type { CurrentWeatherResponse } from "~/app/api/weather/types/openweathermap/CurrentWeatherResponse";
 import Heading from "~/components/Typography/Heading";
 
-export default function CurrentWeather({ weather }: { weather: CurrentWeatherResponse }) {
+export default function CurrentWeather({
+  weather,
+}: {
+  weather: CurrentWeatherResponse;
+}) {
   const { unit } = useWeatherStore((state) => ({
     unit: state.unit,
   }));
@@ -28,21 +36,39 @@ export default function CurrentWeather({ weather }: { weather: CurrentWeatherRes
       <div className={"flex items-end space-x-8"}>
         <div className={"flex flex-1 flex-col items-center text-center"}>
           <p className={"text-lg"}>{weather.weather[0].description}</p>
-          <WeatherIcon alt={weather.weather[0].description} icon={weather.weather[0].icon} size={64} />
+          <WeatherIcon
+            alt={weather.weather[0].description}
+            icon={weather.weather[0].icon}
+            size={64}
+          />
         </div>
         <div>
-          <div className={"text-2xl font-bold"}>{`${convertFn[unit](weather.main.temp)} ${unitLabels[unit]}`}</div>
+          <div
+            className={"font-bold text-2xl"}
+          >{`${convertFn[unit](weather.main.temp)} ${unitLabels[unit]}`}</div>
           <div>{`Feels like ${convertFn[unit](weather.main.feels_like)} ${unitLabels[unit]}`}</div>
         </div>
       </div>
-      <div className={"flex flex-wrap items-center gap-x-12 gap-y-2 [&>*]:flex-1"}>
-        <Detail label={"High"} value={`${convertFn[unit](weather.main.temp_max)} ${unitLabels[unit]}`} />
-        <Detail label={"Low"} value={`${convertFn[unit](weather.main.temp_min)} ${unitLabels[unit]}`} />
+      <div
+        className={"flex flex-wrap items-center gap-x-12 gap-y-2 [&>*]:flex-1"}
+      >
+        <Detail
+          label={"High"}
+          value={`${convertFn[unit](weather.main.temp_max)} ${unitLabels[unit]}`}
+        />
+        <Detail
+          label={"Low"}
+          value={`${convertFn[unit](weather.main.temp_min)} ${unitLabels[unit]}`}
+        />
         <Detail
           label={"Wind"}
           value={
             <div className={"flex items-center"}>
-              <IconArrowDown size={"1em"} style={{ rotate: `${weather.wind.deg}deg` }} aria-hidden />
+              <IconArrowDown
+                size={"1em"}
+                style={{ rotate: `${weather.wind.deg}deg` }}
+                aria-hidden
+              />
               {`${weather.wind.speed} m/s`}
             </div>
           }

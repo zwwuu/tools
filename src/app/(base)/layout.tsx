@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import type { ReactNode } from "react";
 
 import "../globals.css";
 
@@ -27,11 +27,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html className={inter.variable} lang={"en"}>
       <head>
-        <link color={"#ed8a63"} href={"/safari-pinned-tab.svg"} rel={"mask-icon"} />
+        <link
+          color={"#ed8a63"}
+          href={"/safari-pinned-tab.svg"}
+          rel={"mask-icon"}
+        />
       </head>
       <body
         className={
-          "relative min-h-screen bg-dots bg-[length:1rem_1rem] font-sans text-base text-base-content transition"
+          "relative min-h-screen bg-[length:1rem_1rem] bg-dots font-sans text-base text-base-content transition"
         }
       >
         <AppProvider>

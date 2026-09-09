@@ -1,13 +1,15 @@
 import fs from "fs";
-import path from "path";
 import matter from "gray-matter";
+import path from "path";
 
 import { tools } from "~/data/tools/base";
-import { Changelog } from "~/types/Changelog";
+import type { Changelog } from "~/types/Changelog";
 
 export function getToolBySlug(slug: string) {
   const prod = process.env.NODE_ENV === "production";
-  return tools[slug] && (prod ? tools[slug].isPublic : true) ? tools[slug] : null;
+  return tools[slug] && (prod ? tools[slug].isPublic : true)
+    ? tools[slug]
+    : null;
 }
 
 export function getAllTools() {

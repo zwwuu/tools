@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
 import { FieldValue } from "firebase-admin/firestore";
+import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
 import { getToolBySlug } from "~/lib/api";
@@ -16,13 +16,19 @@ export async function POST(req: NextRequest) {
   const body = await req.json();
   const data = likeSchema.safeParse(body);
   if (!data.success) {
-    return NextResponse.json({ success: false, message: "Bad Request" }, { status: 400 });
+    return NextResponse.json(
+      { success: false, message: "Bad Request" },
+      { status: 400 },
+    );
   }
 
   const { likes, slug } = data.data;
   const isSlugExist = getToolBySlug(slug);
   if (!isSlugExist) {
-    return NextResponse.json({ success: false, message: "Bad Request" }, { status: 400 });
+    return NextResponse.json(
+      { success: false, message: "Bad Request" },
+      { status: 400 },
+    );
   }
 
   const ipAddress = getHashedIpAddress(req.headers.get("x-real-ip"));
@@ -34,7 +40,8 @@ export async function POST(req: NextRequest) {
     await dbAdmin.runTransaction(async (transaction) => {
       const likeDoc = await transaction.get(likeDocRef);
       const currentLikes = likeDoc.data()?.likes ?? 0;
-      const likesToBeAdded = MAX_LIKES - currentLikes >= likes ? likes : MAX_LIKES - currentLikes;
+      const likesToBeAdded =
+        MAX_LIKES - currentLikes >= likes ? likes : MAX_LIKES - currentLikes;
       if (likesToBeAdded > 0) {
         transaction.set(
           likeDocRef,
@@ -45,7 +52,11 @@ export async function POST(req: NextRequest) {
           },
           { merge: true },
         );
-        transaction.set(toolDocRef, { totalLikes: FieldValue.increment(likesToBeAdded) }, { merge: true });
+        transaction.set(
+          toolDocRef,
+          { totalLikes: FieldValue.increment(likesToBeAdded) },
+          { merge: true },
+        );
         return;
       }
 
@@ -54,6 +65,9 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ success: false, message: "Bad Request" }, { status: 400 });
+    return NextResponse.json(
+      { success: false, message: "Bad Request" },
+      { status: 400 },
+    );
   }
 }

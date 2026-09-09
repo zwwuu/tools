@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function useSound(src: string, { defaultVolume = 1 }: { defaultVolume?: number } = {}) {
+export default function useSound(
+  src: string,
+  { defaultVolume = 1 }: { defaultVolume?: number } = {},
+) {
   const audio = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 

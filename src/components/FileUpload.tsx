@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
 import clsx from "clsx";
-import { DropzoneProps, useDropzone } from "react-dropzone";
+import type { ReactNode } from "react";
+import { type DropzoneProps, useDropzone } from "react-dropzone";
 
 type FileUploadProps = {
   name: string;
@@ -10,8 +10,15 @@ type FileUploadProps = {
   dropzoneProps: DropzoneProps;
 };
 
-const FileUpload = ({ className, children, name, id, dropzoneProps }: FileUploadProps) => {
-  const { getRootProps, getInputProps, isDragReject, isDragActive } = useDropzone(dropzoneProps);
+const FileUpload = ({
+  className,
+  children,
+  name,
+  id,
+  dropzoneProps,
+}: FileUploadProps) => {
+  const { getRootProps, getInputProps, isDragReject, isDragActive } =
+    useDropzone(dropzoneProps);
 
   return (
     <div

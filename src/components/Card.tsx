@@ -1,5 +1,9 @@
-import { ComponentPropsWithRef, ElementType, forwardRef } from "react";
-import { cva, VariantProps } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
+import {
+  type ComponentPropsWithRef,
+  type ElementType,
+  forwardRef,
+} from "react";
 
 const card = cva("bg-base-200", {
   variants: {
@@ -30,7 +34,11 @@ const Card = forwardRef<HTMLDivElement, CardProps<ElementType>>(
     const Component = as;
 
     return (
-      <Component className={card({ elevation, border, className })} ref={ref} {...props}>
+      <Component
+        className={card({ elevation, border, className })}
+        ref={ref}
+        {...props}
+      >
         {children}
       </Component>
     );
@@ -49,15 +57,18 @@ const cardHeader = cva("", {
     size: "sm",
   },
 });
-type CardHeaderProps = ComponentPropsWithRef<"div"> & VariantProps<typeof cardHeader>;
+type CardHeaderProps = ComponentPropsWithRef<"div"> &
+  VariantProps<typeof cardHeader>;
 
-const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(({ children, size, className, ...props }, ref) => {
-  return (
-    <div className={cardHeader({ size, className })} ref={ref} {...props}>
-      {children}
-    </div>
-  );
-});
+const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
+  ({ children, size, className, ...props }, ref) => {
+    return (
+      <div className={cardHeader({ size, className })} ref={ref} {...props}>
+        {children}
+      </div>
+    );
+  },
+);
 CardHeader.displayName = "CardHeader";
 
 const cardBody = cva("", {
@@ -72,15 +83,18 @@ const cardBody = cva("", {
   },
 });
 
-type CardBodyProps = ComponentPropsWithRef<"div"> & VariantProps<typeof cardBody>;
+type CardBodyProps = ComponentPropsWithRef<"div"> &
+  VariantProps<typeof cardBody>;
 
-const CardBody = forwardRef<HTMLDivElement, CardBodyProps>(({ children, size, className, ...props }, ref) => {
-  return (
-    <div className={cardBody({ size, className })} ref={ref} {...props}>
-      {children}
-    </div>
-  );
-});
+const CardBody = forwardRef<HTMLDivElement, CardBodyProps>(
+  ({ children, size, className, ...props }, ref) => {
+    return (
+      <div className={cardBody({ size, className })} ref={ref} {...props}>
+        {children}
+      </div>
+    );
+  },
+);
 CardBody.displayName = "CardBody";
 
-export { Card, CardHeader, CardBody };
+export { Card, CardBody, CardHeader };

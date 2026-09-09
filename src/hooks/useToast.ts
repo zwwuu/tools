@@ -1,8 +1,8 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 
-import { ToastActionElement, ToastProps } from "~/components/Toast";
+import type { ToastActionElement, ToastProps } from "~/components/Toast";
 
 const TOAST_LIMIT = 3;
 const TOAST_REMOVE_DELAY = 1000000;
@@ -81,7 +81,9 @@ export const reducer = (state: State, action: Action): State => {
     case "UPDATE_TOAST":
       return {
         ...state,
-        toasts: state.toasts.map((t) => (t.id === action.toast.id ? { ...t, ...action.toast } : t)),
+        toasts: state.toasts.map((t) =>
+          t.id === action.toast.id ? { ...t, ...action.toast } : t,
+        ),
       };
 
     case "DISMISS_TOAST": {
@@ -185,4 +187,4 @@ function useToast() {
   };
 }
 
-export { useToast, toast };
+export { toast, useToast };

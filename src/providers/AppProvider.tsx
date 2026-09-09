@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import Loader from "~/components/Loader";
 import PersistentGate from "~/components/PersistentGate";

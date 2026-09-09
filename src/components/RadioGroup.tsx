@@ -1,9 +1,13 @@
 "use client";
 
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import { IconCircle } from "@tabler/icons-react";
 import clsx from "clsx";
+import {
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  forwardRef,
+} from "react";
 
 const RadioGroup = RadioGroupPrimitive.Root;
 
@@ -31,11 +35,15 @@ const RadioGroupIndicator = forwardRef<
   ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Indicator>
 >(({ className, children, ...props }, ref) => {
   return (
-    <RadioGroupPrimitive.Indicator className={"flex items-center justify-center"} {...props} ref={ref}>
+    <RadioGroupPrimitive.Indicator
+      className={"flex items-center justify-center"}
+      {...props}
+      ref={ref}
+    >
       <IconCircle className={"h-2.5 w-2.5 text-current"} aria-hidden />
     </RadioGroupPrimitive.Indicator>
   );
 });
 RadioGroupIndicator.displayName = RadioGroupPrimitive.Indicator.displayName;
 
-export { RadioGroup, RadioGroupItem, RadioGroupIndicator };
+export { RadioGroup, RadioGroupIndicator, RadioGroupItem };

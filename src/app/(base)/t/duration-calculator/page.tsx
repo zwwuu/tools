@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import dayjs from "dayjs";
 import prettyMilliseconds from "pretty-ms";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -106,12 +106,12 @@ export default function DurationCalculatorPage() {
                 </Button>
               </InputGroup>
               {errors.startDate && (
-                <div className={"text-sm text-red-500"} role={"alert"}>
+                <div className={"text-red-500 text-sm"} role={"alert"}>
                   {errors.startDate.message}
                 </div>
               )}
               {errors.startTime && (
-                <div className={"text-sm text-red-500"} role={"alert"}>
+                <div className={"text-red-500 text-sm"} role={"alert"}>
                   {errors.startTime.message}
                 </div>
               )}
@@ -153,12 +153,12 @@ export default function DurationCalculatorPage() {
                 </Button>
               </InputGroup>
               {errors.endDate && (
-                <div className={"text-sm text-red-500"} role={"alert"}>
+                <div className={"text-red-500 text-sm"} role={"alert"}>
                   {errors.endDate.message}
                 </div>
               )}
               {errors.endTime && (
-                <div className={"text-sm text-red-500"} role={"alert"}>
+                <div className={"text-red-500 text-sm"} role={"alert"}>
                   {errors.endTime.message}
                 </div>
               )}
@@ -186,19 +186,38 @@ export default function DurationCalculatorPage() {
               </p>
               <div>
                 <label htmlFor={"duration"}>Duration</label>
-                <Input className={"block w-full"} value={result.duration} readOnly />
+                <Input
+                  className={"block w-full"}
+                  value={result.duration}
+                  readOnly
+                />
               </div>
               <div>
                 <label htmlFor={"hours"}>In hours</label>
-                <Input className={"block w-full"} id={"hours"} value={result.hours} readOnly />
+                <Input
+                  className={"block w-full"}
+                  id={"hours"}
+                  value={result.hours}
+                  readOnly
+                />
               </div>
               <div>
                 <label htmlFor={"minutes"}>In minutes</label>
-                <Input className={"block w-full"} id={"minutes"} value={result.minutes} readOnly />
+                <Input
+                  className={"block w-full"}
+                  id={"minutes"}
+                  value={result.minutes}
+                  readOnly
+                />
               </div>
               <div>
                 <label htmlFor={"seconds"}>In seconds</label>
-                <Input className={"block w-full"} id={"seconds"} value={result.seconds} readOnly />
+                <Input
+                  className={"block w-full"}
+                  id={"seconds"}
+                  value={result.seconds}
+                  readOnly
+                />
               </div>
             </output>
           </CardBody>

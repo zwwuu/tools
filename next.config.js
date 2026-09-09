@@ -1,18 +1,13 @@
+// import type { NextConfig } from "next";
+
 const withPWA = require("next-pwa")({
   dest: "public",
   disable: process.env.NODE_ENV !== "production",
 });
 
-/** @type {import('next').NextConfig} */
 const nextConfig = {
+  poweredByHeader: false,
   reactStrictMode: true,
-  experimental: {
-    appDir: true,
-  },
-  i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
-  },
   env: {
     NEXT_PUBLIC_APP_VERSION: process.env.npm_package_version,
   },

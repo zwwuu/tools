@@ -35,7 +35,8 @@ export enum Unit {
 
 export const convertFn = {
   [Unit.Celsius]: (kelvin: number) => Math.round(kelvin - 273.15),
-  [Unit.Fahrenheit]: (kelvin: number) => Math.round((kelvin - 273.15) * 1.8 + 32),
+  [Unit.Fahrenheit]: (kelvin: number) =>
+    Math.round((kelvin - 273.15) * 1.8 + 32),
   [Unit.Kelvin]: (kelvin: number) => kelvin,
 } as const;
 
@@ -64,8 +65,10 @@ export const useWeatherStore = create<State & Actions>()(
         (set) => ({
           city: undefined,
           unit: Unit.Celsius,
-          setUnit: (unit: Unit) => set({ unit }, false, { type: "setUnit", unit }),
-          setCity: (city: Location) => set({ city }, false, { type: "setCity", city }),
+          setUnit: (unit: Unit) =>
+            set({ unit }, false, { type: "setUnit", unit }),
+          setCity: (city: Location) =>
+            set({ city }, false, { type: "setCity", city }),
         }),
         { name: "weather" },
       ),

@@ -1,11 +1,21 @@
-import { Tool } from "~/types/Tool";
+import type { Tool } from "~/types/Tool";
 
 export const tools: Record<string, Tool> = {
   "px-converter": {
     title: "Pixels to REM Converter",
     slug: "px-converter",
     description: "Convert pixels to REMs and vice versa.",
-    keywords: ["px converter", "rem converter", "px", "pixel", "rem", "root em", "converter", "px to rem", "rem to px"],
+    keywords: [
+      "px converter",
+      "rem converter",
+      "px",
+      "pixel",
+      "rem",
+      "root em",
+      "converter",
+      "px to rem",
+      "rem to px",
+    ],
     isPublic: true,
   },
   "password-generator": {
@@ -26,15 +36,32 @@ export const tools: Record<string, Tool> = {
   "pomodoro-timer": {
     title: "Pomodoro Timer",
     slug: "pomodoro-timer",
-    description: "Work in intervals with breaks in between using the Pomodoro Technique.",
-    keywords: ["pomodoro timer", "pomodoro", "timer", "work", "break", "intervals", "clock"],
+    description:
+      "Work in intervals with breaks in between using the Pomodoro Technique.",
+    keywords: [
+      "pomodoro timer",
+      "pomodoro",
+      "timer",
+      "work",
+      "break",
+      "intervals",
+      "clock",
+    ],
     isPublic: true,
   },
   weather: {
     title: "Weather",
     slug: "weather",
     description: "Get the current weather and forecast.",
-    keywords: ["weather", "forecast", "temperature", "humidity", "wind", "pressure", "openweathermap"],
+    keywords: [
+      "weather",
+      "forecast",
+      "temperature",
+      "humidity",
+      "wind",
+      "pressure",
+      "openweathermap",
+    ],
     isPublic: true,
   },
   "ua-parser": {
@@ -66,21 +93,46 @@ export const tools: Record<string, Tool> = {
     title: "Traditional Chinese colors",
     slug: "chinese-colors",
     description: "The traditional colors of China.",
-    keywords: ["chinese colors", "chinese", "color", "traditional", "china", "palette", "RGB", "HEX", "CMYK"],
+    keywords: [
+      "chinese colors",
+      "chinese",
+      "color",
+      "traditional",
+      "china",
+      "palette",
+      "RGB",
+      "HEX",
+      "CMYK",
+    ],
     isPublic: true,
   },
   "css-colors": {
     title: "CSS Colors",
     slug: "css-colors",
     description: "List of CSS named colors.",
-    keywords: ["css colors", "named colors", "html colors", "color", "palette", "RGB", "HEX"],
+    keywords: [
+      "css colors",
+      "named colors",
+      "html colors",
+      "color",
+      "palette",
+      "RGB",
+      "HEX",
+    ],
     isPublic: true,
   },
   "random-number": {
     title: "Random Number Generator",
     slug: "random-number",
     description: "Generate a random number between two numbers.",
-    keywords: ["random number", "random", "number", "generator", "random number generator", "randomizer"],
+    keywords: [
+      "random number",
+      "random",
+      "number",
+      "generator",
+      "random number generator",
+      "randomizer",
+    ],
     isPublic: true,
   },
   "crontab-editor": {
@@ -111,7 +163,8 @@ export const tools: Record<string, Tool> = {
   "base-converter": {
     title: "Base Converter",
     slug: "base-converter",
-    description: "Convert between binary, octal, decimal, hexadecimal, and many more.",
+    description:
+      "Convert between binary, octal, decimal, hexadecimal, and many more.",
     keywords: [
       "base converter",
       "base",
@@ -131,21 +184,42 @@ export const tools: Record<string, Tool> = {
     title: "QR Code Generator",
     slug: "qr-generator",
     description: "Generate QR codes from text.",
-    keywords: ["qr generator", "qr", "generator", "qr code", "qr code generator"],
+    keywords: [
+      "qr generator",
+      "qr",
+      "generator",
+      "qr code",
+      "qr code generator",
+    ],
     isPublic: true,
   },
   "duration-calculator": {
     title: "Duration Calculator",
     slug: "duration-calculator",
     description: "Calculate the duration between two dates.",
-    keywords: ["duration calculator", "duration", "calculator", "date", "time", "interval"],
+    keywords: [
+      "duration calculator",
+      "duration",
+      "calculator",
+      "date",
+      "time",
+      "interval",
+    ],
     isPublic: true,
   },
   "base64-converter": {
     title: "Base64 Converter",
     slug: "base64-converter",
     description: "Encode or decode text or file to and from Base64.",
-    keywords: ["base64 converter", "text", "file", "base64", "converter", "encode", "decode"],
+    keywords: [
+      "base64 converter",
+      "text",
+      "file",
+      "base64",
+      "converter",
+      "encode",
+      "decode",
+    ],
     isPublic: true,
   },
   stopwatch: {
@@ -159,7 +233,15 @@ export const tools: Record<string, Tool> = {
     title: "Let Me Search That For You",
     slug: "lmstfy",
     description: "Generate a link to let me search that for you.",
-    keywords: ["search for you", "search", "query", "google", "bing", "yandex", "baidu"],
+    keywords: [
+      "search for you",
+      "search",
+      "query",
+      "google",
+      "bing",
+      "yandex",
+      "baidu",
+    ],
     isPublic: true,
   },
 };

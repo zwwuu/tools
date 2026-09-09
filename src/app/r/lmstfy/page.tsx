@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import { useSearchParams } from "next/navigation";
 import { IconPointer } from "@tabler/icons-react";
 import clsx from "clsx";
+import Image from "next/image";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 import { ENGINES } from "~/app/r/lmstfy/data";
 import Anchor from "~/components/Anchor";
@@ -19,7 +19,9 @@ export default function LmstfyPage() {
   const [step, setStep] = useState(0);
   const searchParams = useSearchParams();
   const [query, setQuery] = useState("");
-  const [engine, setEngine] = useState<(typeof ENGINES)[keyof typeof ENGINES]>(ENGINES.google);
+  const [engine, setEngine] = useState<(typeof ENGINES)[keyof typeof ENGINES]>(
+    ENGINES.google,
+  );
   const [redirect, setRedirect] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
@@ -29,7 +31,9 @@ export default function LmstfyPage() {
         await move(cursorRef.current, searchRef.current);
         searchRef.current.focus();
         for (const letter of query) {
-          await new Promise((resolve) => setTimeout(resolve, Math.random() * 200 + 100));
+          await new Promise((resolve) =>
+            setTimeout(resolve, Math.random() * 200 + 100),
+          );
           searchRef.current.value += letter;
           searchRef.current.scrollLeft = searchRef.current.scrollWidth;
         }
@@ -59,7 +63,11 @@ export default function LmstfyPage() {
       const params = Buffer.from(q, "base64").toString();
       const query = JSON.parse(params);
       setQuery(query.q);
-      setEngine(query.engine ? ENGINES[query.engine as keyof typeof ENGINES] || ENGINES.google : ENGINES.google);
+      setEngine(
+        query.engine
+          ? ENGINES[query.engine as keyof typeof ENGINES] || ENGINES.google
+          : ENGINES.google,
+      );
       setRedirect(query.redirect);
       setMessage(query.message);
     }
@@ -67,8 +75,14 @@ export default function LmstfyPage() {
 
   const move = (cursor: HTMLDivElement, target: HTMLElement) => {
     return new Promise((resolve) => {
-      const diffX = target.getBoundingClientRect().left + target.clientWidth / 2 - cursor.getBoundingClientRect().left;
-      const diffY = target.getBoundingClientRect().top + target.clientHeight / 2 - cursor.getBoundingClientRect().top;
+      const diffX =
+        target.getBoundingClientRect().left +
+        target.clientWidth / 2 -
+        cursor.getBoundingClientRect().left;
+      const diffY =
+        target.getBoundingClientRect().top +
+        target.clientHeight / 2 -
+        cursor.getBoundingClientRect().top;
 
       const steps = 60;
       const stepX = diffX / steps;
@@ -84,7 +98,8 @@ export default function LmstfyPage() {
         } else {
           step++;
           cursor.style.top = (parseFloat(cursor.style.top) || 0) + stepY + "px";
-          cursor.style.left = (parseFloat(cursor.style.left) || 0) + stepX + "px";
+          cursor.style.left =
+            (parseFloat(cursor.style.left) || 0) + stepX + "px";
         }
       }
     });
@@ -92,20 +107,39 @@ export default function LmstfyPage() {
 
   return (
     <div className={"container relative"}>
-      <div ref={cursorRef} className="absolute left-0 top-0">
+      <div ref={cursorRef} className="absolute top-0 left-0">
         <IconPointer aria-hidden />
       </div>
       <div className="space-y-4">
-        <Anchor href={engine.url} title={engine.name} prefetch={false} rel="noopener noreferrer" target="_blank">
-          <Image src={engine.logo.src} alt={engine.name} width={engine.logo.width} height={engine.logo.height} />
+        <Anchor
+          href={engine.url}
+          title={engine.name}
+          prefetch={false}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <Image
+            src={engine.logo.src}
+            alt={engine.name}
+            width={engine.logo.width}
+            height={engine.logo.height}
+          />
         </Anchor>
         <form
           onSubmit={(event) => {
             event.preventDefault();
           }}
         >
-          <input className={clsx("block w-full", engine.inputClassNames)} type="text" ref={searchRef} />
-          <button className={clsx("item-center inline-flex", engine.submitClassNames)} type="submit" ref={submitRef}>
+          <input
+            className={clsx("block w-full", engine.inputClassNames)}
+            type="text"
+            ref={searchRef}
+          />
+          <button
+            className={clsx("item-center inline-flex", engine.submitClassNames)}
+            type="submit"
+            ref={submitRef}
+          >
             {engine.submit}
           </button>
         </form>

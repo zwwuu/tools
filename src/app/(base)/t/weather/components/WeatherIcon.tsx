@@ -1,5 +1,5 @@
-import Image from "next/image";
 import clsx from "clsx";
+import Image from "next/image";
 
 type WeatherIconProps = {
   alt: string;
@@ -7,7 +7,12 @@ type WeatherIconProps = {
   className?: string;
   size?: number;
 };
-export default function WeatherIcon({ icon, alt, size = 32, className }: WeatherIconProps) {
+export default function WeatherIcon({
+  icon,
+  alt,
+  size = 32,
+  className,
+}: WeatherIconProps) {
   return (
     <Image
       alt={alt}

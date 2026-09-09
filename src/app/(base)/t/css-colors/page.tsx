@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import clsx from "clsx";
+import { useEffect, useState } from "react";
 import tinycolor from "tinycolor2";
 
 import ColorCopyButton from "~/app/(base)/t/components/ColorCopyButton";
@@ -14,16 +14,22 @@ import Heading from "~/components/Typography/Heading";
 export default function CSSColorsPage() {
   const [query, setQuery] = useState("");
   const [filteredColors, setFilteredColors] = useState(cssColors);
-  const [selectedColor, setSelectedColor] = useState<(typeof cssColors)[number] | null>(null);
+  const [selectedColor, setSelectedColor] = useState<
+    (typeof cssColors)[number] | null
+  >(null);
 
   useEffect(() => {
     if (window.location.hash.slice(1)) {
       const found = cssColors.find(
-        (color) => `${color.name}-${color.hex.replace("#", "")}` === window.location.hash.slice(1),
+        (color) =>
+          `${color.name}-${color.hex.replace("#", "")}` ===
+          window.location.hash.slice(1),
       );
       if (found) {
         setSelectedColor(found);
-        const elem = document.querySelector(`[data-id="${found.name}-${found.hex.replace("#", "")}"]`);
+        const elem = document.querySelector(
+          `[data-id="${found.name}-${found.hex.replace("#", "")}"]`,
+        );
         if (elem) {
           elem.scrollIntoView({ block: "center" });
         }
@@ -44,7 +50,9 @@ export default function CSSColorsPage() {
               value={query}
               onChange={(event) => {
                 setQuery(event.target.value);
-                const filtered = cssColors.filter((color) => color.name.includes(event.target.value.toLowerCase()));
+                const filtered = cssColors.filter((color) =>
+                  color.name.includes(event.target.value.toLowerCase()),
+                );
                 setFilteredColors(filtered);
               }}
             />
@@ -68,16 +76,29 @@ export default function CSSColorsPage() {
                     key={color.name}
                     style={{
                       backgroundColor: color.hex,
-                      boxShadow: selectedColor === color && `0 0 50px -12px ${selectedColor.hex}`,
+                      boxShadow:
+                        selectedColor === color &&
+                        `0 0 50px -12px ${selectedColor.hex}`,
                       zIndex: selectedColor === color && 1,
                     }}
                     onClick={() => {
                       setSelectedColor(color);
-                      history.replaceState("", document.title, `#${color.name}-${color.hex.replace("#", "")}`);
+                      history.replaceState(
+                        "",
+                        document.title,
+                        `#${color.name}-${color.hex.replace("#", "")}`,
+                      );
                     }}
                   >
                     <CardBody>
-                      <div className={clsx("break-words", tinycolor(color.hex).isDark() ? "text-white" : "text-black")}>
+                      <div
+                        className={clsx(
+                          "break-words",
+                          tinycolor(color.hex).isDark()
+                            ? "text-white"
+                            : "text-black",
+                        )}
+                      >
                         <Heading as={"h3"} className={"mb-2"}>
                           {color.name}
                         </Heading>
@@ -85,9 +106,14 @@ export default function CSSColorsPage() {
                       <ColorCopyButton color={color.hex} value={color.hex}>
                         <span>{color.hex}</span>
                       </ColorCopyButton>
-                      <ColorCopyButton color={color.hex} value={`rgb(${color.rgb.join(",")})`}>
+                      <ColorCopyButton
+                        color={color.hex}
+                        value={`rgb(${color.rgb.join(",")})`}
+                      >
                         <span className={"lg:hidden"}>rgb</span>
-                        <span className={"mr-1 hidden lg:inline-block"}>{`rgb(${color.rgb.join(",")})`}</span>
+                        <span
+                          className={"mr-1 hidden lg:inline-block"}
+                        >{`rgb(${color.rgb.join(",")})`}</span>
                       </ColorCopyButton>
                     </CardBody>
                   </Card>

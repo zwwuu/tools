@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
 import { IconDownload, IconPhoto } from "@tabler/icons-react";
 import { QRCodeCanvas } from "qrcode.react";
+import { useRef, useState } from "react";
 
 import Main from "~/app/(base)/t/components/Main";
 import Button from "~/components/Button";
@@ -152,8 +152,13 @@ export default function QrGeneratorPage() {
                     >
                       <div className={"flex flex-col items-center space-y-2"}>
                         <p>
-                          <IconPhoto className={"mr-2 inline-block"} size={"2em"} aria-hidden />
-                          Drag and drop an image here, or click to select an image.
+                          <IconPhoto
+                            className={"mr-2 inline-block"}
+                            size={"2em"}
+                            aria-hidden
+                          />
+                          Drag and drop an image here, or click to select an
+                          image.
                         </p>
                         {image && (
                           <figure>
@@ -162,7 +167,11 @@ export default function QrGeneratorPage() {
                               className={"mx-auto max-h-96 max-w-full"}
                               src={URL.createObjectURL(image)}
                             />
-                            <figcaption className={"break-all text-xs opacity-80"}>{image.name}</figcaption>
+                            <figcaption
+                              className={"break-all text-xs opacity-80"}
+                            >
+                              {image.name}
+                            </figcaption>
                           </figure>
                         )}
                       </div>
@@ -210,7 +219,10 @@ export default function QrGeneratorPage() {
                         Center Image
                       </label>
                     </div>
-                    <fieldset className={"border-sm px-4 pb-4"} disabled={centerImage}>
+                    <fieldset
+                      className={"border-sm px-4 pb-4"}
+                      disabled={centerImage}
+                    >
                       <legend>Position</legend>
                       <div className={"space-y-2"}>
                         <div>
@@ -267,7 +279,8 @@ export default function QrGeneratorPage() {
             <Button
               type={"button"}
               onClick={() => {
-                const canvas = canvasContainerRef.current?.querySelector("canvas");
+                const canvas =
+                  canvasContainerRef.current?.querySelector("canvas");
                 if (!canvas) {
                   return;
                 }
@@ -278,7 +291,8 @@ export default function QrGeneratorPage() {
                 link.remove();
               }}
             >
-              <IconDownload className={"mr-2"} size={"1em"} aria-hidden /> Download
+              <IconDownload className={"mr-2"} size={"1em"} aria-hidden />{" "}
+              Download
             </Button>
           </div>
 

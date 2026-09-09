@@ -16,14 +16,21 @@ export default function Footer() {
             </div>
             <p>
               All tools are free to use and{" "}
-              <Anchor href={`${process.env.NEXT_PUBLIC_APP_REPO}`} prefetch={false} isExternal>
+              <Anchor
+                href={`${process.env.NEXT_PUBLIC_APP_REPO}`}
+                prefetch={false}
+                isExternal
+              >
                 open source
               </Anchor>
               .
             </p>
             <p>
               {`© ${new Date().getFullYear()} `}
-              <Anchor href={`${process.env.NEXT_PUBLIC_APP_AUTHOR_URL}`} isExternal>
+              <Anchor
+                href={`${process.env.NEXT_PUBLIC_APP_AUTHOR_URL}`}
+                isExternal
+              >
                 {process.env.NEXT_PUBLIC_APP_AUTHOR}
               </Anchor>
             </p>

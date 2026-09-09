@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
 import clsx from "clsx";
+import type { ReactNode } from "react";
 
 import Heading from "~/components/Typography/Heading";
 
@@ -13,7 +13,13 @@ export function Hero({ children }: { children: ReactNode }) {
   );
 }
 
-export function HeroTitle({ children, className }: { children: ReactNode; className?: string }) {
+export function HeroTitle({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
     <Heading as={"h1"} className={clsx("mb-2", className)}>
       {children}

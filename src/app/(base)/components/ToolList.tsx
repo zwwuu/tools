@@ -1,9 +1,9 @@
 "use client";
 
-import { ChangeEvent, useEffect, useState } from "react";
 import { IconSearch, IconThumbUp } from "@tabler/icons-react";
 import clsx from "clsx";
 import { collection, getDocs } from "firebase/firestore";
+import { type ChangeEvent, useEffect, useState } from "react";
 
 import Anchor from "~/components/Anchor";
 import { Card, CardBody, CardHeader } from "~/components/Card";
@@ -11,7 +11,7 @@ import Input from "~/components/Form/Input";
 import Heading from "~/components/Typography/Heading";
 import { db } from "~/lib/firebase";
 import { useUser } from "~/providers/UserProvider";
-import { Tool } from "~/types/Tool";
+import type { Tool } from "~/types/Tool";
 
 export default function ToolList({ tools }: { tools: Tool[] }) {
   const [toolLikes, setToolLikes] = useState<{ [k: string]: number }>({});
@@ -40,7 +40,9 @@ export default function ToolList({ tools }: { tools: Tool[] }) {
     const filteredTools = tools.filter((tool) => {
       return (
         tool.title.toLowerCase().includes(event.target.value.toLowerCase()) ||
-        tool.keywords.some((keyword) => keyword.toLowerCase().includes(event.target.value.toLowerCase()))
+        tool.keywords.some((keyword) =>
+          keyword.toLowerCase().includes(event.target.value.toLowerCase()),
+        )
       );
     });
     setFilteredTools(filteredTools);
@@ -57,7 +59,13 @@ export default function ToolList({ tools }: { tools: Tool[] }) {
             <Input
               aria-label={"Search"}
               className={"block w-full text-base"}
-              leftElement={<IconSearch className={"text-base-content"} size={"2rem"} aria-hidden />}
+              leftElement={
+                <IconSearch
+                  className={"text-base-content"}
+                  size={"2rem"}
+                  aria-hidden
+                />
+              }
               placeholder={"Search"}
               type={"search"}
               value={search}
@@ -65,7 +73,12 @@ export default function ToolList({ tools }: { tools: Tool[] }) {
             />
           </form>
           <div className={"absolute inset-x-0 top-full"}>
-            <div className={clsx("ml-8 w-2 bg-black transition-size", search.length ? "h-9" : "h-0")} />
+            <div
+              className={clsx(
+                "ml-8 w-2 bg-black transition-size",
+                search.length ? "h-9" : "h-0",
+              )}
+            />
           </div>
         </CardBody>
       </Card>
@@ -84,7 +97,9 @@ export default function ToolList({ tools }: { tools: Tool[] }) {
             return (
               <li className={"m-4 flex-1 basis-64"} key={tool.slug}>
                 <Anchor
-                  className={"group block h-full transition hover:-translate-y-1 focus:-translate-y-1"}
+                  className={
+                    "group block h-full transition hover:-translate-y-1 focus:-translate-y-1"
+                  }
                   href={`/t/${tool.slug}`}
                   variant={null}
                   onClick={() => {
@@ -105,9 +120,16 @@ export default function ToolList({ tools }: { tools: Tool[] }) {
                           "flex items-center justify-end text-xs transition group-hover:text-red-500 group-focus:text-red-500"
                         }
                       >
-                        <IconThumbUp className={clsx("mr-1", isLiked(tool.slug) && "text-red-500")} />
+                        <IconThumbUp
+                          className={clsx(
+                            "mr-1",
+                            isLiked(tool.slug) && "text-red-500",
+                          )}
+                        />
                         <span className={"font-bold"}>
-                          {Intl.NumberFormat("en", { notation: "compact" }).format(
+                          {Intl.NumberFormat("en", {
+                            notation: "compact",
+                          }).format(
                             toolLikes[tool.slug] || likedTools[tool.slug] || 0,
                           )}
                         </span>

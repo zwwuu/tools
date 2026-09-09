@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { type FormEvent, useState } from "react";
 import UAParser from "ua-parser-js";
 
 import Main from "~/app/(base)/t/components/Main";
@@ -45,7 +45,12 @@ export default function UAParserPage() {
                 <Button className={"m-4"} type={"submit"}>
                   Parse
                 </Button>
-                <Button className={"m-4"} type={"button"} variant={"warning"} onClick={reset}>
+                <Button
+                  className={"m-4"}
+                  type={"button"}
+                  variant={"warning"}
+                  onClick={reset}
+                >
                   Current UA
                 </Button>
               </div>
@@ -75,8 +80,12 @@ export default function UAParserPage() {
                   }).map((entry) => {
                     return (
                       <tr key={entry[0]}>
-                        <TableCell className={"font-bold"}>{entry[0]}</TableCell>
-                        <TableCell>{Object.values(entry[1]).join(" ")}</TableCell>
+                        <TableCell className={"font-bold"}>
+                          {entry[0]}
+                        </TableCell>
+                        <TableCell>
+                          {Object.values(entry[1]).join(" ")}
+                        </TableCell>
                       </tr>
                     );
                   })}

@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { IconThumbUp } from "@tabler/icons-react";
 import clsx from "clsx";
 import { doc, getDoc } from "firebase/firestore";
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 import Button from "~/components/Button";
 import useDebounce from "~/hooks/useDebounce";
@@ -72,7 +72,9 @@ export default function LikeButton({ slug }: { slug: string }) {
     <MotionButton
       animate={"initial"}
       border={null}
-      className={"group flex items-center font-bold leading-none transition hover:text-red-500 focus:text-red-500"}
+      className={
+        "group flex items-center font-bold leading-none transition hover:text-red-500 focus:text-red-500"
+      }
       elevation={null}
       initial={"initial"}
       title={"Like this tool"}
@@ -96,13 +98,21 @@ export default function LikeButton({ slug }: { slug: string }) {
         variants={likeAnimation}
         aria-hidden
       />
-      <span className={"relative transition group-hover:text-red-500 group-focus:text-red-500"}>
+      <span
+        className={
+          "relative transition group-hover:text-red-500 group-focus:text-red-500"
+        }
+      >
         {Intl.NumberFormat("en", { notation: "compact" }).format(totalLikes)}
         <motion.span
-          className={"pointer-events-none absolute left-full top-0 block text-xs text-red-500"}
+          className={
+            "pointer-events-none absolute top-0 left-full block text-red-500 text-xs"
+          }
           variants={floatingTextAnimation}
         >
-          {likes.current < MAX_LIKES && getLikes(slug) < MAX_LIKES ? `+${likes.current}` : "MAX"}
+          {likes.current < MAX_LIKES && getLikes(slug) < MAX_LIKES
+            ? `+${likes.current}`
+            : "MAX"}
         </motion.span>
       </span>
     </MotionButton>

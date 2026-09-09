@@ -1,6 +1,12 @@
-import { ComponentPropsWithRef, forwardRef, useCallback, useEffect, useRef } from "react";
-import { cva, VariantProps } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 import clsx from "clsx";
+import {
+  type ComponentPropsWithRef,
+  forwardRef,
+  useCallback,
+  useEffect,
+  useRef,
+} from "react";
 
 import CopyButton from "~/components/CopyButton";
 import Loader from "~/components/Loader";
@@ -26,14 +32,27 @@ type TextareaProps = {
   VariantProps<typeof textarea>;
 
 const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ autoSize = true, withCopy = false, loading = false, value, className, border, ...props }, ref) => {
+  (
+    {
+      autoSize = true,
+      withCopy = false,
+      loading = false,
+      value,
+      className,
+      border,
+      ...props
+    },
+    ref,
+  ) => {
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
     const adjustHeight = useCallback(() => {
       if (textareaRef.current && autoSize) {
         textareaRef.current.style.height = "auto";
         textareaRef.current.style.height = `${
-          textareaRef.current.scrollHeight + textareaRef.current.offsetHeight - textareaRef.current.clientHeight
+          textareaRef.current.scrollHeight +
+          textareaRef.current.offsetHeight -
+          textareaRef.current.clientHeight
         }px`;
       }
     }, [textareaRef, autoSize]);
@@ -59,7 +78,11 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           </div>
         )}
         <textarea
-          className={clsx(textarea({ border, className }), withCopy && "peer", loading && "opacity-50")}
+          className={clsx(
+            textarea({ border, className }),
+            withCopy && "peer",
+            loading && "opacity-50",
+          )}
           ref={(node) => {
             textareaRef.current = node;
             if (typeof ref === "function") {
@@ -74,7 +97,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         {!loading && withCopy && (
           <CopyButton
             className={
-              "absolute right-2 top-2 opacity-10 hover:opacity-100 focus:opacity-100 peer-hover:opacity-100 peer-focus:opacity-100"
+              "absolute top-2 right-2 opacity-10 hover:opacity-100 focus:opacity-100 peer-hover:opacity-100 peer-focus:opacity-100"
             }
             elevation={null}
             value={value}

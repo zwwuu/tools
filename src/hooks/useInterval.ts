@@ -1,6 +1,10 @@
 import { useEffect, useRef } from "react";
 
-export default function useInterval(onTick: Function, paused: boolean, interval: number = 1000) {
+export default function useInterval(
+  onTick: Function,
+  paused: boolean,
+  interval: number = 1000,
+) {
   const savedCallback = useRef<Function>(() => {});
 
   useEffect(() => {

@@ -147,7 +147,10 @@ export const usePomodoroTimerStore = create<State & Actions>()(
       name: "pomodoro-timer",
       version: 0,
       storage: createJSONStorage(() => localStorage),
-      partialize: (state) => ({ durations: state.durations, isMuted: state.isMuted }),
+      partialize: (state) => ({
+        durations: state.durations,
+        isMuted: state.isMuted,
+      }),
     },
   ),
 );
