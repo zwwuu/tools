@@ -1,6 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-
 import { API_KEY, API_URL } from "~/app/api/weather/data";
 
 const getSchema = z.object({

@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-
 import { BASES } from "~/app/(base)/t/base-converter/data";
 import Main from "~/app/(base)/t/components/Main";
 import { Card, CardBody } from "~/components/Card";
@@ -26,10 +25,10 @@ export default function BaseConverterPage() {
               <Input
                 className={"block w-full"}
                 id={"value"}
-                value={input}
                 onChange={(event) => {
                   setInput(event.target.value);
                 }}
+                value={input}
               />
               <label className={"sr-only"} htmlFor={"base"}>
                 Base
@@ -37,13 +36,13 @@ export default function BaseConverterPage() {
               <Select
                 data={BASES}
                 id={"base"}
-                value={selectedBase}
                 onChange={(event) => {
                   const parsedBase = parseInt(event.target.value, 10);
                   if (!isNaN(parsedBase)) {
                     setSelectedBase(parsedBase);
                   }
                 }}
+                value={selectedBase}
               />
             </InputGroup>
           </form>
@@ -62,8 +61,8 @@ export default function BaseConverterPage() {
                   {base.label}
                   <Input
                     className={"block w-full"}
-                    value={value.toString(base.value)}
                     readOnly
+                    value={value.toString(base.value)}
                   />
                 </label>
               </div>

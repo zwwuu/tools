@@ -1,5 +1,4 @@
 import { IconCoffee } from "@tabler/icons-react";
-
 import Anchor from "~/components/Anchor";
 
 const DonationButton = () => {
@@ -12,7 +11,7 @@ const DonationButton = () => {
       title={"Buy me a coffee"}
       variant={"button"}
     >
-      <IconCoffee size={"1em"} aria-hidden />
+      <IconCoffee aria-hidden size={"1em"} />
     </Anchor>
   );
 };

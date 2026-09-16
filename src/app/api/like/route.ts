@@ -1,7 +1,6 @@
 import { FieldValue } from "firebase-admin/firestore";
 import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-
 import { getToolBySlug } from "~/lib/api";
 import { MAX_LIKES } from "~/lib/constants";
 import { dbAdmin } from "~/lib/firebase-admin";

@@ -1,7 +1,6 @@
 "use client";
 
 import type { ReactNode } from "react";
-
 import Loader from "~/components/Loader";
 import PersistentGate from "~/components/PersistentGate";
 import { ConfigProvider } from "~/providers/ConfigProvider";

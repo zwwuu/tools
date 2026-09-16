@@ -5,7 +5,6 @@ import clsx from "clsx";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-
 import { ENGINES } from "~/app/r/lmstfy/data";
 import Anchor from "~/components/Anchor";
 import Heading from "~/components/Typography/Heading";
@@ -107,22 +106,22 @@ export default function LmstfyPage() {
 
   return (
     <div className={"container relative"}>
-      <div ref={cursorRef} className="absolute top-0 left-0">
+      <div className="absolute top-0 left-0" ref={cursorRef}>
         <IconPointer aria-hidden />
       </div>
       <div className="space-y-4">
         <Anchor
           href={engine.url}
-          title={engine.name}
           prefetch={false}
           rel="noopener noreferrer"
           target="_blank"
+          title={engine.name}
         >
           <Image
-            src={engine.logo.src}
             alt={engine.name}
-            width={engine.logo.width}
             height={engine.logo.height}
+            src={engine.logo.src}
+            width={engine.logo.width}
           />
         </Anchor>
         <form
@@ -132,13 +131,13 @@ export default function LmstfyPage() {
         >
           <input
             className={clsx("block w-full", engine.inputClassNames)}
-            type="text"
             ref={searchRef}
+            type="text"
           />
           <button
             className={clsx("item-center inline-flex", engine.submitClassNames)}
-            type="submit"
             ref={submitRef}
+            type="submit"
           >
             {engine.submit}
           </button>

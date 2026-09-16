@@ -3,7 +3,6 @@
 import { IconPlayerPause, IconPlayerPlay } from "@tabler/icons-react";
 import clsx from "clsx";
 import { useEffect, useMemo, useState } from "react";
-
 import Main from "~/app/(base)/t/components/Main";
 import Button from "~/components/Button";
 import { Card, CardBody } from "~/components/Card";
@@ -110,15 +109,15 @@ export default function StopwatchPage() {
               {isRunning ? (
                 <>
                   <IconPlayerPause
+                    aria-hidden
                     className={"mr-1"}
                     size={"1em"}
-                    aria-hidden
                   />
                   Stop
                 </>
               ) : (
                 <>
-                  <IconPlayerPlay className={"mr-1"} size={"1em"} aria-hidden />
+                  <IconPlayerPlay aria-hidden className={"mr-1"} size={"1em"} />
                   Start
                 </>
               )}

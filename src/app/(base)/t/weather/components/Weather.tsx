@@ -5,7 +5,6 @@ import { Noto_Color_Emoji } from "next/font/google";
 import { useState } from "react";
 import ReactCountryFlag from "react-country-flag";
 import { useQuery } from "react-query";
-
 import CurrentWeather from "~/app/(base)/t/weather/components/CurrentWeather";
 import ForecastWeather from "~/app/(base)/t/weather/components/ForecastWeather";
 import {
@@ -164,10 +163,6 @@ export default function Weather() {
               <Button
                 border={null}
                 elevation={null}
-                size={"lg"}
-                title={"Locate me"}
-                type={"button"}
-                variant={"icon"}
                 onClick={() => {
                   navigator.geolocation.getCurrentPosition(async (position) => {
                     setSearchQuery(
@@ -175,19 +170,23 @@ export default function Weather() {
                     );
                   });
                 }}
+                size={"lg"}
+                title={"Locate me"}
+                type={"button"}
+                variant={"icon"}
               >
-                <IconCurrentLocation size={"1em"} aria-hidden />
+                <IconCurrentLocation aria-hidden size={"1em"} />
               </Button>
               <Input
                 aria-invalid={geocodingError === undefined ? undefined : true}
                 aria-label={"Search by city or coordinates"}
                 className={"block w-full"}
                 min={2}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={`${randomCity.city}, ${randomCity.code} or ${randomCity.lat}, ${randomCity.lon}`}
+                required
                 type={"search"}
                 value={searchQuery}
-                required
-                onChange={(e) => setSearchQuery(e.target.value)}
               />
               <Button border={null} elevation={null} type={"submit"}>
                 Search
@@ -209,12 +208,12 @@ export default function Weather() {
           >
             {POPULAR_LOCATIONS.map((location) => (
               <RadioGroupItem
+                asChild
                 className={
                   'm-2 h-full text-sm data-[state="checked"]:shadow-none'
                 }
                 key={location.city}
                 value={location.city}
-                asChild
               >
                 <Button>
                   <ReactCountryFlag

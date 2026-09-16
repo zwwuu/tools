@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-
 import Anchor from "~/components/Anchor";
 import { Badge } from "~/components/Badge";
 import { Card, CardBody } from "~/components/Card";

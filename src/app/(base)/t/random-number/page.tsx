@@ -4,7 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
 import Main from "~/app/(base)/t/components/Main";
 import Button from "~/components/Button";
 import { Card, CardBody } from "~/components/Card";
@@ -120,8 +119,8 @@ export default function RandomNumberPage() {
                 aria-invalid={errors.max ? "true" : "false"}
                 className={"block w-full"}
                 id={"max"}
-                type={"number"}
                 required
+                type={"number"}
                 {...register("max", { valueAsNumber: true })}
               />
               {errors.max && (
@@ -138,8 +137,8 @@ export default function RandomNumberPage() {
                 className={"block w-full"}
                 id={"quantity"}
                 min={1}
-                type={"number"}
                 required
+                type={"number"}
                 {...register("quantity", { valueAsNumber: true })}
               />
               {errors.quantity && (
@@ -183,8 +182,8 @@ export default function RandomNumberPage() {
               <Textarea
                 className={"block w-full resize-none break-all text-lg"}
                 loading={isGenerating}
-                value={result.join(getValues("separator"))}
                 readOnly
+                value={result.join(getValues("separator"))}
                 withCopy
               />
             </output>

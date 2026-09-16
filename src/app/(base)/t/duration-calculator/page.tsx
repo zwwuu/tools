@@ -6,7 +6,6 @@ import prettyMilliseconds from "pretty-ms";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
 import Main from "~/app/(base)/t/components/Main";
 import Button from "~/components/Button";
 import { Card, CardBody } from "~/components/Card";
@@ -77,23 +76,22 @@ export default function DurationCalculatorPage() {
                   aria-invalid={errors.startDate ? "true" : "false"}
                   aria-label={"Start date"}
                   className={"block w-full"}
-                  type={"date"}
                   required
+                  type={"date"}
                   {...register("startDate", { required: true })}
                 />
                 <Input
                   aria-invalid={errors.startTime ? "true" : "false"}
                   aria-label={"Start time"}
                   className={"block w-full"}
+                  required
                   step={"1"}
                   type={"time"}
-                  required
                   {...register("startTime", { required: true })}
                 />
                 <Button
                   border={null}
                   elevation={null}
-                  type={"button"}
                   onClick={() => {
                     const now = new Date(Date.now());
                     const date = now.toISOString().split("T")[0];
@@ -101,6 +99,7 @@ export default function DurationCalculatorPage() {
                     setValue("startDate", date);
                     setValue("startTime", time);
                   }}
+                  type={"button"}
                 >
                   Now
                 </Button>
@@ -123,24 +122,23 @@ export default function DurationCalculatorPage() {
                   aria-invalid={errors.endDate ? "true" : "false"}
                   aria-label={"End date"}
                   className={"block w-full"}
-                  type={"date"}
                   required
+                  type={"date"}
                   {...register("endDate", { required: true })}
                 />
                 <Input
                   aria-invalid={errors.endTime ? "true" : "false"}
                   aria-label={"End time"}
                   className={"block w-full"}
+                  required
                   step={"1"}
                   type={"time"}
-                  required
                   {...register("endTime", { required: true })}
                 />
 
                 <Button
                   border={null}
                   elevation={null}
-                  type={"button"}
                   onClick={() => {
                     const now = new Date(Date.now());
                     const date = now.toISOString().split("T")[0];
@@ -148,6 +146,7 @@ export default function DurationCalculatorPage() {
                     setValue("endDate", date);
                     setValue("endTime", time);
                   }}
+                  type={"button"}
                 >
                   Now
                 </Button>
@@ -188,8 +187,8 @@ export default function DurationCalculatorPage() {
                 <label htmlFor={"duration"}>Duration</label>
                 <Input
                   className={"block w-full"}
-                  value={result.duration}
                   readOnly
+                  value={result.duration}
                 />
               </div>
               <div>
@@ -197,8 +196,8 @@ export default function DurationCalculatorPage() {
                 <Input
                   className={"block w-full"}
                   id={"hours"}
-                  value={result.hours}
                   readOnly
+                  value={result.hours}
                 />
               </div>
               <div>
@@ -206,8 +205,8 @@ export default function DurationCalculatorPage() {
                 <Input
                   className={"block w-full"}
                   id={"minutes"}
-                  value={result.minutes}
                   readOnly
+                  value={result.minutes}
                 />
               </div>
               <div>
@@ -215,8 +214,8 @@ export default function DurationCalculatorPage() {
                 <Input
                   className={"block w-full"}
                   id={"seconds"}
-                  value={result.seconds}
                   readOnly
+                  value={result.seconds}
                 />
               </div>
             </output>

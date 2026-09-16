@@ -1,7 +1,6 @@
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import clsx from "clsx";
 import { type ComponentProps, forwardRef, type ReactNode } from "react";
-
 import Button, { type ButtonProps } from "~/components/Button";
 import { Card, CardBody } from "~/components/Card";
 
@@ -19,8 +18,8 @@ export const PopoverTrigger = forwardRef<
   <PopoverPrimitive.Trigger
     className={className}
     {...props}
-    ref={forwardedRef}
     asChild
+    ref={forwardedRef}
   >
     <Button>{children}</Button>
   </PopoverPrimitive.Trigger>

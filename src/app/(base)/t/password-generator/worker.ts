@@ -1,5 +1,4 @@
 import zxcvbn from "zxcvbn";
-
 import {
   CHARACTERS,
   type Options,

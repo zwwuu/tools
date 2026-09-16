@@ -1,5 +1,4 @@
 import { IconCheck, IconCopy } from "@tabler/icons-react";
-
 import Button, { type ButtonProps } from "~/components/Button";
 import useClipboard from "~/hooks/useClipboard";
 
@@ -23,9 +22,9 @@ const CopyButton = ({ value, onCopy, children, ...props }: CopyButtonProps) => {
     >
       {children}
       {copied ? (
-        <IconCheck size={"1em"} aria-hidden />
+        <IconCheck aria-hidden size={"1em"} />
       ) : (
-        <IconCopy size={"1em"} aria-hidden />
+        <IconCopy aria-hidden size={"1em"} />
       )}
     </Button>
   );

@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import type { UseBoundStore } from "zustand";
-
 import useHydration from "~/hooks/useHydration";
 
 type PersistentGateProps = {

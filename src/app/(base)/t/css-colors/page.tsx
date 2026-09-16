@@ -3,7 +3,6 @@
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import tinycolor from "tinycolor2";
-
 import ColorCopyButton from "~/app/(base)/t/components/ColorCopyButton";
 import Main from "~/app/(base)/t/components/Main";
 import { cssColors } from "~/app/(base)/t/css-colors/data";
@@ -46,8 +45,6 @@ export default function CSSColorsPage() {
             <Input
               className={"block w-full"}
               id={"query"}
-              type={"search"}
-              value={query}
               onChange={(event) => {
                 setQuery(event.target.value);
                 const filtered = cssColors.filter((color) =>
@@ -55,6 +52,8 @@ export default function CSSColorsPage() {
                 );
                 setFilteredColors(filtered);
               }}
+              type={"search"}
+              value={query}
             />
           </form>
         </CardBody>
@@ -74,13 +73,6 @@ export default function CSSColorsPage() {
                     data-id={`${color.name}-${color.hex.replace("#", "")}`}
                     elevation={null}
                     key={color.name}
-                    style={{
-                      backgroundColor: color.hex,
-                      boxShadow:
-                        selectedColor === color &&
-                        `0 0 50px -12px ${selectedColor.hex}`,
-                      zIndex: selectedColor === color && 1,
-                    }}
                     onClick={() => {
                       setSelectedColor(color);
                       history.replaceState(
@@ -88,6 +80,13 @@ export default function CSSColorsPage() {
                         document.title,
                         `#${color.name}-${color.hex.replace("#", "")}`,
                       );
+                    }}
+                    style={{
+                      backgroundColor: color.hex,
+                      boxShadow:
+                        selectedColor === color &&
+                        `0 0 50px -12px ${selectedColor.hex}`,
+                      zIndex: selectedColor === color && 1,
                     }}
                   >
                     <CardBody>

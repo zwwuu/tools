@@ -1,7 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import clsx from "clsx";
 import { type ComponentPropsWithRef, forwardRef } from "react";
-
 import { Card, CardBody } from "~/components/Card";
 
 type TimelineProps = ComponentPropsWithRef<"ul">;

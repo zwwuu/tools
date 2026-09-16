@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import type { ReactNode } from "react";
-
 import Heading from "~/components/Typography/Heading";
 
 export function Hero({ children }: { children: ReactNode }) {

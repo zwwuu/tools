@@ -2,7 +2,6 @@
 
 import { IconQuestionMark, IconSwitchHorizontal } from "@tabler/icons-react";
 import clsx from "clsx";
-
 import Main from "~/app/(base)/t/components/Main";
 import {
   MIN_VALUE,
@@ -63,8 +62,6 @@ export default function PxConvertorPage() {
                 <Input
                   className={"max-w-[12rem] text-center text-sm"}
                   min={MIN_VALUE}
-                  type={"number"}
-                  value={base}
                   onChange={(event) => {
                     setBase(event.target.value);
                     const baseAsNum = parseFloat(event.target.value);
@@ -79,6 +76,8 @@ export default function PxConvertorPage() {
                       );
                     }
                   }}
+                  type={"number"}
+                  value={base}
                 />
                 {" pixels."}
               </label>
@@ -110,8 +109,6 @@ export default function PxConvertorPage() {
                 className={"block w-full text-center"}
                 id={"left"}
                 min={MIN_VALUE}
-                type={"number"}
-                value={left}
                 onChange={(event) => {
                   setLeft(event.target.value);
                   const leftAsNum = parseFloat(event.target.value);
@@ -126,13 +123,12 @@ export default function PxConvertorPage() {
                     );
                   }
                 }}
+                type={"number"}
+                value={left}
               />
             </div>
             <div className={"my-4 sm:mx-4 sm:my-0"}>
               <Button
-                size={"lg"}
-                title={"Swap"}
-                variant={"icon"}
                 onClick={() => {
                   const leftAsNum = parseFloat(left);
                   const baseAsNum = parseFloat(base);
@@ -147,15 +143,18 @@ export default function PxConvertorPage() {
                   }
                   toggleDirection();
                 }}
+                size={"lg"}
+                title={"Swap"}
+                variant={"icon"}
               >
                 <IconSwitchHorizontal
+                  aria-hidden
                   className={clsx(
                     "transition",
                     isPxToRem
                       ? "rotate-90 sm:rotate-0"
                       : "-rotate-90 sm:rotate-180",
                   )}
-                  aria-hidden
                 />
               </Button>
             </div>
@@ -167,8 +166,6 @@ export default function PxConvertorPage() {
                 className={"block w-full text-center"}
                 id={"right"}
                 min={MIN_VALUE}
-                type={"number"}
-                value={right}
                 onChange={(event) => {
                   setRight(event.target.value);
                   const rightAsNum = parseFloat(event.target.value);
@@ -183,6 +180,8 @@ export default function PxConvertorPage() {
                     );
                   }
                 }}
+                type={"number"}
+                value={right}
               />
             </div>
           </div>

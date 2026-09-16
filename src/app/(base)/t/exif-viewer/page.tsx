@@ -4,7 +4,6 @@ import { IconFileUpload } from "@tabler/icons-react";
 import clsx from "clsx";
 import ExifReader from "exifreader";
 import { useEffect, useState } from "react";
-
 import Main from "~/app/(base)/t/components/Main";
 import { Card, CardBody } from "~/components/Card";
 import FileUpload from "~/components/FileUpload";
@@ -71,9 +70,9 @@ export default function ExifViewerPage() {
               )}
               <p className={clsx(image && "text-xs opacity-60")}>
                 <IconFileUpload
+                  aria-hidden
                   className={"mr-2 inline-block"}
                   size={"2em"}
-                  aria-hidden
                 />
                 Drag and drop a file here, or click to select an file.
               </p>

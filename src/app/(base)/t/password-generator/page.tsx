@@ -9,7 +9,6 @@ import {
   useRef,
   useState,
 } from "react";
-
 import Main from "~/app/(base)/t/components/Main";
 import {
   MAX_LENGTH,
@@ -96,8 +95,8 @@ export default function PasswordGeneratorPage() {
               className={"block w-full resize-none break-all font-mono text-lg"}
               id={"password"}
               loading={isGenerating}
-              value={password.value}
               readOnly
+              value={password.value}
               withCopy
             />
 
@@ -126,15 +125,15 @@ export default function PasswordGeneratorPage() {
                     size={"sm"}
                     variant={"icon"}
                   >
-                    <IconQuestionMark size={"1em"} aria-hidden />
+                    <IconQuestionMark aria-hidden size={"1em"} />
                   </PopoverTrigger>
                   <PopoverContent className={"max-w-sm text-sm"}>
                     <p>
                       Uses{" "}
                       <Anchor
                         href={"https://github.com/dropbox/zxcvbn#readme"}
-                        prefetch={false}
                         isExternal
+                        prefetch={false}
                       >
                         zxcvbn
                       </Anchor>{" "}
@@ -157,18 +156,18 @@ export default function PasswordGeneratorPage() {
                   className={"block w-full text-center"}
                   max={MAX_LENGTH}
                   min={MIN_LENGTH}
+                  onChange={handleLengthChange}
                   step={1}
                   type={"number"}
                   value={uncommittedLength}
-                  onChange={handleLengthChange}
                 />
                 <Slider
                   max={MAX_LENGTH}
                   min={MIN_LENGTH}
-                  step={1}
-                  value={[uncommittedLength]}
                   onValueChange={([value]) => setUncommittedLength(value)}
                   onValueCommit={([value]) => setLength(value)}
+                  step={1}
+                  value={[uncommittedLength]}
                 />
               </div>
             </fieldset>

@@ -4,7 +4,6 @@ import { IconSearch, IconThumbUp } from "@tabler/icons-react";
 import clsx from "clsx";
 import { collection, getDocs } from "firebase/firestore";
 import { type ChangeEvent, useEffect, useState } from "react";
-
 import Anchor from "~/components/Anchor";
 import { Card, CardBody, CardHeader } from "~/components/Card";
 import Input from "~/components/Form/Input";
@@ -61,15 +60,15 @@ export default function ToolList({ tools }: { tools: Tool[] }) {
               className={"block w-full text-base"}
               leftElement={
                 <IconSearch
+                  aria-hidden
                   className={"text-base-content"}
                   size={"2rem"}
-                  aria-hidden
                 />
               }
+              onChange={handleSearch}
               placeholder={"Search"}
               type={"search"}
               value={search}
-              onChange={handleSearch}
             />
           </form>
           <div className={"absolute inset-x-0 top-full"}>
@@ -101,13 +100,13 @@ export default function ToolList({ tools }: { tools: Tool[] }) {
                     "group block h-full transition hover:-translate-y-1 focus:-translate-y-1"
                   }
                   href={`/t/${tool.slug}`}
-                  variant={null}
                   onClick={() => {
                     window.gtag("event", "select_content", {
                       content_type: "tool",
                       item_id: tool.slug,
                     });
                   }}
+                  variant={null}
                 >
                   <Card className={"h-full"}>
                     <CardHeader className={"border-b"}>

@@ -40,7 +40,7 @@ const RadioGroupIndicator = forwardRef<
       {...props}
       ref={ref}
     >
-      <IconCircle className={"h-2.5 w-2.5 text-current"} aria-hidden />
+      <IconCircle aria-hidden className={"h-2.5 w-2.5 text-current"} />
     </RadioGroupPrimitive.Indicator>
   );
 });

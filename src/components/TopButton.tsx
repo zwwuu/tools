@@ -5,7 +5,6 @@ import clsx from "clsx";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-
 import Button from "~/components/Button";
 import useSound from "~/hooks/useSound";
 import { useConfig } from "~/providers/ConfigProvider";
@@ -34,17 +33,17 @@ export default function TopButton() {
       className={clsx(
         isShow ? "visible animate-fadeInUp animate-faster" : "invisible",
       )}
-      title={"Scroll to top"}
-      variant={"icon"}
-      whileTap={{ y: -16 }}
       onClick={() => {
         if (sound) {
           void play();
         }
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
       }}
+      title={"Scroll to top"}
+      variant={"icon"}
+      whileTap={{ y: -16 }}
     >
-      <IconArrowUp size={"1em"} aria-hidden />
+      <IconArrowUp aria-hidden size={"1em"} />
     </MotionButton>
   );
 }

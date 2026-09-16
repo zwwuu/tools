@@ -6,7 +6,6 @@ import {
   type ReactNode,
   useEffect,
 } from "react";
-
 import LikeButton from "~/app/(base)/t/components/LikeButton";
 import ShareButton from "~/app/(base)/t/components/ShareButton";
 import { Hero, HeroTitle } from "~/components/Hero";

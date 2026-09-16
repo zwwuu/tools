@@ -43,11 +43,32 @@
   "assist": {
     "actions": {
       "source": {
-        "organizeImports": "on"
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "sortBareImports": true,
+            "groups": [
+              {
+                "kind": "!bare"
+              },
+              ":BLANK_LINE:",
+              {
+                "kind": "bare"
+              },
+              [":STYLE:"]
+            ]
+          }
+        },
+        "useSortedAttributes": "on",
+        "useSortedPackageJson": "on",
+        "useSortedProperties": "on"
       }
     }
   },
   "css": {
+    "parser": {
+      "tailwindDirectives": true
+    },
     "assist": {
       "enabled": true
     },

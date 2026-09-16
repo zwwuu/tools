@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { type ReactNode, useState } from "react";
 import tinycolor from "tinycolor2";
-
 import CopyButton from "~/components/CopyButton";
 
 type ColorCopyButtonProps = {
@@ -28,13 +27,13 @@ export default function ColorCopyButton({
         isDark ? "text-white" : "text-black",
       )}
       elevation={null}
-      style={{ backgroundColor: hovered ? hoverColor : undefined }}
-      value={value}
-      variant={null}
       onBlur={() => setHovered(false)}
       onFocus={() => setHovered(true)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      style={{ backgroundColor: hovered ? hoverColor : undefined }}
+      value={value}
+      variant={null}
     >
       {children}
     </CopyButton>

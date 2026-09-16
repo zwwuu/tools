@@ -8,7 +8,6 @@ import {
 } from "@tabler/icons-react";
 import clsx from "clsx";
 import { useEffect, useMemo } from "react";
-
 import Main from "~/app/(base)/t/components/Main";
 import {
   INTERVAL_STYLES,
@@ -179,19 +178,19 @@ export default function PomodoroTimerPage() {
               <div className={"text-xs opacity-90"}>{`#${round}`}</div>
               <Button
                 className={"sm:hidden"}
+                onClick={handleAlarmToggle}
                 title={`click to ${isMuted ? "unmute" : "mute"}`}
                 variant={"icon"}
-                onClick={handleAlarmToggle}
               >
                 {isMuted ? (
-                  <IconBellOff size={"1em"} aria-hidden />
+                  <IconBellOff aria-hidden size={"1em"} />
                 ) : (
                   <IconBell
+                    aria-hidden
                     className={clsx({
                       "animate-infinite animate-tada": isPlaying,
                     })}
                     size={"1em"}
-                    aria-hidden
                   />
                 )}
               </Button>
@@ -252,26 +251,26 @@ export default function PomodoroTimerPage() {
             )}
             <Button
               className={"ml-auto hidden sm:inline-flex"}
+              onClick={handleAlarmToggle}
               size={"lg"}
               title={`click to ${isMuted ? "unmute" : "mute"}`}
               variant={"icon"}
-              onClick={handleAlarmToggle}
             >
               {isMuted ? (
-                <IconBellOff size={"1em"} aria-hidden />
+                <IconBellOff aria-hidden size={"1em"} />
               ) : (
                 <IconBell
+                  aria-hidden
                   className={clsx({
                     "animate-infinite animate-tada": isPlaying,
                   })}
                   size={"1em"}
-                  aria-hidden
                 />
               )}
             </Button>
           </div>
         </CardBody>
-        <Accordion type={"single"} collapsible>
+        <Accordion collapsible type={"single"}>
           <AccordionItem value={"config"}>
             <AccordionHeader>
               <AccordionTrigger
@@ -302,9 +301,6 @@ export default function PomodoroTimerPage() {
                             className={"block w-full"}
                             id={interval}
                             min={MIN_MINUTES}
-                            step={1}
-                            type={"number"}
-                            value={durations[interval] / 60}
                             onChange={(event) => {
                               const value = parseInt(event.target.value, 10);
                               if (!isNaN(value)) {
@@ -318,6 +314,9 @@ export default function PomodoroTimerPage() {
                                 setDuration(interval, seconds);
                               }
                             }}
+                            step={1}
+                            type={"number"}
+                            value={durations[interval] / 60}
                           />
                         </div>
                       );

@@ -3,7 +3,6 @@
 import { IconDownload, IconPhoto } from "@tabler/icons-react";
 import { QRCodeCanvas } from "qrcode.react";
 import { useRef, useState } from "react";
-
 import Main from "~/app/(base)/t/components/Main";
 import Button from "~/components/Button";
 import { Card, CardBody } from "~/components/Card";
@@ -44,10 +43,10 @@ export default function QrGeneratorPage() {
               <Textarea
                 className={"block w-full"}
                 id={"value"}
-                value={value}
                 onChange={(event) => {
                   setValue(event.target.value);
                 }}
+                value={value}
               />
             </div>
             <div>
@@ -56,11 +55,11 @@ export default function QrGeneratorPage() {
                 className={"block w-full"}
                 id={"size"}
                 min={1}
-                type={"number"}
-                value={size}
                 onChange={(event) => {
                   setSize(parseInt(event.target.value, 10));
                 }}
+                type={"number"}
+                value={size}
               />
             </div>
             <div>
@@ -70,11 +69,11 @@ export default function QrGeneratorPage() {
                   <ColorPicker
                     className={"block"}
                     id={"bg"}
-                    type={"color"}
-                    value={bgColor}
                     onChange={(event) => {
                       setBgColor(event.target.value);
                     }}
+                    type={"color"}
+                    value={bgColor}
                   />
                 </div>
                 <div className={"m-4"}>
@@ -82,11 +81,11 @@ export default function QrGeneratorPage() {
                   <ColorPicker
                     className={"block"}
                     id={"fg"}
-                    type={"color"}
-                    value={fgColor}
                     onChange={(event) => {
                       setFgColor(event.target.value);
                     }}
+                    type={"color"}
+                    value={fgColor}
                   />
                 </div>
               </div>
@@ -102,10 +101,10 @@ export default function QrGeneratorPage() {
                   { label: "H", value: "H" },
                 ]}
                 id={"level"}
-                value={level}
                 onChange={(event) => {
                   setLevel(event.target.value);
                 }}
+                value={level}
               />
             </div>
             <div>
@@ -153,9 +152,9 @@ export default function QrGeneratorPage() {
                       <div className={"flex flex-col items-center space-y-2"}>
                         <p>
                           <IconPhoto
+                            aria-hidden
                             className={"mr-2 inline-block"}
                             size={"2em"}
-                            aria-hidden
                           />
                           Drag and drop an image here, or click to select an
                           image.
@@ -187,11 +186,11 @@ export default function QrGeneratorPage() {
                     <Input
                       className={"block w-full"}
                       id={"width"}
-                      type={"number"}
-                      value={imageW}
                       onChange={(event) => {
                         setImageW(parseInt(event.target.value, 10));
                       }}
+                      type={"number"}
+                      value={imageW}
                     />
                   </div>
                   <div>
@@ -199,11 +198,11 @@ export default function QrGeneratorPage() {
                     <Input
                       className={"block w-full"}
                       id={"height"}
-                      type={"number"}
-                      value={imageH}
                       onChange={(event) => {
                         setImageH(parseInt(event.target.value, 10));
                       }}
+                      type={"number"}
+                      value={imageH}
                     />
                   </div>
                   <div>
@@ -231,11 +230,11 @@ export default function QrGeneratorPage() {
                             id={"x"}
                             max={size - imageW}
                             min={0}
-                            step={1}
-                            value={[imageX]}
                             onValueChange={([value]) => {
                               setImageX(value);
                             }}
+                            step={1}
+                            value={[imageX]}
                           />
                         </div>
                         <div>
@@ -244,11 +243,11 @@ export default function QrGeneratorPage() {
                             id={"y"}
                             max={size - imageH}
                             min={0}
-                            step={1}
-                            value={[imageY]}
                             onValueChange={([value]) => {
                               setImageY(value);
                             }}
+                            step={1}
+                            value={[imageY]}
                           />
                         </div>
                       </div>
@@ -277,7 +276,6 @@ export default function QrGeneratorPage() {
           <Heading as={"h2"}>Result</Heading>
           <div>
             <Button
-              type={"button"}
               onClick={() => {
                 const canvas =
                   canvasContainerRef.current?.querySelector("canvas");
@@ -290,8 +288,9 @@ export default function QrGeneratorPage() {
                 link.click();
                 link.remove();
               }}
+              type={"button"}
             >
-              <IconDownload className={"mr-2"} size={"1em"} aria-hidden />{" "}
+              <IconDownload aria-hidden className={"mr-2"} size={"1em"} />{" "}
               Download
             </Button>
           </div>

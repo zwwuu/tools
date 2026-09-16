@@ -7,7 +7,6 @@ import {
   useEffect,
   useRef,
 } from "react";
-
 import CopyButton from "~/components/CopyButton";
 import Loader from "~/components/Loader";
 
@@ -100,11 +99,11 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               "absolute top-2 right-2 opacity-10 hover:opacity-100 focus:opacity-100 peer-hover:opacity-100 peer-focus:opacity-100"
             }
             elevation={null}
-            value={value}
-            variant={"icon"}
             onCopy={() => {
               textareaRef.current?.select();
             }}
+            value={value}
+            variant={"icon"}
           />
         )}
       </div>

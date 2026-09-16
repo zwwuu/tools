@@ -4,7 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
 import Main from "~/app/(base)/t/components/Main";
 import { ENGINES, EngineValues } from "~/app/(base)/t/lmstfy/data";
 import Anchor from "~/components/Anchor";
@@ -73,8 +72,8 @@ export default function LmstfyPage() {
                 aria-invalid={errors.query ? "true" : "false"}
                 className={"block w-full"}
                 id={"query"}
-                type={"text"}
                 required
+                type={"text"}
                 {...register("query")}
               />
               {errors.query && (
@@ -144,8 +143,8 @@ export default function LmstfyPage() {
             <output className={"block space-y-4"}>
               <Textarea
                 className={"block w-full resize-none break-all"}
-                value={result}
                 readOnly
+                value={result}
                 withCopy
               />
               <Anchor href={result} variant={"button"}>

@@ -5,15 +5,15 @@
   "scripts": {
     "build": "next build",
     "postbuild": "next-sitemap",
-    "dev": "next dev",
-    "lint": "biome check --write",
-    "typecheck": "tsc --noEmit",
-    "e2e": "playwright test",
     "check": "npm run lint && npm run typecheck",
+    "dev": "next dev",
+    "e2e": "playwright test",
+    "lint": "biome check --write",
+    "precommit": "npm run check",
     "prepare": "husky install",
-    "start": "next start",
     "release": "release-it",
-    "precommit": "npm run check"
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@formspree/react": "^2.5.1",
@@ -61,9 +61,9 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.12",
-    "@playwright/test": "^1.63.0",
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
+    "@playwright/test": "^1.63.0",
     "@release-it/conventional-changelog": "^7.0.1",
     "@tailwindcss/forms": "^0.5.6",
     "@types/grecaptcha": "^3.0.4",

@@ -2,7 +2,6 @@
 
 import { type FormEvent, useState } from "react";
 import UAParser from "ua-parser-js";
-
 import Main from "~/app/(base)/t/components/Main";
 import Button from "~/components/Button";
 import { Card, CardBody } from "~/components/Card";
@@ -34,10 +33,10 @@ export default function UAParserPage() {
               <Textarea
                 className={"block w-full font-mono"}
                 id={"ua"}
-                value={ua}
                 onChange={(event) => {
                   setUA(event.target.value);
                 }}
+                value={ua}
               />
             </div>
             <div>
@@ -47,9 +46,9 @@ export default function UAParserPage() {
                 </Button>
                 <Button
                   className={"m-4"}
+                  onClick={reset}
                   type={"button"}
                   variant={"warning"}
-                  onClick={reset}
                 >
                   Current UA
                 </Button>
@@ -65,8 +64,8 @@ export default function UAParserPage() {
               <Textarea
                 aria-label={"User Agent"}
                 className={"peer mb-4 block w-full resize-none font-mono"}
-                value={result.ua}
                 readOnly
+                value={result.ua}
                 withCopy
               />
               <Table>

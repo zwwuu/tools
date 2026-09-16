@@ -8,7 +8,6 @@ import {
   useContext,
   useEffect,
 } from "react";
-
 import { db } from "~/lib/firebase";
 import { useUserStore } from "~/stores/userStore";
 

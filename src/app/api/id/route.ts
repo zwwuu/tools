@@ -1,5 +1,4 @@
 import { type NextRequest, NextResponse } from "next/server";
-
 import { getHashedIpAddress } from "~/lib/utils";
 
 export async function POST(req: NextRequest) {

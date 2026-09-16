@@ -1,7 +1,6 @@
 "use client";
 
 import { createContext, type ReactNode, useContext, useEffect } from "react";
-
 import useSound from "~/hooks/useSound";
 import { type Theme, useConfigStore } from "~/stores/configStore";
 

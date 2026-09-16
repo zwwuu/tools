@@ -73,7 +73,7 @@ export const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
         {children}
         {isExternal && (
           <>
-            <IconExternalLink className={"ml-1"} size={"1em"} aria-hidden />
+            <IconExternalLink aria-hidden className={"ml-1"} size={"1em"} />
             <span className={"sr-only"}>opens in a new tab</span>
           </>
         )}

@@ -18,8 +18,8 @@ export default function Footer() {
               All tools are free to use and{" "}
               <Anchor
                 href={`${process.env.NEXT_PUBLIC_APP_REPO}`}
-                prefetch={false}
                 isExternal
+                prefetch={false}
               >
                 open source
               </Anchor>

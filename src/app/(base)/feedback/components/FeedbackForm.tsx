@@ -2,7 +2,6 @@
 
 import { useForm, ValidationError } from "@formspree/react";
 import Script from "next/script";
-
 import Anchor from "~/components/Anchor";
 import Button from "~/components/Button";
 import { Card, CardBody } from "~/components/Card";
@@ -85,7 +84,7 @@ export default function FeedbackForm() {
                       as possible.
                     </p>
                     <div className={"flex justify-end"}>
-                      <Button type={"reset"} onClick={reset}>
+                      <Button onClick={reset} type={"reset"}>
                         Okay
                       </Button>
                     </div>
@@ -102,8 +101,8 @@ export default function FeedbackForm() {
                 id={"name"}
                 minLength={2}
                 name={"name"}
-                type={"text"}
                 required
+                type={"text"}
               />
               <ValidationError
                 className={"text-red-500 text-sm"}
@@ -119,8 +118,8 @@ export default function FeedbackForm() {
                 className={"block w-full"}
                 id={"email"}
                 name={"email"}
-                type={"email"}
                 required
+                type={"email"}
               />
               <ValidationError
                 className={"text-red-500 text-sm"}
@@ -153,16 +152,16 @@ export default function FeedbackForm() {
               This site is protected by reCAPTCHA and the Google{" "}
               <Anchor
                 href={"https://policies.google.com/privacy"}
-                prefetch={false}
                 isExternal
+                prefetch={false}
               >
                 Privacy Policy
               </Anchor>
               {" and "}
               <Anchor
                 href={"https://policies.google.com/terms"}
-                prefetch={false}
                 isExternal
+                prefetch={false}
               >
                 Terms of Service
               </Anchor>{" "}

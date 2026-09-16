@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import type { ReactNode } from "react";
-
-import "../globals.css";
-
 import Analytics from "~/components/Analytics";
 import DonationButton from "~/components/DonationButton";
 import FloatingMenu from "~/components/FloatingMenu";
@@ -13,6 +10,8 @@ import { Toaster } from "~/components/Toaster";
 import TopButton from "~/components/TopButton";
 import seo from "~/lib/seo";
 import AppProvider from "~/providers/AppProvider";
+
+import "../globals.css";
 
 const inter = Inter({
   subsets: ["latin"],

@@ -1,7 +1,6 @@
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
-
 import { tools } from "~/data/tools/base";
 import type { Changelog } from "~/types/Changelog";
 
@@ -38,7 +37,7 @@ export function getAllChangelogs() {
       .sort((a, b) => {
         return new Date(a.date) > new Date(b.date) ? -1 : 1;
       });
-  } catch (e) {
+  } catch {
     return [];
   }
 }

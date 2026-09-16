@@ -10,7 +10,6 @@ import {
   forwardRef,
   type ReactElement,
 } from "react";
-
 import Button from "~/components/Button";
 
 const ToastProvider = ToastPrimitives.Provider;
@@ -73,7 +72,7 @@ const ToastClose = forwardRef<
       title={"close"}
       variant={"icon"}
     >
-      <IconX size={"1em"} aria-hidden />
+      <IconX aria-hidden size={"1em"} />
     </Button>
   </ToastPrimitives.Close>
 ));

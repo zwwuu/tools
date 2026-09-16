@@ -4,7 +4,6 @@ import { IconFile, IconFileUpload } from "@tabler/icons-react";
 import clsx from "clsx";
 import mime from "mime-types";
 import { useState } from "react";
-
 import { MODES, TYPES } from "~/app/(base)/t/base64-converter/data";
 import Main from "~/app/(base)/t/components/Main";
 import Button from "~/components/Button";
@@ -107,10 +106,10 @@ export default function Base64ConverterPage() {
                     className={"block w-full"}
                     data={TYPES}
                     id={"data"}
-                    value={type}
                     onChange={(event) => {
                       setType(event.target.value);
                     }}
+                    value={type}
                   />
                 </div>
                 {type === "text" ? (
@@ -120,12 +119,12 @@ export default function Base64ConverterPage() {
                       autoSize={false}
                       className={"block w-full break-all font-mono"}
                       id={"input"}
-                      rows={4}
-                      value={input}
-                      required
                       onChange={(event) => {
                         setInput(event.target.value);
                       }}
+                      required
+                      rows={4}
+                      value={input}
                     />
                   </div>
                 ) : (
@@ -146,16 +145,16 @@ export default function Base64ConverterPage() {
                       <div className={"flex flex-col items-center"}>
                         {file && (
                           <div className={"mb-2 flex flex-col items-center"}>
-                            <IconFile size={"2em"} aria-hidden />
+                            <IconFile aria-hidden size={"2em"} />
                             <p className={"break-all text-sm"}>{file.name}</p>
                             <p className={"break-all text-xs"}>{file.type}</p>
                           </div>
                         )}
                         <p className={clsx(file && "text-xs opacity-60")}>
                           <IconFileUpload
+                            aria-hidden
                             className={"mr-2 inline-block"}
                             size={"2em"}
-                            aria-hidden
                           />
                           Drag and drop a file here, or click to select an file.
                         </p>
@@ -190,12 +189,12 @@ export default function Base64ConverterPage() {
                   autoSize={false}
                   className={"block w-full"}
                   id={"input"}
-                  rows={4}
-                  value={input}
-                  required
                   onChange={(event) => {
                     setInput(event.target.value);
                   }}
+                  required
+                  rows={4}
+                  value={input}
                 />
               </div>
             )}
@@ -207,8 +206,6 @@ export default function Base64ConverterPage() {
                 </Button>
                 <Button
                   className={"m-4"}
-                  type={"reset"}
-                  variant={"warning"}
                   onClick={(event) => {
                     event.preventDefault();
                     if (type === "text") {
@@ -219,6 +216,8 @@ export default function Base64ConverterPage() {
                     }
                     setResult("");
                   }}
+                  type={"reset"}
+                  variant={"warning"}
                 >
                   Clear
                 </Button>
@@ -240,9 +239,9 @@ export default function Base64ConverterPage() {
                   autoSize={false}
                   className={"block w-full break-all font-mono"}
                   id={"result"}
+                  readOnly
                   rows={4}
                   value={result}
-                  readOnly
                   withCopy
                 />
 

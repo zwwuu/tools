@@ -4,7 +4,6 @@ import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import type { UseBoundStore } from "zustand";
-
 import Loader from "~/components/Loader";
 import PersistentGate from "~/components/PersistentGate";
 

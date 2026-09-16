@@ -3,7 +3,6 @@
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import tinycolor from "tinycolor2";
-
 import ColorCopyButton from "~/app/(base)/t/components/ColorCopyButton";
 import Main from "~/app/(base)/t/components/Main";
 import { japaneseColors } from "~/app/(base)/t/japanese-colors/data";
@@ -46,8 +45,6 @@ export default function JapaneseColorsPage() {
             <Input
               className={"block w-full"}
               id={"query"}
-              type={"search"}
-              value={query}
               onChange={(event) => {
                 setQuery(event.target.value);
                 const filtered = japaneseColors.filter(
@@ -59,6 +56,8 @@ export default function JapaneseColorsPage() {
                 );
                 setFilteredColors(filtered);
               }}
+              type={"search"}
+              value={query}
             />
           </form>
         </CardBody>
@@ -78,13 +77,6 @@ export default function JapaneseColorsPage() {
                     data-id={`${color.romanji}-${color.hex.replace("#", "")}`}
                     elevation={null}
                     key={color.romanji}
-                    style={{
-                      backgroundColor: color.hex,
-                      boxShadow:
-                        selectedColor === color &&
-                        `0 0 50px -12px ${selectedColor.hex}`,
-                      zIndex: selectedColor === color && 1,
-                    }}
                     onClick={() => {
                       setSelectedColor(color);
                       history.replaceState(
@@ -92,6 +84,13 @@ export default function JapaneseColorsPage() {
                         document.title,
                         `#${color.romanji}-${color.hex.replace("#", "")}`,
                       );
+                    }}
+                    style={{
+                      backgroundColor: color.hex,
+                      boxShadow:
+                        selectedColor === color &&
+                        `0 0 50px -12px ${selectedColor.hex}`,
+                      zIndex: selectedColor === color && 1,
                     }}
                   >
                     <CardBody>

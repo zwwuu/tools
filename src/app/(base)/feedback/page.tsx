@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-
 import FeedbackForm from "~/app/(base)/feedback/components/FeedbackForm";
 import FormWrapper from "~/app/(base)/feedback/components/FormWrapper";
 import { Hero, HeroTitle } from "~/components/Hero";

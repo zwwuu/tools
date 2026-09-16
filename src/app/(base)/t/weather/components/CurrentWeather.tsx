@@ -1,5 +1,4 @@
 import { IconArrowDown } from "@tabler/icons-react";
-
 import Detail from "~/app/(base)/t/weather/components/Detail";
 import WeatherIcon from "~/app/(base)/t/weather/components/WeatherIcon";
 import {
@@ -65,9 +64,9 @@ export default function CurrentWeather({
           value={
             <div className={"flex items-center"}>
               <IconArrowDown
+                aria-hidden
                 size={"1em"}
                 style={{ rotate: `${weather.wind.deg}deg` }}
-                aria-hidden
               />
               {`${weather.wind.speed} m/s`}
             </div>

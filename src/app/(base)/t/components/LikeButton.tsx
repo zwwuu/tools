@@ -5,7 +5,6 @@ import clsx from "clsx";
 import { doc, getDoc } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-
 import Button from "~/components/Button";
 import useDebounce from "~/hooks/useDebounce";
 import useSound from "~/hooks/useSound";
@@ -77,12 +76,6 @@ export default function LikeButton({ slug }: { slug: string }) {
       }
       elevation={null}
       initial={"initial"}
-      title={"Like this tool"}
-      type={"button"}
-      variant={null}
-      whileFocus={"grow"}
-      whileHover={"grow"}
-      whileTap={"jump"}
       onClick={async () => {
         if (likes.current < MAX_LIKES && getLikes(slug) < MAX_LIKES) {
           await stop();
@@ -92,11 +85,17 @@ export default function LikeButton({ slug }: { slug: string }) {
           void play();
         }
       }}
+      title={"Like this tool"}
+      type={"button"}
+      variant={null}
+      whileFocus={"grow"}
+      whileHover={"grow"}
+      whileTap={"jump"}
     >
       <MotionIconThumbUp
+        aria-hidden
         className={clsx("mr-1", isLiked(slug) && "text-red-500")}
         variants={likeAnimation}
-        aria-hidden
       />
       <span
         className={

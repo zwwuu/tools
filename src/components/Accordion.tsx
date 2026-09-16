@@ -2,7 +2,6 @@ import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { IconChevronDown } from "@tabler/icons-react";
 import clsx from "clsx";
 import { forwardRef } from "react";
-
 import { Card, CardBody } from "~/components/Card";
 
 export const Accordion = AccordionPrimitive.Root;
@@ -40,10 +39,10 @@ export const AccordionTrigger = forwardRef<
     >
       {children}
       <IconChevronDown
+        aria-hidden
         className={
           "opacity-80 transition group-hover:opacity-100 group-focus:opacity-100 group-data-[state='open']:rotate-180"
         }
-        aria-hidden
       />
     </AccordionPrimitive.Trigger>
   );
@@ -55,7 +54,7 @@ export const AccordionContent = forwardRef<
   AccordionPrimitive.AccordionContentProps
 >(({ className, children, ...props }, forwardedRef) => {
   return (
-    <AccordionPrimitive.Content ref={forwardedRef} asChild {...props}>
+    <AccordionPrimitive.Content asChild ref={forwardedRef} {...props}>
       <Card
         border={null}
         className={clsx(

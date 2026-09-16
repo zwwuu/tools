@@ -18,8 +18,8 @@ export default function HomePage() {
           and can be found on{" "}
           <Anchor
             href={`${process.env.NEXT_PUBLIC_APP_REPO}`}
-            prefetch={false}
             isExternal
+            prefetch={false}
           >
             GitHub
           </Anchor>

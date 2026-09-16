@@ -10,7 +10,6 @@ import {
 } from "@tabler/icons-react";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
-
 import Button from "~/components/Button";
 import { NavLink } from "~/components/NavLink";
 import { useConfig } from "~/providers/ConfigProvider";
@@ -83,10 +82,10 @@ export default function Navbar() {
       </NavigationMenu.Root>
       <div className={"ml-auto flex items-center space-x-4 px-4"}>
         <Button
+          onClick={onThemeToggle}
           title={"Toggle mode"}
           type={"button"}
           variant={"icon"}
-          onClick={onThemeToggle}
         >
           {theme === "dark" ? (
             <IconMoon aria-hidden />
@@ -95,10 +94,10 @@ export default function Navbar() {
           )}
         </Button>
         <Button
+          onClick={onSoundToggle}
           title={"Toggle sound"}
           type={"button"}
           variant={"icon"}
-          onClick={onSoundToggle}
         >
           {sound ? <IconMusic aria-hidden /> : <IconMusicOff aria-hidden />}
         </Button>

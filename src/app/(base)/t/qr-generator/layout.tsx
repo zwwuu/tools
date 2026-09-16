@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-
 import Layout from "~/app/(base)/t/components/Layout";
 import { tools } from "~/data/tools/base";
 import seo from "~/lib/seo";

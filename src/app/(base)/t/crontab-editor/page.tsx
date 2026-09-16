@@ -3,7 +3,6 @@
 import cronParser from "cron-parser";
 import cronstrue from "cronstrue";
 import { useEffect, useState } from "react";
-
 import Main from "~/app/(base)/t/components/Main";
 import { CRON_FIELDS } from "~/app/(base)/t/crontab-editor/data";
 import { Card, CardBody } from "~/components/Card";
@@ -41,11 +40,11 @@ export default function CrontabEditorPage() {
           <Input
             className={"mb-4 block w-full"}
             id={"expression"}
-            type={"text"}
-            value={expression}
             onChange={(event) => {
               setExpression(event.target.value);
             }}
+            type={"text"}
+            value={expression}
           />
           <Tabs defaultValue={CRON_FIELDS[0].name}>
             <TabsList>

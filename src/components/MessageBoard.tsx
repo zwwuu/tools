@@ -1,7 +1,6 @@
 "use client";
 
 import Giscus, { type GiscusProps, type Repo } from "@giscus/react";
-
 import { Card, CardBody } from "~/components/Card";
 import Heading from "~/components/Typography/Heading";
 import { useConfig } from "~/providers/ConfigProvider";
