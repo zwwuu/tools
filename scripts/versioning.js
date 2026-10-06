@@ -1,5 +1,5 @@
-const path = require("path");
-const fs = require("fs");
+const path = require("node:path");
+const fs = require("node:fs");
 
 const version = process.argv[2];
 const versionDirectory = path.join(__dirname, `../src/data/changelogs`);

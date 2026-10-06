@@ -307,7 +307,7 @@ export default function PomodoroTimerPage() {
                             value={durations[interval] / 60}
                             onChange={(event) => {
                               const value = parseInt(event.target.value, 10);
-                              if (!isNaN(value)) {
+                              if (!Number.isNaN(value)) {
                                 const seconds = Math.max(
                                   value * 60,
                                   MIN_MINUTES * 60,

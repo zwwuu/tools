@@ -33,7 +33,7 @@ export async function GET(req: NextRequest) {
   try {
     const data = await response.json();
     return NextResponse.json({ success: true, data }, { status: 200 });
-  } catch (e) {
+  } catch {
     return NextResponse.json(
       { success: false, message: "Bad Request" },
       { status: 400 },

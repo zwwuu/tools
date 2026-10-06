@@ -49,7 +49,7 @@ export default function PasswordGeneratorPage() {
 
   const handleLengthChange = (event: ChangeEvent<HTMLInputElement>) => {
     const length = parseInt(event.target.value, 10);
-    if (!isNaN(length)) {
+    if (!Number.isNaN(length)) {
       setLength(length);
       setUncommittedLength(length);
     }
@@ -176,10 +176,15 @@ export default function PasswordGeneratorPage() {
             <div className={"space-y-4"}>
               {OPTIONS.map((option) => {
                 return (
-                  <label className={"flex items-center"} key={option.name}>
+                  <label
+                    className={"flex items-center"}
+                    key={option.name}
+                    htmlFor={option.name}
+                  >
                     <Checkbox
                       checked={options[option.name]}
                       className={"mr-2"}
+                      id={option.name}
                       name={option.name}
                       onChange={() => toggleOption(option.name)}
                     />

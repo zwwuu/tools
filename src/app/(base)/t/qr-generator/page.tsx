@@ -109,9 +109,10 @@ export default function QrGeneratorPage() {
               />
             </div>
             <div>
-              <label>
+              <label htmlFor={"include-margin"}>
                 <Checkbox
                   checked={includeMargin}
+                  id={"include-margin"}
                   className={"mr-2"}
                   onChange={() => {
                     setIncludeMargin(!includeMargin);
@@ -121,9 +122,10 @@ export default function QrGeneratorPage() {
               </label>
             </div>
             <div>
-              <label>
+              <label htmlFor={"include-image"}>
                 <Checkbox
                   checked={includeImage}
+                  id={"include-image"}
                   className={"mr-2"}
                   onChange={() => {
                     setIncludeImage(!includeImage);
@@ -163,7 +165,7 @@ export default function QrGeneratorPage() {
                         {image && (
                           <figure>
                             <img
-                              alt={"Uploaded image"}
+                              alt={"Uploaded"}
                               className={"mx-auto max-h-96 max-w-full"}
                               src={URL.createObjectURL(image)}
                             />
@@ -208,8 +210,9 @@ export default function QrGeneratorPage() {
                   </div>
                   <div>
                     <div>
-                      <label>
+                      <label htmlFor={"center-image"}>
                         <Checkbox
+                          id={"center-image"}
                           checked={centerImage}
                           className={"mr-2"}
                           onChange={() => {
@@ -255,13 +258,14 @@ export default function QrGeneratorPage() {
                     </fieldset>
                   </div>
                   <div>
-                    <label>
+                    <label htmlFor={"excavate"}>
                       <Checkbox
                         checked={imageExcavate}
                         className={"mr-2"}
                         onChange={() => {
                           setImageExcavate(!imageExcavate);
                         }}
+                        id={"excavate"}
                       />
                       Excavate
                     </label>

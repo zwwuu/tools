@@ -30,10 +30,10 @@ export const ConfigProvider = ({ children }: { children?: ReactNode }) => {
 
   useEffect(() => {
     if (!theme) {
-      const prefTheme =
-        window && window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light";
+      const prefTheme = window?.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light";
       setTheme(prefTheme);
     }
   }, [setTheme, theme]);

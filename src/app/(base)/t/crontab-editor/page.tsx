@@ -28,7 +28,7 @@ export default function CrontabEditorPage() {
         }
         return dates;
       });
-    } catch (e) {
+    } catch {
       setReadableExpression("");
       setNextDates([]);
     }

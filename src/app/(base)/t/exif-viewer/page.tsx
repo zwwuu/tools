@@ -26,12 +26,12 @@ export default function ExifViewerPage() {
         const tags = await ExifReader.load(image, { includeUnknown: true });
         const orderedTags = Object.keys(tags)
           .sort()
-          .reduce((prev: any, curr: any) => {
+          .reduce((prev: any, curr) => {
             prev[curr] = tags[curr];
             return prev;
           }, {});
         setExif(orderedTags);
-      } catch (error) {
+      } catch {
         setExif(null);
         setError("Failed to load EXIF data from image.");
       }
@@ -60,7 +60,7 @@ export default function ExifViewerPage() {
               {image && (
                 <figure>
                   <img
-                    alt={"Uploaded image"}
+                    alt={"Uploaded"}
                     className={"mx-auto max-h-96 max-w-full"}
                     src={URL.createObjectURL(image)}
                   />

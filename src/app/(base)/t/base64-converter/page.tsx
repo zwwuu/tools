@@ -169,10 +169,11 @@ export default function Base64ConverterPage() {
                   </div>
                 )}
                 <div>
-                  <label>
+                  <label htmlFor={"breakWidth"}>
                     <Checkbox
                       checked={breakWidth}
                       className={"mr-2"}
+                      id={"breakWidth"}
                       onChange={() => {
                         setBreakWidth(!breakWidth);
                       }}

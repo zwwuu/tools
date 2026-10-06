@@ -145,7 +145,7 @@ export default function Weather() {
     const lat = parseFloat(cityOrLat);
     const lon = parseFloat(countryOrLon);
 
-    if (isNaN(lat) && isNaN(lon)) {
+    if (Number.isNaN(lat) && Number.isNaN(lon)) {
       setCity(query);
       if (geocodingError) {
         await refetch();

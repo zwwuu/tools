@@ -55,7 +55,7 @@ export default function ToolList({ tools }: { tools: Tool[] }) {
           <Heading as={"h2"} className={"mb-2"}>
             Browse
           </Heading>
-          <form role={"search"}>
+          <search>
             <Input
               aria-label={"Search"}
               className={"block w-full text-base"}
@@ -71,7 +71,7 @@ export default function ToolList({ tools }: { tools: Tool[] }) {
               value={search}
               onChange={handleSearch}
             />
-          </form>
+          </search>
           <div className={"absolute inset-x-0 top-full"}>
             <div
               className={clsx(

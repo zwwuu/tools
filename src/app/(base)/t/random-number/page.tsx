@@ -150,7 +150,7 @@ export default function RandomNumberPage() {
             </div>
 
             <div>
-              <label className={"flex items-center"}>
+              <label className={"flex items-center"} htmlFor={"duplicate"}>
                 <Checkbox
                   className={"mr-2"}
                   id={"duplicate"}

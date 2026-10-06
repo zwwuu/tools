@@ -58,9 +58,10 @@ export default function PxConvertorPage() {
         <CardBody className={"space-y-8"}>
           <div className={"flex items-center justify-center"}>
             <div>
-              <label className={"mr-1"}>
+              <label className={"mr-1"} htmlFor={"base"}>
                 {"Based on "}
                 <Input
+                  id={"base"}
                   className={"max-w-[12rem] text-center text-sm"}
                   min={MIN_VALUE}
                   type={"number"}
@@ -69,7 +70,7 @@ export default function PxConvertorPage() {
                     setBase(event.target.value);
                     const baseAsNum = parseFloat(event.target.value);
                     const leftAsNum = parseFloat(left);
-                    if (!isNaN(baseAsNum) && !isNaN(leftAsNum)) {
+                    if (!Number.isNaN(baseAsNum) && !Number.isNaN(leftAsNum)) {
                       setRight(
                         String(
                           isPxToRem
@@ -116,7 +117,7 @@ export default function PxConvertorPage() {
                   setLeft(event.target.value);
                   const leftAsNum = parseFloat(event.target.value);
                   const baseAsNum = parseFloat(base);
-                  if (!isNaN(leftAsNum) && !isNaN(baseAsNum)) {
+                  if (!Number.isNaN(leftAsNum) && !Number.isNaN(baseAsNum)) {
                     setRight(
                       String(
                         isPxToRem
@@ -136,7 +137,7 @@ export default function PxConvertorPage() {
                 onClick={() => {
                   const leftAsNum = parseFloat(left);
                   const baseAsNum = parseFloat(base);
-                  if (!isNaN(leftAsNum) && !isNaN(baseAsNum)) {
+                  if (!Number.isNaN(leftAsNum) && !Number.isNaN(baseAsNum)) {
                     setRight(
                       String(
                         isPxToRem
@@ -173,7 +174,7 @@ export default function PxConvertorPage() {
                   setRight(event.target.value);
                   const rightAsNum = parseFloat(event.target.value);
                   const baseAsNum = parseFloat(base);
-                  if (!isNaN(rightAsNum)) {
+                  if (!Number.isNaN(rightAsNum)) {
                     setLeft(
                       String(
                         isPxToRem

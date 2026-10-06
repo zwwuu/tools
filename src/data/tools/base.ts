@@ -229,19 +229,4 @@ export const tools: Record<string, Tool> = {
     keywords: ["stopwatch", "timer", "clock", "stop watch"],
     isPublic: true,
   },
-  lmstfy: {
-    title: "Let Me Search That For You",
-    slug: "lmstfy",
-    description: "Generate a link to let me search that for you.",
-    keywords: [
-      "search for you",
-      "search",
-      "query",
-      "google",
-      "bing",
-      "yandex",
-      "baidu",
-    ],
-    isPublic: true,
-  },
 };

@@ -40,7 +40,7 @@ export default function BaseConverterPage() {
                 value={selectedBase}
                 onChange={(event) => {
                   const parsedBase = parseInt(event.target.value, 10);
-                  if (!isNaN(parsedBase)) {
+                  if (!Number.isNaN(parsedBase)) {
                     setSelectedBase(parsedBase);
                   }
                 }}
@@ -58,10 +58,11 @@ export default function BaseConverterPage() {
           >
             {BASES.filter((base) => base.value !== selectedBase).map((base) => (
               <div key={base.value}>
-                <label>
+                <label htmlFor={`base-${base.value}`}>
                   {base.label}
                   <Input
                     className={"block w-full"}
+                    id={`base-${base.value}`}
                     value={value.toString(base.value)}
                     readOnly
                   />

@@ -45,7 +45,7 @@ export async function GET(req: NextRequest) {
       { success: true, data: { current, forecast } },
       { status: 200 },
     );
-  } catch (e) {
+  } catch {
     return NextResponse.json(
       { success: false, message: "Bad Request" },
       { status: 400 },
